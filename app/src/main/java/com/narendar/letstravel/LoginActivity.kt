@@ -21,7 +21,7 @@ class LoginActivity : AppCompatActivity() {
 
         val currentuser = auth.currentUser
         if(currentuser != null) {
-            startActivity(Intent(this@LoginActivity, ProfileActivity::class.java))
+            startActivity(Intent(this@LoginActivity, MainActivity::class.java))
             finish()
         }
 
@@ -47,7 +47,7 @@ class LoginActivity : AppCompatActivity() {
             auth.signInWithEmailAndPassword(usernameInput.text.toString(), passwordInput.text.toString())
                 .addOnCompleteListener {
                     if(it.isSuccessful) {
-                        startActivity(Intent(this@LoginActivity, ProfileActivity::class.java))
+                        startActivity(Intent(this@LoginActivity, MainActivity::class.java))
                         finish()
                     } else {
                         Toast.makeText(this@LoginActivity, "Login failed, please try again! ", Toast.LENGTH_LONG).show()
