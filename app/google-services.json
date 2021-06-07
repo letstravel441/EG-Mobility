@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "726790855622",
+    "project_id": "letstravel-c29ab",
+    "storage_bucket": "letstravel-c29ab.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:726790855622:android:9be2f9178c7f9da2a730c7",
+        "android_client_info": {
+          "package_name": "com.narendar.letstravel"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "726790855622-apu9e5n4agae2agnbpd7qqe4kka0si05.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBb9_QloxBQdlerf2yREsW2t09fjiDQOGk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "726790855622-apu9e5n4agae2agnbpd7qqe4kka0si05.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
