@@ -53,6 +53,9 @@ class MainActivity : AppCompatActivity() {
         drawerLayout.addDrawerListener(actionBarDrawerToggle)
         actionBarDrawerToggle.syncState()
 
+
+
+
         navigationView.setNavigationItemSelectedListener {
 
             if(previousMenuItem!=null)
@@ -86,11 +89,20 @@ class MainActivity : AppCompatActivity() {
                     supportActionBar?.title="About App"
                     drawerLayout.closeDrawers()
                 }
+                R.id.logout -> {
+                    auth.signOut()
+                    startActivity(Intent(this@MainActivity, LoginActivity::class.java))
+                    finish()
+
+                }
+
             }
 
 
             return@setNavigationItemSelectedListener true
         }
+
+
     }
 
     fun setUpToolbar()
@@ -135,6 +147,9 @@ class MainActivity : AppCompatActivity() {
        // loadProfile()
 
     }
+
+
+
 
   /*  private fun loadProfile() {
 

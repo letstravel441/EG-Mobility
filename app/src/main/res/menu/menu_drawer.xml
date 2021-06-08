@@ -17,6 +17,12 @@
             android:id="@+id/about_app"
             android:icon="@drawable/ic_about_app"/>
 
+
+        <item
+            android:title="@string/logout"
+            android:id="@+id/logout"
+          />
+
         />
     </group>
 </menu>
