@@ -5,6 +5,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TableLayout
+import androidx.viewpager.widget.ViewPager
+import com.google.android.material.tabs.TabLayout
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -34,7 +37,23 @@ class LetstravelFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_letstravel, container, false)
+        val view = inflater.inflate(R.layout.fragment_letstravel, container, false)
+
+        var viewPager = view.findViewById<ViewPager>(R.id.viewpager) as ViewPager
+        var tablayout = view.findViewById<TabLayout>(R.id.tablayout) as TabLayout
+
+
+        val fragmentAdapter = FragmentAdapter(requireActivity()!!.supportFragmentManager)
+        fragmentAdapter.addFragment(FindFragment(),"FIND")
+        fragmentAdapter.addFragment(ShareFragment(),"OFFER")
+        fragmentAdapter.addFragment(InboxFragment(),"INBOX")
+        fragmentAdapter.addFragment(YourrideFragment(),"YOUR RIDE")
+
+
+        viewPager.adapter = fragmentAdapter
+        tablayout.setupWithViewPager(viewPager)
+
+        return view
     }
 
     companion object {
