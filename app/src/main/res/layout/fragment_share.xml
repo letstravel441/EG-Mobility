@@ -3,121 +3,166 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".FindFragment">
+    tools:context="com.narendar.letstravel.travelfragments.ShareFragment">
 
-    <!-- TODO: Update blank fragment layout -->
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-
-
         <EditText
-            android:id="@+id/pickuplocation"
+            android:id="@+id/sharepickuplocation"
             android:layout_width="match_parent"
-
             android:layout_height="45dp"
             android:layout_marginLeft="20dp"
-            android:layout_marginRight="40dp"
             android:layout_marginTop="40dp"
+            android:layout_marginRight="40dp"
             android:background="#0C000000"
             android:drawablePadding="15dp"
-
             android:drawableTint="#3F51B5"
-
             android:hint="Pick up Location"
-
             android:inputType="text"
-
-            android:paddingLeft="16dp"
-            />
-
+            android:paddingLeft="16dp" />
 
         <EditText
-            android:id="@+id/droplocation"
+            android:id="@+id/sharedroplocation"
             android:layout_width="match_parent"
             android:layout_height="45dp"
-            android:layout_below="@id/pickuplocation"
-
+            android:layout_below="@id/sharepickuplocation"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="40dp"
             android:background="#0C000000"
             android:drawablePadding="15dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="40dp"
-            android:layout_marginTop="20dp"
             android:drawableTint="#3F51B5"
-
             android:hint="Drop Location"
-
             android:inputType="text"
+            android:paddingLeft="16dp" />
 
-
-            android:paddingLeft="16dp"
-            />
-
-
+        <Button
+            android:id="@+id/btnsharedate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/sharedroplocation"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="40dp"
+            android:backgroundTint="@color/white"
+            android:text="MON 09JUN,2001 05:45 PM"
+            android:layout_centerHorizontal="true"
+            android:textColor="@color/purple_200"/>
 
 
         <EditText
+            android:id="@+id/sharepassengers"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:hint="DD/MM/YYYY"
-            android:inputType="date"
-            android:id="@+id/date"
-            android:layout_below="@id/droplocation"
-            android:layout_margin="40dp">
-
-        </EditText>
-
-        <EditText
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_toRightOf="@id/date"
-            android:layout_below="@id/droplocation"
-            android:layout_margin="40dp"
-            android:hint="HH:MM PM"
-            android:inputType="text"
-            ></EditText>
-
-
-        <EditText
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_below="@+id/btnsharedate"
+            android:layout_marginTop="40dp"
+            android:layout_marginLeft="20dp"
             android:hint="No.of Passengers"
-            android:inputType="number"
-           android:id="@+id/sharePassengers"
-            android:layout_below="@id/date"
-            android:layout_margin="40dp">
-
-        </EditText>
+            android:inputType="number" />
 
         <EditText
+            android:id="@+id/sharefare"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_toRightOf="@id/date"
-            android:layout_below="@id/date"
-            android:layout_margin="40dp"
+            android:layout_below="@id/btnsharedate"
+            android:layout_marginLeft="100dp"
+            android:layout_marginTop="40dp"
+            android:layout_toRightOf="@id/sharepassengers"
             android:hint="Fare/Km"
-            android:inputType="number"
-            ></EditText>
+            android:inputType="number" />
 
+
+        <TextView
+            android:id="@+id/nameofuser"
+
+            android:textSize="0sp"
+            android:layout_width="0dp"
+            android:layout_height="0dp" />
+
+
+        <TextView
+            android:id="@+id/emailofuser"
+
+            android:textSize="0sp"
+            android:layout_width="0dp"
+            android:layout_height="0dp" />
 
 
         <Button
+            android:id="@+id/btnshare"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Publish Ride"
-            android:textSize="18sp"
-            android:textStyle="bold"
-
-
-            android:backgroundTint="#4CAF68"
-
-            android:layout_marginTop="400dp"
             android:layout_centerHorizontal="true"
-            ></Button>
+            android:layout_marginTop="400dp"
+            android:backgroundTint="#4CAF68"
+            android:text="Publish Ride"
+
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Enter adress"
+            android:visibility="gone"
+            android:id="@+id/edit_text"
+            android:padding="16dp"
+            android:textSize="0sp"
+            android:drawablePadding="16dp"
+            android:layout_below="@id/btnshare"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/text_view1"
+            android:fontFamily="monospace"
+            android:padding="12dp"
+            android:textSize="0sp"
+            android:layout_marginTop="32dp"
+            android:layout_below="@id/edit_text"/>
+
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/text_view2"
+
+            android:textSize="0sp"
+            android:gravity="center"
+            android:padding="12dp"
+            android:layout_marginTop="16dp"
+           android:layout_below="@id/sharepassengers" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/text_view3"
+            android:fontFamily="monospace"
+            android:padding="12dp"
+            android:textSize="0sp"
+            android:layout_marginTop="32dp"
+            android:layout_below="@id/edit_text"/>
+
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/text_view4"
+            android:textSize="0sp"
+
+            android:gravity="center"
+            android:padding="12dp"
+            android:layout_marginTop="16dp"
+            android:layout_below="@id/sharepassengers" />
+
+
 
     </RelativeLayout>
-
 
 
 </FrameLayout>

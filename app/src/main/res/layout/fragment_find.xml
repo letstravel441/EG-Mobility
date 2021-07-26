@@ -1,107 +1,110 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+
+    android:id="@+id/findfragment"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".FindFragment">
+    tools:context="com.narendar.letstravel.travelfragments.FindFragment">
 
-    <!-- TODO: Update blank fragment layout -->
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
 
-    <EditText
-        android:id="@+id/pickuplocation"
-        android:layout_width="match_parent"
-
-        android:layout_height="45dp"
-       android:layout_marginLeft="20dp"
-        android:layout_marginRight="40dp"
-        android:layout_marginTop="40dp"
-        android:background="#0C000000"
-        android:drawablePadding="15dp"
-
-        android:drawableTint="#3F51B5"
-
-        android:hint="Pick up Location"
-
-        android:inputType="text"
-
-        android:paddingLeft="16dp"
-        />
-
-
-    <EditText
-        android:id="@+id/droplocation"
-        android:layout_width="match_parent"
-        android:layout_height="45dp"
-android:layout_below="@id/pickuplocation"
-        android:background="#0C000000"
-        android:layout_marginTop="20dp"
-
-        android:drawablePadding="15dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="40dp"
-        android:drawableTint="#3F51B5"
-
-        android:hint="Drop Location"
-
-        android:inputType="text"
-
-        android:paddingLeft="16dp"
-        />
-
-
+        <EditText
+            android:id="@+id/bookpickuplocation"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="40dp"
+            android:layout_marginRight="40dp"
+            android:background="#0C000000"
+            android:drawablePadding="15dp"
+            android:drawableTint="#3F51B5"
+            android:hint="Pick up Location"
+            android:inputType="none"
+            android:paddingLeft="16dp" />
 
 
         <EditText
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:hint="DD/MM/YYYY"
-            android:inputType="date"
-            android:id="@+id/date"
-            android:layout_below="@id/droplocation"
-            android:layout_margin="40dp">
-
-        </EditText>
-
-        <EditText
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_toRightOf="@id/date"
-            android:layout_below="@id/droplocation"
-            android:layout_margin="40dp"
-            android:hint="HH:MM PM"
+            android:id="@+id/bookdroplocation"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_below="@id/bookpickuplocation"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="40dp"
+            android:background="#0C000000"
+            android:drawablePadding="15dp"
+            android:drawableTint="#3F51B5"
+            android:hint="Drop Location"
             android:inputType="text"
-           ></EditText>
+            android:paddingLeft="16dp" />
 
-
-        <EditText
+        <Button
+            android:id="@+id/btnbookdate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-           android:id="@+id/passengers"
-            android:layout_below="@id/date"
+            android:layout_below="@+id/bookdroplocation"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="40dp"
+            android:backgroundTint="@color/white"
+            android:text="09JUN 04:59AM"
             android:layout_centerHorizontal="true"
-            android:hint="No.of Passengers"
+            android:textColor="@color/purple_200" />
+
+        <EditText
+            android:id="@+id/bookpassengers"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/btnbookdate"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="40dp"
+            android:drawableTint="#3F51B5"
+            android:hint="No of passengers"
+            android:padding="10dp"
             android:inputType="number"
-            ></EditText>
+            android:maxLines="1"
+            android:textColor="@color/purple_200"/>
 
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_below="@id/bookpassengers"
+            android:layout_centerInParent="true"
+            android:layout_marginTop="30dp"
+            android:backgroundTint="#4CAF68"
             android:text="Search"
             android:textSize="18sp"
-            android:textStyle="bold"
-            android:layout_below="@id/passengers"
-            android:layout_centerInParent="true"
-            android:backgroundTint="#4CAF68"
+            android:id="@+id/search"
+            android:textStyle="bold" />
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:id="@+id/text_view1_find"
+            />
 
-            android:layout_marginTop="30dp"></Button>
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:id="@+id/text_view11_find" />
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:id="@+id/text_view2_find"
+            />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:id="@+id/text_view22_find" />
+
+
 
     </RelativeLayout>
-
 
 
 </FrameLayout>

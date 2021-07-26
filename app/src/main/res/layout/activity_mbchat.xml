@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".mybike.MBChatActivity"
+    android:background="@color/white">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar_mybike"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="?attr/actionBarSize"
+        android:background="#EE6C00"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark"
+        />
+
+    <EditText
+        android:layout_below="@+id/toolbar_mybike"
+        android:id="@+id/search_chat"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:hint="Search"
+        android:textColorHint="@color/black"
+        android:textColor="@color/black"
+        android:padding="6dp"
+        android:paddingStart="20dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/custom_search_bar" />
+
+    <ImageView
+        android:layout_below="@+id/toolbar_mybike"
+        android:id="@+id/search_chat_icon"
+        android:layout_width="33dp"
+        android:layout_height="33dp"
+        android:src="@drawable/ic_search"
+        android:layout_marginTop="12dp"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="22dp"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recent_chats"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/search_chat"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"/>
+
+</RelativeLayout>

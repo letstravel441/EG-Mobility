@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".mybike.MBChatInboxActivity">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar_mybikechat"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="?attr/actionBarSize"
+        android:background="#EE6C00"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark"
+        />
+
+    <EditText
+        android:id="@+id/enter_message"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="5dp"
+        android:layout_gravity="end"
+        android:layout_marginEnd="0dp"
+        android:layout_toStartOf="@+id/send_message"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="5dp"
+        android:ems="10"
+        android:hint="Enter Message"
+        android:inputType="textPersonName"
+        android:autofillHints="Message" />
+
+    <ImageView
+        android:id="@+id/send_message"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:padding="5dp"
+        app:layout_anchor="@id/enter_message"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="5dp"
+        android:layout_alignParentEnd="true"
+        android:src="@drawable/ic_send" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_below="@+id/toolbar_mybikechat"
+        android:id="@+id/new_message"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/enter_message"
+        android:layout_marginBottom="10dp"/>
+
+</RelativeLayout>

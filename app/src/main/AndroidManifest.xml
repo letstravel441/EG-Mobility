@@ -1,8 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.narendar.letstravel">
-
+    <!--
+         The ACCESS_COARSE/FINE_LOCATION permissions are not required to use
+         Google Maps Android API v2, but you must specify either coarse or fine
+         location permissions for the "MyLocation" functionality.
+    -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -11,19 +17,70 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.LetsTravel">
+        <activity android:name=".serviceprovider.BusinessRegistrationActivity"></activity>
+        <activity android:name=".serviceprovider.stationdetails" />
+        <activity android:name=".serviceprovider.ReceiveNotificationActivity" />
+        <activity android:name=".serviceprovider.NotifyActivity" />
+        <activity android:name=".serviceprovider.confirmbtn" />
+        <activity android:name=".serviceprovider.Bookingdetails" />
+        <activity android:name=".mybike.FilteredProducts" />
+        <activity android:name=".mybike.FilterActivity" />
+        <activity android:name=".mybike.ProductDetails" />
+        <activity android:name=".mybike.MBMainActivity" />
+        <activity android:name=".mybike.Sell3Activity" />
+        <activity android:name=".mybike.Sell2Activity" />
+        <activity android:name=".mybike.Sell1Activity" />
+        <activity android:name=".mybike.MBChatInboxActivity" />
+        <activity android:name=".mybike.MBChatActivity" />
+        <activity android:name=".review_publisher" />
+        <activity android:name=".ReviewActivity" />
+        <activity android:name=".AboutPublisher" />
+        <activity android:name=".AboutBooker" />
+        <activity android:name=".InvisibleActivity" />
+        <activity android:name=".BookedRideDetails" />
+        <activity android:name=".BookRidesActivity" />
+        <activity android:name=".NewActivity" />
+        <activity android:name=".SharedRidesDetails" />
+        <activity android:name=".ProfileActivity" />
+        <activity android:name=".ChatActivity" />
+
+        <service
+            android:name=".FirebaseService"
+            android:permission="com.google.android.c2dm.permission.SEND">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+            </intent-filter>
+        </service>
+
+        <activity android:name=".UsersActivity" />
+        <activity android:name=".DetailsActivity" />
+        <activity android:name=".SearchActivity" />
+        <!--
+             The API key for Google Maps-based APIs is defined as a string resource.
+             (See the file "res/values/google_maps_api.xml").
+             Note that the API key is linked to the encryption key used to sign the APK.
+             You need a different API key for each encryption key, including the release key that is used to
+             sign the APK for publishing.
+             You can define the keys for the debug and release targets in src/debug/ and src/release/.
+        -->
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="@string/google_maps_key" />
+
+        <activity
+            android:name=".MapsActivity"
+            android:label="@string/title_activity_maps" />
         <activity android:name=".SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
         <activity android:name=".RegistrationActivity" />
-        <activity android:name=".LoginActivity">
-
-        </activity>
-        <activity android:name=".MainActivity"></activity>
+        <activity android:name=".LoginActivity" />
+        <activity android:name=".MainActivity" />
     </application>
 
 </manifest>

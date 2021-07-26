@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".serviceprovider.stationdetails">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".fragment.ProfileFragment">
+
+        <ImageView
+            android:id="@+id/imgProfilePic"
+            android:layout_width="180dp"
+            android:layout_height="180dp"
+            android:layout_marginTop="50dp"
+            android:src="@mipmap/ic_launcher" />
+
+        <TextView
+            android:id="@+id/stationnamedetail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/imgProfilePic"
+            android:layout_marginTop="10dp"
+            android:padding="10dp"
+            android:text="Station Name:"
+            android:textColor="#111111"
+            android:textSize="18sp" />
+
+
+
+        <TextView
+            android:id="@+id/emaildetail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/stationnamedetail"
+            android:layout_marginTop="10dp"
+            android:padding="10dp"
+            android:text="e-mail:"
+            android:textColor="#111111"
+            android:textSize="18sp" />
+
+
+        <TextView
+            android:id="@+id/location"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/emaildetail"
+            android:layout_marginTop="10dp"
+            android:padding="10dp"
+            android:text="location:"
+            android:textColor="#111111"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/mobile"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/location"
+            android:layout_marginTop="10dp"
+            android:padding="10dp"
+            android:text="Mobile number:"
+            android:textColor="#111111"
+            android:textSize="18sp" />
+        <Button
+            android:id="@+id/btndate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/mobile"
+            android:layout_centerHorizontal="true"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="20dp"
+            android:backgroundTint="@color/white"
+            android:text="09JUN 04:59AM"
+            android:textColor="@color/purple_200" />
+
+        <Button
+            android:id="@+id/cancel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/btndate"
+            android:layout_marginTop="10dp"
+            android:text="Cancel"
+            android:layout_marginLeft="20dp"
+            app:backgroundTint="#FF9800" />
+
+        <Button
+            android:id="@+id/btn_confirm"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/btndate"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="23dp"
+
+            android:text="confirm"
+            android:translationX="250dp"
+            app:backgroundTint="#FF9800" />
+    </RelativeLayout>
+
+</ScrollView>

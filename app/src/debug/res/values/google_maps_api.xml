@@ -1,0 +1,25 @@
+<resources>
+    <!--
+    TODO: Before you run your application, you need a Google Maps API key.
+
+    To get one, follow this link, follow the directions and press "Create" at the end:
+
+    https://console.developers.google.com/flows/enableapi?apiid=maps_android_backend&keyType=CLIENT_SIDE_ANDROID&r=AC:C0:5A:2D:83:D9:E1:C9:0D:AF:7A:1B:FD:4E:4A:5B:D2:B6:DE:21%3Bcom.narendar.letstravel
+
+    You can also add your credentials to an existing key, using these values:
+
+    Package name:
+    com.narendar.letstravel
+
+    SHA-1 certificate fingerprint:
+    AC:C0:5A:2D:83:D9:E1:C9:0D:AF:7A:1B:FD:4E:4A:5B:D2:B6:DE:21
+
+    Alternatively, follow the directions here:
+    https://developers.google.com/maps/documentation/android/start#get-key
+
+    Once you have your key (it starts with "AIza"), replace the "google_maps_key"
+    string in this file.
+    -->
+    <string name="google_maps_key" templateMergeStrategy="preserve" translatable="false">
+        AIzaSyAG5Oh9bHDBoqM3BU1S2V0f-8uuo3ZHliw</string>
+</resources>

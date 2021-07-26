@@ -1,0 +1,1059 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".mybike.FilterActivity"
+    android:background="@color/pixie_powder">
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="45dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp">
+
+            <TextView
+                android:id="@+id/price_range_filter"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginBottom="8dp"
+                android:fontFamily="sans-serif"
+                android:text="Price Range"
+                android:textColor="@color/light_gray"
+                android:textSize="16sp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/light_gray"
+                android:layout_toEndOf="@+id/price_range_filter"
+                android:layout_marginTop="23dp"
+                android:layout_marginEnd="8dp"/>
+
+            <com.google.android.material.slider.RangeSlider
+                android:id="@+id/slider_price_range"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/price_range_filter"
+                android:layout_marginBottom="10dp"
+                android:valueFrom="0"
+                android:valueTo="200000"
+                android:stepSize="2000"
+                app:labelStyle="@style/Widget.App.Tooltip"
+                app:thumbColor="@color/white"
+                app:trackColorActive="@color/white"
+                app:haloColor="@color/white"
+                app:thumbStrokeColor="@color/black"/>
+            <!--app:values="@array/initial_slider_values"-->
+            <TextView
+                android:id="@+id/brand_filter"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_below="@+id/slider_price_range"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginBottom="8dp"
+                android:fontFamily="sans-serif"
+                android:text="Brand"
+                android:textColor="@color/light_gray"
+                android:textSize="16sp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/light_gray"
+                android:layout_toEndOf="@+id/brand_filter"
+                android:layout_marginTop="23dp"
+                android:layout_marginEnd="8dp"
+                android:layout_below="@id/slider_price_range"/>
+
+            <TextView
+                android:id="@+id/bmw"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="BMW"
+                android:textColor="@color/white"
+                android:layout_below="@+id/brand_filter"
+                android:textSize="20sp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"/>
+
+            <CheckBox
+                android:id="@+id/bmw_checkbox"
+                android:layout_width="26dp"
+                android:layout_height="26dp"
+                android:button="@drawable/selector_filter"
+                android:buttonTint="@color/white"
+                android:layout_below="@+id/brand_filter"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="12dp"
+                android:layout_marginTop="10dp"
+                android:scaleX="1.2"
+                android:scaleY="1.2"/>
+
+            <TextView
+                android:id="@+id/hero"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Hero"
+                android:textColor="@color/white"
+                android:layout_below="@+id/bmw"
+                android:textSize="20sp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"/>
+
+            <CheckBox
+                android:id="@+id/hero_checkbox"
+                android:layout_width="26dp"
+                android:layout_height="26dp"
+                android:button="@drawable/selector_filter"
+                android:buttonTint="@color/white"
+                android:layout_below="@+id/bmw"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="12dp"
+                android:layout_marginTop="10dp"
+                android:scaleX="1.2"
+                android:scaleY="1.2"/>
+
+            <TextView
+                android:id="@+id/honda"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Honda"
+                android:textColor="@color/white"
+                android:layout_below="@+id/hero"
+                android:textSize="20sp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"/>
+
+            <CheckBox
+                android:id="@+id/honda_checkbox"
+                android:layout_width="26dp"
+                android:layout_height="26dp"
+                android:button="@drawable/selector_filter"
+                android:buttonTint="@color/white"
+                android:layout_below="@+id/hero"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="12dp"
+                android:layout_marginTop="10dp"
+                android:scaleX="1.2"
+                android:scaleY="1.2"/>
+
+            <TextView
+                android:id="@+id/yamaha"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Yamaha"
+                android:textColor="@color/white"
+                android:layout_below="@+id/honda"
+                android:textSize="20sp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"/>
+
+            <CheckBox
+                android:id="@+id/yamaha_checkbox"
+                android:layout_width="26dp"
+                android:layout_height="26dp"
+                android:button="@drawable/selector_filter"
+                android:buttonTint="@color/white"
+                android:layout_below="@+id/honda"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="12dp"
+                android:layout_marginTop="10dp"
+                android:scaleX="1.2"
+                android:scaleY="1.2"/>
+
+            <TextView
+                android:id="@+id/bajaj"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Bajaj"
+                android:textColor="@color/white"
+                android:layout_below="@+id/yamaha"
+                android:textSize="20sp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"/>
+
+            <CheckBox
+                android:id="@+id/bajaj_checkbox"
+                android:layout_width="26dp"
+                android:layout_height="26dp"
+                android:button="@drawable/selector_filter"
+                android:buttonTint="@color/white"
+                android:layout_below="@+id/yamaha"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="12dp"
+                android:layout_marginTop="10dp"
+                android:scaleX="1.2"
+                android:scaleY="1.2"/>
+
+            <TextView
+                android:id="@+id/kawasaki"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Kawasaki"
+                android:textColor="@color/white"
+                android:layout_below="@+id/bajaj"
+                android:textSize="20sp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"/>
+
+            <CheckBox
+                android:id="@+id/kawasaki_checkbox"
+                android:layout_width="26dp"
+                android:layout_height="26dp"
+                android:button="@drawable/selector_filter"
+                android:buttonTint="@color/white"
+                android:layout_below="@+id/bajaj"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="12dp"
+                android:layout_marginTop="10dp"
+                android:scaleX="1.2"
+                android:scaleY="1.2"/>
+
+            <TextView
+                android:id="@+id/tvs"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="TVS"
+                android:textColor="@color/white"
+                android:layout_below="@+id/kawasaki"
+                android:textSize="20sp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"/>
+
+            <CheckBox
+                android:id="@+id/tvs_checkbox"
+                android:layout_width="26dp"
+                android:layout_height="26dp"
+                android:button="@drawable/selector_filter"
+                android:buttonTint="@color/white"
+                android:layout_below="@+id/kawasaki"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="12dp"
+                android:layout_marginTop="10dp"
+                android:scaleX="1.2"
+                android:scaleY="1.2"/>
+
+            <TextView
+                android:id="@+id/ktm"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="KTM"
+                android:textColor="@color/white"
+                android:layout_below="@+id/tvs"
+                android:textSize="20sp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"/>
+
+            <CheckBox
+                android:id="@+id/ktm_checkbox"
+                android:layout_width="26dp"
+                android:layout_height="26dp"
+                android:button="@drawable/selector_filter"
+                android:buttonTint="@color/white"
+                android:layout_below="@+id/tvs"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="12dp"
+                android:layout_marginTop="10dp"
+                android:scaleX="1.2"
+                android:scaleY="1.2"/>
+
+            <TextView
+                android:id="@+id/mahindra"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Mahindra"
+                android:textColor="@color/white"
+                android:layout_below="@+id/ktm"
+                android:textSize="20sp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"/>
+
+            <CheckBox
+                android:id="@+id/mahindra_checkbox"
+                android:layout_width="26dp"
+                android:layout_height="26dp"
+                android:button="@drawable/selector_filter"
+                android:buttonTint="@color/white"
+                android:layout_below="@+id/ktm"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="12dp"
+                android:layout_marginTop="10dp"
+                android:scaleX="1.2"
+                android:scaleY="1.2"/>
+
+            <TextView
+                android:id="@+id/suzuki"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Suzuki"
+                android:textColor="@color/white"
+                android:layout_below="@+id/mahindra"
+                android:textSize="20sp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"/>
+
+            <CheckBox
+                android:id="@+id/suzuki_checkbox"
+                android:layout_width="26dp"
+                android:layout_height="26dp"
+                android:button="@drawable/selector_filter"
+                android:buttonTint="@color/white"
+                android:layout_below="@+id/mahindra"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="12dp"
+                android:layout_marginTop="10dp"
+                android:scaleX="1.2"
+                android:scaleY="1.2"/>
+
+            <TextView
+                android:id="@+id/royal_enfield"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Royal Enfield"
+                android:textColor="@color/white"
+                android:layout_below="@+id/suzuki"
+                android:textSize="20sp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"/>
+
+            <CheckBox
+                android:id="@+id/royal_enfield_checkbox"
+                android:layout_width="26dp"
+                android:layout_height="26dp"
+                android:button="@drawable/selector_filter"
+                android:buttonTint="@color/white"
+                android:layout_below="@+id/suzuki"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="12dp"
+                android:layout_marginTop="10dp"
+                android:scaleX="1.2"
+                android:scaleY="1.2"/>
+
+            <TextView
+                android:id="@+id/vespa"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Vespa"
+                android:textColor="@color/white"
+                android:layout_below="@+id/royal_enfield"
+                android:textSize="20sp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"/>
+
+            <CheckBox
+                android:id="@+id/vespa_checkbox"
+                android:layout_width="26dp"
+                android:layout_height="26dp"
+                android:button="@drawable/selector_filter"
+                android:buttonTint="@color/white"
+                android:layout_below="@+id/royal_enfield"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="12dp"
+                android:layout_marginTop="10dp"
+                android:scaleX="1.2"
+                android:scaleY="1.2"/>
+
+            <TextView
+                android:id="@+id/jawa"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Jawa"
+                android:textColor="@color/white"
+                android:layout_below="@+id/vespa"
+                android:textSize="20sp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"/>
+
+            <CheckBox
+                android:id="@+id/jawa_checkbox"
+                android:layout_width="26dp"
+                android:layout_height="26dp"
+                android:button="@drawable/selector_filter"
+                android:buttonTint="@color/white"
+                android:layout_below="@+id/vespa"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="12dp"
+                android:layout_marginTop="10dp"
+                android:scaleX="1.2"
+                android:scaleY="1.2"/>
+
+            <TextView
+                android:id="@+id/husqvarna"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Husqvarna"
+                android:textColor="@color/white"
+                android:layout_below="@+id/jawa"
+                android:textSize="20sp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="15dp"/>
+
+            <CheckBox
+                android:id="@+id/husqvarna_checkbox"
+                android:layout_width="26dp"
+                android:layout_height="26dp"
+                android:button="@drawable/selector_filter"
+                android:buttonTint="@color/white"
+                android:layout_below="@+id/jawa"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="12dp"
+                android:layout_marginTop="10dp"
+                android:scaleX="1.2"
+                android:scaleY="1.2"/>
+
+            <TextView
+                android:id="@+id/body_type_filter"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_below="@+id/husqvarna"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginBottom="8dp"
+                android:fontFamily="sans-serif"
+                android:text="Body Type"
+                android:textColor="@color/light_gray"
+                android:textSize="16sp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/light_gray"
+                android:layout_toEndOf="@+id/body_type_filter"
+                android:layout_marginTop="23dp"
+                android:layout_marginEnd="8dp"
+                android:layout_below="@id/husqvarna"/>
+
+            <TextView
+                android:id="@+id/commuter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Commuter"
+                android:textColor="@color/white"
+                android:layout_below="@+id/body_type_filter"
+                android:textSize="20sp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"/>
+
+            <CheckBox
+                android:id="@+id/commuter_checkbox"
+                android:layout_width="26dp"
+                android:layout_height="26dp"
+                android:button="@drawable/selector_filter"
+                android:buttonTint="@color/white"
+                android:layout_below="@+id/body_type_filter"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="12dp"
+                android:layout_marginTop="10dp"
+                android:scaleX="1.2"
+                android:scaleY="1.2"/>
+
+            <TextView
+                android:id="@+id/cruiser"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Cruiser"
+                android:textColor="@color/white"
+                android:layout_below="@+id/commuter"
+                android:textSize="20sp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"/>
+
+            <CheckBox
+                android:id="@+id/cruiser_checkbox"
+                android:layout_width="26dp"
+                android:layout_height="26dp"
+                android:button="@drawable/selector_filter"
+                android:buttonTint="@color/white"
+                android:layout_below="@+id/commuter"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="12dp"
+                android:layout_marginTop="10dp"
+                android:scaleX="1.2"
+                android:scaleY="1.2"/>
+
+            <TextView
+                android:id="@+id/moped"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Moped"
+                android:textColor="@color/white"
+                android:layout_below="@+id/cruiser"
+                android:textSize="20sp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"/>
+
+            <CheckBox
+                android:id="@+id/moped_checkbox"
+                android:layout_width="26dp"
+                android:layout_height="26dp"
+                android:button="@drawable/selector_filter"
+                android:buttonTint="@color/white"
+                android:layout_below="@+id/cruiser"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="12dp"
+                android:layout_marginTop="10dp"
+                android:scaleX="1.2"
+                android:scaleY="1.2"/>
+
+            <TextView
+                android:id="@+id/naked"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Naked"
+                android:textColor="@color/white"
+                android:layout_below="@+id/moped"
+                android:textSize="20sp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"/>
+
+            <CheckBox
+                android:id="@+id/naked_checkbox"
+                android:layout_width="26dp"
+                android:layout_height="26dp"
+                android:button="@drawable/selector_filter"
+                android:buttonTint="@color/white"
+                android:layout_below="@+id/moped"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="12dp"
+                android:layout_marginTop="10dp"
+                android:scaleX="1.2"
+                android:scaleY="1.2"/>
+
+            <TextView
+                android:id="@+id/offroad"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Offroad"
+                android:textColor="@color/white"
+                android:layout_below="@+id/naked"
+                android:textSize="20sp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"/>
+
+            <CheckBox
+                android:id="@+id/offroad_checkbox"
+                android:layout_width="26dp"
+                android:layout_height="26dp"
+                android:button="@drawable/selector_filter"
+                android:buttonTint="@color/white"
+                android:layout_below="@+id/naked"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="12dp"
+                android:layout_marginTop="10dp"
+                android:scaleX="1.2"
+                android:scaleY="1.2"/>
+
+            <TextView
+                android:id="@+id/scooter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Scooter"
+                android:textColor="@color/white"
+                android:layout_below="@+id/offroad"
+                android:textSize="20sp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"/>
+
+            <CheckBox
+                android:id="@+id/scooter_checkbox"
+                android:layout_width="26dp"
+                android:layout_height="26dp"
+                android:button="@drawable/selector_filter"
+                android:buttonTint="@color/white"
+                android:layout_below="@+id/offroad"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="12dp"
+                android:layout_marginTop="10dp"
+                android:scaleX="1.2"
+                android:scaleY="1.2"/>
+
+            <TextView
+                android:id="@+id/sports"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Sports"
+                android:textColor="@color/white"
+                android:layout_below="@+id/scooter"
+                android:textSize="20sp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="15dp"/>
+
+            <CheckBox
+                android:id="@+id/sports_checkbox"
+                android:layout_width="26dp"
+                android:layout_height="26dp"
+                android:button="@drawable/selector_filter"
+                android:buttonTint="@color/white"
+                android:layout_below="@+id/scooter"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="12dp"
+                android:layout_marginTop="10dp"
+                android:scaleX="1.2"
+                android:scaleY="1.2"/>
+
+            <TextView
+                android:id="@+id/colour_filter"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_below="@+id/sports"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginBottom="8dp"
+                android:fontFamily="sans-serif"
+                android:text="Colour"
+                android:textColor="@color/light_gray"
+                android:textSize="16sp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/light_gray"
+                android:layout_toEndOf="@+id/colour_filter"
+                android:layout_marginTop="23dp"
+                android:layout_marginEnd="8dp"
+                android:layout_below="@id/sports"/>
+
+            <TextView
+                android:id="@+id/white"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="White"
+                android:textColor="@color/white"
+                android:layout_below="@+id/colour_filter"
+                android:textSize="20sp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"/>
+
+            <CheckBox
+                android:id="@+id/white_checkbox"
+                android:layout_width="26dp"
+                android:layout_height="26dp"
+                android:button="@drawable/selector_filter"
+                android:buttonTint="@color/white"
+                android:layout_below="@+id/colour_filter"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="12dp"
+                android:layout_marginTop="10dp"
+                android:scaleX="1.2"
+                android:scaleY="1.2"/>
+
+            <TextView
+                android:id="@+id/red"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Red"
+                android:textColor="@color/white"
+                android:layout_below="@+id/white"
+                android:textSize="20sp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"/>
+
+            <CheckBox
+                android:id="@+id/red_checkbox"
+                android:layout_width="26dp"
+                android:layout_height="26dp"
+                android:button="@drawable/selector_filter"
+                android:buttonTint="@color/white"
+                android:layout_below="@+id/white"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="12dp"
+                android:layout_marginTop="10dp"
+                android:scaleX="1.2"
+                android:scaleY="1.2"/>
+
+            <TextView
+                android:id="@+id/pink"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Pink"
+                android:textColor="@color/white"
+                android:layout_below="@+id/red"
+                android:textSize="20sp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"/>
+
+            <CheckBox
+                android:id="@+id/pink_checkbox"
+                android:layout_width="26dp"
+                android:layout_height="26dp"
+                android:button="@drawable/selector_filter"
+                android:buttonTint="@color/white"
+                android:layout_below="@+id/red"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="12dp"
+                android:layout_marginTop="10dp"
+                android:scaleX="1.2"
+                android:scaleY="1.2"/>
+
+            <TextView
+                android:id="@+id/purple"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Purple"
+                android:textColor="@color/white"
+                android:layout_below="@+id/pink"
+                android:textSize="20sp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"/>
+
+            <CheckBox
+                android:id="@+id/purple_checkbox"
+                android:layout_width="26dp"
+                android:layout_height="26dp"
+                android:button="@drawable/selector_filter"
+                android:buttonTint="@color/white"
+                android:layout_below="@+id/pink"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="12dp"
+                android:layout_marginTop="10dp"
+                android:scaleX="1.2"
+                android:scaleY="1.2"/>
+
+            <TextView
+                android:id="@+id/blue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Blue"
+                android:textColor="@color/white"
+                android:layout_below="@+id/purple"
+                android:textSize="20sp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"/>
+
+            <CheckBox
+                android:id="@+id/blue_checkbox"
+                android:layout_width="26dp"
+                android:layout_height="26dp"
+                android:button="@drawable/selector_filter"
+                android:buttonTint="@color/white"
+                android:layout_below="@+id/purple"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="12dp"
+                android:layout_marginTop="10dp"
+                android:scaleX="1.2"
+                android:scaleY="1.2"/>
+
+            <TextView
+                android:id="@+id/yellow"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Yellow"
+                android:textColor="@color/white"
+                android:layout_below="@+id/blue"
+                android:textSize="20sp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"/>
+
+            <CheckBox
+                android:id="@+id/yellow_checkbox"
+                android:layout_width="26dp"
+                android:layout_height="26dp"
+                android:button="@drawable/selector_filter"
+                android:buttonTint="@color/white"
+                android:layout_below="@+id/blue"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="12dp"
+                android:layout_marginTop="10dp"
+                android:scaleX="1.2"
+                android:scaleY="1.2"/>
+
+            <TextView
+                android:id="@+id/green"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Green"
+                android:textColor="@color/white"
+                android:layout_below="@+id/yellow"
+                android:textSize="20sp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"/>
+
+            <CheckBox
+                android:id="@+id/green_checkbox"
+                android:layout_width="26dp"
+                android:layout_height="26dp"
+                android:button="@drawable/selector_filter"
+                android:buttonTint="@color/white"
+                android:layout_below="@+id/yellow"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="12dp"
+                android:layout_marginTop="10dp"
+                android:scaleX="1.2"
+                android:scaleY="1.2"/>
+
+            <TextView
+                android:id="@+id/orange"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Orange"
+                android:textColor="@color/white"
+                android:layout_below="@+id/green"
+                android:textSize="20sp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"/>
+
+            <CheckBox
+                android:id="@+id/orange_checkbox"
+                android:layout_width="26dp"
+                android:layout_height="26dp"
+                android:button="@drawable/selector_filter"
+                android:buttonTint="@color/white"
+                android:layout_below="@+id/green"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="12dp"
+                android:layout_marginTop="10dp"
+                android:scaleX="1.2"
+                android:scaleY="1.2"/>
+
+            <TextView
+                android:id="@+id/silver"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Silver"
+                android:textColor="@color/white"
+                android:layout_below="@+id/orange"
+                android:textSize="20sp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"/>
+
+            <CheckBox
+                android:id="@+id/silver_checkbox"
+                android:layout_width="26dp"
+                android:layout_height="26dp"
+                android:button="@drawable/selector_filter"
+                android:buttonTint="@color/white"
+                android:layout_below="@+id/orange"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="12dp"
+                android:layout_marginTop="10dp"
+                android:scaleX="1.2"
+                android:scaleY="1.2"/>
+
+            <TextView
+                android:id="@+id/black"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Black"
+                android:textColor="@color/white"
+                android:layout_below="@+id/silver"
+                android:textSize="20sp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"/>
+
+            <CheckBox
+                android:id="@+id/black_checkbox"
+                android:layout_width="26dp"
+                android:layout_height="26dp"
+                android:button="@drawable/selector_filter"
+                android:buttonTint="@color/white"
+                android:layout_below="@+id/silver"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="12dp"
+                android:layout_marginTop="10dp"
+                android:scaleX="1.2"
+                android:scaleY="1.2"/>
+
+            <TextView
+                android:id="@+id/brown"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Brown"
+                android:textColor="@color/white"
+                android:layout_below="@+id/black"
+                android:textSize="20sp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"/>
+
+            <CheckBox
+                android:id="@+id/brown_checkbox"
+                android:layout_width="26dp"
+                android:layout_height="26dp"
+                android:button="@drawable/selector_filter"
+                android:buttonTint="@color/white"
+                android:layout_below="@+id/black"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="12dp"
+                android:layout_marginTop="10dp"
+                android:scaleX="1.2"
+                android:scaleY="1.2"/>
+
+            <TextView
+                android:id="@+id/age_of_bike_filter"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_below="@+id/brown"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginBottom="8dp"
+                android:fontFamily="sans-serif"
+                android:text="Age Of Bike"
+                android:textColor="@color/light_gray"
+                android:textSize="16sp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/light_gray"
+                android:layout_toEndOf="@+id/age_of_bike_filter"
+                android:layout_marginTop="23dp"
+                android:layout_marginEnd="8dp"
+                android:layout_below="@id/brown"/>
+
+            <TextView
+                android:id="@+id/last_1_year"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="1 year or less"
+                android:textColor="@color/white"
+                android:layout_below="@+id/age_of_bike_filter"
+                android:textSize="20sp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"/>
+
+            <CheckBox
+                android:id="@+id/last_1_year_checkbox"
+                android:layout_width="26dp"
+                android:layout_height="26dp"
+                android:button="@drawable/selector_filter"
+                android:buttonTint="@color/white"
+                android:layout_below="@+id/age_of_bike_filter"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="12dp"
+                android:layout_marginTop="10dp"
+                android:scaleX="1.2"
+                android:scaleY="1.2"/>
+
+            <TextView
+                android:id="@+id/last_2_years"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="2 years or less"
+                android:textColor="@color/white"
+                android:layout_below="@+id/last_1_year"
+                android:textSize="20sp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"/>
+
+            <CheckBox
+                android:id="@+id/last_2_years_checkbox"
+                android:layout_width="26dp"
+                android:layout_height="26dp"
+                android:button="@drawable/selector_filter"
+                android:buttonTint="@color/white"
+                android:layout_below="@+id/last_1_year"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="12dp"
+                android:layout_marginTop="10dp"
+                android:scaleX="1.2"
+                android:scaleY="1.2"/>
+
+            <TextView
+                android:id="@+id/last_3_years"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="3 years or less"
+                android:textColor="@color/white"
+                android:layout_below="@+id/last_2_years"
+                android:textSize="20sp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"/>
+
+            <CheckBox
+                android:id="@+id/last_3_years_checkbox"
+                android:layout_width="26dp"
+                android:layout_height="26dp"
+                android:button="@drawable/selector_filter"
+                android:buttonTint="@color/white"
+                android:layout_below="@+id/last_2_years"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="12dp"
+                android:layout_marginTop="10dp"
+                android:scaleX="1.2"
+                android:scaleY="1.2"/>
+
+            <TextView
+                android:id="@+id/last_5_years"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="5 years or less"
+                android:textColor="@color/white"
+                android:layout_below="@+id/last_3_years"
+                android:textSize="20sp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"/>
+
+            <CheckBox
+                android:id="@+id/last_5_years_checkbox"
+                android:layout_width="26dp"
+                android:layout_height="26dp"
+                android:button="@drawable/selector_filter"
+                android:buttonTint="@color/white"
+                android:layout_below="@+id/last_3_years"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="12dp"
+                android:layout_marginTop="10dp"
+                android:scaleX="1.2"
+                android:scaleY="1.2"/>
+
+            <TextView
+                android:id="@+id/last_10_years"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="10 years or less"
+                android:textColor="@color/white"
+                android:layout_below="@+id/last_5_years"
+                android:textSize="20sp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"/>
+
+            <CheckBox
+                android:id="@+id/last_10_years_checkbox"
+                android:layout_width="26dp"
+                android:layout_height="26dp"
+                android:button="@drawable/selector_filter"
+                android:buttonTint="@color/white"
+                android:layout_below="@+id/last_5_years"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="12dp"
+                android:layout_marginTop="10dp"
+                android:scaleX="1.2"
+                android:scaleY="1.2"/>
+
+        </RelativeLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+    <TextView
+        android:id="@+id/apply"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:layout_alignParentBottom="true"
+        android:fontFamily="@font/alef"
+        android:padding="5dp"
+        android:text="APPLY"
+        android:textStyle="bold"
+        android:textAlignment="center"
+        android:textColor="@color/pixie_powder"
+        android:textSize="25sp" />
+
+</RelativeLayout>

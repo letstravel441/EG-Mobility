@@ -12,10 +12,16 @@ import androidx.appcompat.widget.Toolbar
 import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
+import com.bumptech.glide.Glide
 import com.google.android.material.navigation.NavigationView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
+import com.google.firebase.storage.FirebaseStorage
+import com.narendar.letstravel.serviceprovider.BusinessRegistrationActivity
+import com.narendar.letstravel.serviceprovider.BusinessaccRegistration
+import com.narendar.letstravel.serviceprovider.your_servicebookings
 import java.util.*
+
 
 class MainActivity : AppCompatActivity() {
     lateinit var auth: FirebaseAuth
@@ -33,6 +39,10 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+
+
+
+
         auth = FirebaseAuth.getInstance()
         database = FirebaseDatabase.getInstance()
         databaseReference = database?.reference!!.child("profile")
@@ -45,6 +55,14 @@ class MainActivity : AppCompatActivity() {
         setUpToolbar()
 
         openDashboard()
+
+        val g = intent.getStringExtra("ridebooked")
+        if(g=="yes")
+        {
+            intent.putExtra("ridebooked","no" )
+            openletsTravel()
+
+        }
 
         val actionBarDrawerToggle = ActionBarDrawerToggle(this@MainActivity ,drawerLayout,
             R.string.open_drawer,
@@ -87,6 +105,42 @@ class MainActivity : AppCompatActivity() {
 
                         .commit()
                     supportActionBar?.title="About App"
+                    drawerLayout.closeDrawers()
+                }
+                R.id.business -> {
+                    val auth = FirebaseAuth.getInstance()
+                    val database = FirebaseDatabase.getInstance()
+                    val databaseReference = database?.reference!!.child("profile")
+                    val user = auth.currentUser
+                    val userreference = databaseReference?.child(user?.uid!!)
+                    userreference?.addListenerForSingleValueEvent(object : ValueEventListener {
+                        override fun onDataChange(snapshot: DataSnapshot) {
+                            if(snapshot.child("businessAccount").value.toString()=="No"){
+                                val intent = Intent(this@MainActivity,BusinessRegistrationActivity::class.java)
+                                startActivity(intent)
+                            }else{
+                                supportFragmentManager.beginTransaction()
+                                    .replace(R.id.frame, BusinessaccRegistration())
+
+                                    .commit()
+                                supportActionBar?.title="Business profile"
+                                drawerLayout.closeDrawers()
+                            }
+                        }
+
+                        override fun onCancelled(error: DatabaseError) {
+                            TODO("Not yet implemented")
+                        }
+
+                    })
+
+                }
+                R.id.your_servicebookings -> {
+                    supportFragmentManager.beginTransaction()
+                        .replace(R.id.frame, your_servicebookings())
+
+                        .commit()
+                    supportActionBar?.title="Your Service Bookings"
                     drawerLayout.closeDrawers()
                 }
                 R.id.logout -> {
@@ -133,6 +187,16 @@ class MainActivity : AppCompatActivity() {
         navigationView.setCheckedItem(R.id.home)
     }
 
+    fun openletsTravel()
+    {
+
+        val transaction = supportFragmentManager.beginTransaction()
+        transaction.replace(R.id.frame, LetstravelFragment())
+        transaction.commit()
+        supportActionBar?.title="EG MOBILITY"
+        navigationView.setCheckedItem(R.id.home)
+    }
+
     override fun onBackPressed() {
 
         val frag = supportFragmentManager.findFragmentById(R.id.frame)
@@ -142,6 +206,8 @@ class MainActivity : AppCompatActivity() {
             else ->super.onBackPressed()
 
         }
+
+
    // }
 
        // loadProfile()

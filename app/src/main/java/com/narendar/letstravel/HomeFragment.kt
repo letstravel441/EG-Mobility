@@ -1,5 +1,7 @@
 package com.narendar.letstravel
 
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -7,6 +9,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.Toast
+import com.narendar.letstravel.mybike.MBMainActivity
+import com.narendar.letstravel.serviceprovider.ServiceproviderFragment
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -47,8 +51,11 @@ class HomeFragment : Fragment() {
         val    roadside         =  view.findViewById<ImageView>(R.id.roadside)
         val serviceprovider         =  view.findViewById<ImageView>(R.id.serviceprovider)
 
+
+
+
         letstravel.setOnClickListener {
-            Toast.makeText(context,"clicked on  Lets Travel", Toast.LENGTH_SHORT).show()
+
             val fragment= LetstravelFragment()
 
             val transaction = activity?.supportFragmentManager?.beginTransaction()
@@ -56,10 +63,14 @@ class HomeFragment : Fragment() {
             transaction?.commit()
 
 
+
         }
 
         mybike.setOnClickListener {
+
             Toast.makeText(context,"clicked on  My Bike", Toast.LENGTH_SHORT).show()
+            val intent = Intent(context,MBMainActivity::class.java)
+            startActivity(intent)
         }
 
         mycar.setOnClickListener {
@@ -82,7 +93,13 @@ class HomeFragment : Fragment() {
             Toast.makeText(context,"clicked on  Road side / Local Assistance", Toast.LENGTH_SHORT).show()
         }
         serviceprovider.setOnClickListener {
+
             Toast.makeText(context,"clicked on  Service Provider", Toast.LENGTH_SHORT).show()
+            val fragment= ServiceproviderFragment()
+
+            val transaction = activity?.supportFragmentManager?.beginTransaction()
+            transaction?.replace(R.id.frame, ServiceproviderFragment())
+            transaction?.commit()
         }
 
 

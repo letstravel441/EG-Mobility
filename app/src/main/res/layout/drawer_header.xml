@@ -9,6 +9,7 @@
     <ImageView
         android:layout_width="120dp"
         android:layout_height="120dp"
+        android:layout_marginLeft="50dp"
         android:src="@drawable/firstlogo"
         android:padding="10dp"
         android:layout_marginTop="20dp"/>

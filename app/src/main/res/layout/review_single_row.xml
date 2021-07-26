@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:id="@+id/imgReviewer_item"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:padding="5dp"
+        android:layout_marginLeft="10dp"
+        android:src="@drawable/profile_image" />
+
+    <TextView
+        android:layout_marginLeft="5dp"
+        android:id="@+id/name_review_item"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_toRightOf="@id/imgReviewer_item"
+        android:padding="5dp"
+        android:text="Name of the Reviewer"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:layout_marginLeft="10dp"
+        android:id="@+id/txtRated"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/imgReviewer_item"
+        android:padding="5dp"
+        android:text="Rating: "
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/rating_review_item"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/imgReviewer_item"
+        android:layout_toRightOf="@+id/txtRated"
+        android:padding="5dp"
+        android:text="4.5"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:layout_marginLeft="10dp"
+        android:id="@+id/review_review_item"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/txtRated"
+        android:layout_marginTop="10dp"
+        android:padding="5dp"
+        android:text="Review "
+        android:textSize="15sp" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@id/review_review_item"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:background="@color/black" />
+</RelativeLayout>

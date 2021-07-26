@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".serviceprovider.Bookingdetails">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".fragment.ProfileFragment">
+
+        <ImageView
+            android:id="@+id/imgProfilePic"
+            android:layout_width="180dp"
+            android:layout_height="180dp"
+            android:layout_marginTop="50dp"
+            android:src="@mipmap/ic_launcher" />
+
+        <TextView
+            android:id="@+id/stationname22"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/imgProfilePic"
+            android:layout_marginTop="10dp"
+            android:padding="10dp"
+            android:text="Station Name:"
+            android:textColor="#111111"
+            android:textSize="18sp" />
+
+
+
+        <TextView
+            android:id="@+id/serviceemail22"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/stationname22"
+            android:layout_marginTop="10dp"
+            android:padding="10dp"
+            android:text=" service email:"
+            android:textColor="#111111"
+            android:textSize="18sp" />
+
+
+        <TextView
+            android:id="@+id/servicelocation22"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/serviceemail22"
+            android:layout_marginTop="10dp"
+            android:padding="10dp"
+            android:text="service location:"
+            android:textColor="#111111"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/servicemobile22"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/servicelocation22"
+            android:layout_marginTop="10dp"
+            android:padding="10dp"
+            android:text="service mobile:"
+            android:textColor="#111111"
+            android:textSize="18sp" />
+        <TextView
+            android:id="@+id/typeofservice22"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/servicemobile22"
+            android:layout_marginTop="10dp"
+            android:padding="10dp"
+            android:text="type of service"
+            android:textColor="#111111"
+            android:textSize="18sp"
+            />
+        <TextView
+            android:id="@+id/Datetime22"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/typeofservice22"
+            android:layout_marginTop="10dp"
+            android:padding="10dp"
+            android:text="Datetime"
+            android:textColor="#111111"
+            android:textSize="18sp"/>
+        <TextView
+            android:id="@+id/status22"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/Datetime22"
+            android:layout_marginTop="10dp"
+            android:padding="10dp"
+            android:text="Status"
+            android:textColor="#111111"
+            android:textSize="18sp"/>
+
+        <Button
+            android:id="@+id/cancelservice22"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/status22"
+            android:layout_marginTop="10dp"
+            android:text="Cancel service"
+            android:layout_marginLeft="120dp"
+            app:backgroundTint="#FF9800" />
+
+    </RelativeLayout>
+</ScrollView>

@@ -4,11 +4,94 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ProfileFragment">
-
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        tools:context=".fragment.ProfileFragment">
 
+        <ImageView
+            android:id="@+id/imgProfilePic"
+            android:layout_width="95dp"
+            android:layout_height="95dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="50dp"
+            android:src="@mipmap/ic_launcher" />
+
+        <TextView
+            android:id="@+id/firstnameText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/imgProfilePic"
+            android:layout_marginTop="10dp"
+            android:padding="10dp"
+            android:text="John Doe"
+            android:textAlignment="center"
+            android:textColor="#111111"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+        <TextView
+            android:id="@+id/lastnameText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/firstnameText"
+            android:layout_marginTop="10dp"
+            android:padding="10dp"
+            android:text="John Doe"
+            android:textAlignment="center"
+            android:textColor="#111111"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+
+        <TextView
+            android:id="@+id/email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/lastnameText"
+            android:layout_marginTop="10dp"
+            android:padding="10dp"
+            android:text="jonathan@anyone.com"
+            android:textAlignment="center"
+            android:textColor="#111111"
+            android:textSize="18sp" />
+
+
+        <TextView
+            android:id="@+id/mobile"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/email"
+            android:layout_marginTop="10dp"
+            android:padding="10dp"
+            android:text="+11 - 11111111"
+            android:textAlignment="center"
+            android:textColor="#111111"
+            android:textSize="18sp" />
+
+
+        <Button
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:id="@+id/btnSave"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="15dp"
+            android:background="@color/colorPrimary"
+            android:layout_marginEnd="2dp"
+           android:visibility="gone"
+            android:textColor="@color/colorAccent"
+            android:text="@string/btn_save"/>
+
+        <ProgressBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:indeterminateTint="@color/colorPrimaryDark"
+            android:id="@+id/progressBar"
+            android:visibility="gone"
+            />
+
+
+    </RelativeLayout>
 </FrameLayout>

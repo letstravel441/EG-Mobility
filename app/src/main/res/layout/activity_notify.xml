@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".serviceprovider.NotifyActivity">
+
+
+    <TextView
+        android:id="@+id/text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_marginTop="200dp"
+        android:padding="10dp"
+        android:text="Are you sure you want to cancel the service booking?"
+        android:textColor="#111111"
+        android:textSize="25sp"/>
+
+    <Button
+        android:id="@+id/btn_no"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/text"
+        android:layout_marginTop="50dp"
+        android:text="no"
+        android:layout_marginLeft="20dp"
+        app:backgroundTint="#FF9800" />
+
+    <Button
+        android:id="@+id/btn_yes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:layout_marginBottom="23dp"
+        android:layout_below="@+id/text"
+        android:gravity="center"
+        android:text="yes"
+        android:translationX="250dp"
+        app:backgroundTint="#FF9800" />
+
+
+
+</RelativeLayout>

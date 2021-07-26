@@ -1,10 +1,23 @@
 package com.narendar.letstravel
 
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
+import android.widget.LinearLayout
+import android.widget.Toast
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
+import com.google.firebase.database.*
+import com.google.firebase.messaging.FirebaseMessaging
+import de.hdodenhof.circleimageview.CircleImageView
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -21,6 +34,11 @@ class InboxFragment : Fragment() {
     private var param1: String? = null
     private var param2: String? = null
 
+    var userList = ArrayList<User>()
+    lateinit var  userRecyclerView : RecyclerView
+    lateinit var imgProfile : CircleImageView
+    lateinit var imgBack : ImageView
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
@@ -34,7 +52,23 @@ class InboxFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_inbox, container, false)
+        val view = inflater.inflate(R.layout.fragment_inbox, container, false)
+
+        userRecyclerView = view.findViewById(com.narendar.letstravel.R.id.inboxrecyclerview)
+
+
+
+        userRecyclerView.layoutManager = LinearLayoutManager(context, LinearLayout.VERTICAL, false)
+
+
+
+
+
+        getUsersList()
+
+
+
+        return view
     }
 
     companion object {
@@ -55,5 +89,45 @@ class InboxFragment : Fragment() {
                     putString(ARG_PARAM2, param2)
                 }
             }
+    }
+
+
+    fun getUsersList() {
+        val firebase: FirebaseUser = FirebaseAuth.getInstance().currentUser!!
+
+        var userid = firebase.uid
+        FirebaseMessaging.getInstance().subscribeToTopic("/topics/$userid")
+
+
+        val databaseReference: DatabaseReference =
+            FirebaseDatabase.getInstance().getReference("profile")
+
+
+        databaseReference.addValueEventListener(object : ValueEventListener {
+            override fun onCancelled(error: DatabaseError) {
+               // Toast.makeText(applicationContext, error.message, Toast.LENGTH_SHORT).show()
+            }
+
+            override fun onDataChange(snapshot: DataSnapshot) {
+                userList.clear()
+                val currentUser = snapshot.getValue(User::class.java)
+
+
+
+                for (dataSnapShot: DataSnapshot in snapshot.children) {
+                    val user = dataSnapShot.getValue(User::class.java)
+
+                    if (!user!!.userId.equals(firebase.uid)) {
+
+                        userList.add(user)
+                    }
+                }
+
+                val userAdapter = context?.let { InboxAdapter(it, userList) }
+
+                userRecyclerView.adapter = userAdapter
+            }
+
+        })
     }
 }

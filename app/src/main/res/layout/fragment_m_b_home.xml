@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".mybike.MBHomeFragment"
+    android:background="@color/white">
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/product_display"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/search_bar"
+        android:layout_marginTop="20dp"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+
+    <EditText
+        android:id="@+id/location"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Location"
+        android:textColorHint="@color/black"
+        android:textColor="@color/black"
+        android:padding="6dp"
+        android:paddingStart="20dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:background="@drawable/custom_search_bar"/>
+
+    <ImageView
+        android:id="@+id/location_icon"
+        android:layout_width="33dp"
+        android:layout_height="33dp"
+        android:src="@drawable/ic_location_pin"
+        android:layout_marginTop="11dp"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="18dp"/>
+
+    <EditText
+        android:id="@+id/search_bar"
+        android:layout_below="@+id/location"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:hint="Search"
+        android:textColorHint="@color/black"
+        android:textColor="@color/black"
+        android:padding="6dp"
+        android:paddingStart="20dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="50dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/custom_search_bar"/>
+
+    <ImageView
+        android:id="@+id/search_bar_icon"
+        android:layout_below="@+id/location"
+        android:layout_width="33dp"
+        android:layout_height="33dp"
+        android:src="@drawable/ic_search"
+        android:layout_marginTop="12dp"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="63dp"/>
+
+    <ImageView
+        android:id="@+id/filter"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:src="@drawable/ic_filter"
+        android:layout_below="@+id/location"
+        android:layout_marginTop="13dp"
+        android:layout_marginEnd="10dp"
+        android:layout_alignParentEnd="true"/>
+
+</RelativeLayout>

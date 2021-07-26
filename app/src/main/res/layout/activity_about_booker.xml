@@ -1,0 +1,527 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar_about_booker"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="#EE6C00"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/toolbar_about_booker">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/toolbar_about_booker">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:id="@+id/bookerimage_profile"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_marginTop="20dp"
+                    android:src="@drawable/profile_image" />
+
+                <TextView
+                    android:id="@+id/bookername_about_booker"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginBottom="5dp"
+                    android:layout_toRightOf="@+id/bookerimage_profile"
+                    android:text="har"
+                    android:textSize="18sp" />
+
+
+                <TextView
+                    android:id="@+id/ageofbookerheading"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/bookername_about_booker"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_toRightOf="@+id/bookerimage_profile"
+                    android:text="Age :"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/bookerage"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/bookername_about_booker"
+                    android:layout_margin="5dp"
+                    android:layout_toRightOf="@+id/ageofbookerheading"
+                    android:text="20"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/genderheading_booker"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/ageofbookerheading"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_toRightOf="@id/bookerimage_profile"
+                    android:text="Gender :"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/bookergender_about_booker"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/ageofbookerheading"
+                    android:layout_margin="10dp"
+                    android:layout_toRightOf="@+id/genderheading_booker"
+                    android:text="Male"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/noofrides_about_booker"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/bookerimage_profile"
+                    android:layout_marginLeft="25dp"
+                    android:layout_marginTop="25dp"
+                    android:text="25"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/bookerimage_profile"
+                    android:layout_marginTop="25dp"
+                    android:layout_toRightOf="@id/noofrides_about_booker"
+                    android:text="  Rides Taken"
+                    android:textSize="18sp"
+                    android:textStyle="italic" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/noofrides_about_booker"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal"
+                    android:id="@+id/ReviewContent_booker"
+                    android:weightSum="2">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.8"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/rating_about_booker"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="30dp"
+                            android:layout_marginTop="20dp"
+                            android:text="4.5"
+                            android:textColor="@color/black"
+                            android:textSize="35sp"
+                            app:drawableRightCompat="@drawable/ic_star_back" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="10dp"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:id="@+id/totalreviews_about_booker"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="25dp"
+                                android:text="47"
+                                android:textSize="16sp" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text=" ratings and reviews"
+                                android:textSize="16sp" />
+
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.01">
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="#808080" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1.19"
+                        android:orientation="vertical"
+                        android:weightSum="5">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="10dp"
+                                android:drawableRight="@drawable/ic_star_black"
+                                android:drawablePadding="2dp"
+                                android:text="5"
+                                android:textSize="15dp" />
+
+                            <ProgressBar
+                                android:id="@+id/progressBar5_booker"
+                                style="?android:attr/progressBarStyleHorizontal"
+                                android:progressTint="#00ff00"
+                                android:layout_width="120dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="10dp"
+                                android:layout_marginTop="2dp"
+                                android:scaleY="1.5" />
+
+                            <TextView
+                                android:id="@+id/noof5star_booker"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="10dp"
+                                android:text="3455"
+                                android:textSize="15dp" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="10dp"
+                                android:drawableRight="@drawable/ic_star_black"
+                                android:drawablePadding="2dp"
+                                android:text="4"
+                                android:textSize="15dp" />
+
+                            <ProgressBar
+                                android:id="@+id/progressBar4_booker"
+                                style="?android:attr/progressBarStyleHorizontal"
+                                android:progressTint="#00ff00"
+                                android:layout_width="120dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="10dp"
+                                android:layout_marginTop="2dp"
+                                android:scaleY="1.5" />
+
+                            <TextView
+                                android:id="@+id/noof4star_booker"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="10dp"
+                                android:text="3455"
+                                android:textSize="15dp" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="10dp"
+                                android:drawableRight="@drawable/ic_star_black"
+                                android:drawablePadding="2dp"
+                                android:text="3"
+                                android:textSize="15dp" />
+
+                            <ProgressBar
+                                android:id="@+id/progressBar3_booker"
+                                style="?android:attr/progressBarStyleHorizontal"
+                                android:progressTint="#ffa500"
+                                android:layout_width="120dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="10dp"
+                                android:layout_marginTop="2dp"
+                                android:scaleY="1.5" />
+
+                            <TextView
+                                android:id="@+id/noof3star_booker"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="10dp"
+                                android:text="3455"
+                                android:textSize="15dp" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="10dp"
+                                android:drawableRight="@drawable/ic_star_black"
+                                android:drawablePadding="2dp"
+                                android:text="2"
+                                android:textSize="15dp" />
+
+                            <ProgressBar
+                                android:id="@+id/progressBar2_booker"
+                                style="?android:attr/progressBarStyleHorizontal"
+                                android:layout_width="120dp"
+                                android:progressTint="#ff4500"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="10dp"
+                                android:layout_marginTop="2dp"
+                                android:scaleY="1.5" />
+
+                            <TextView
+                                android:id="@+id/noof2star_booker"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="10dp"
+                                android:text="3455"
+                                android:textSize="15dp" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="10dp"
+                                android:drawableRight="@drawable/ic_star_black"
+                                android:drawablePadding="2dp"
+                                android:text="1"
+                                android:textSize="15dp" />
+
+                            <ProgressBar
+                                android:id="@+id/progressBar1_booker"
+                                android:progressTint="#ff0000"
+                                style="?android:attr/progressBarStyleHorizontal"
+                                android:layout_width="120dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="10dp"
+                                android:layout_marginTop="2dp"
+                                android:scaleY="1.5" />
+
+                            <TextView
+                                android:id="@+id/noof1star_booker"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="10dp"
+                                android:text="3455"
+                                android:textSize="15dp" />
+
+                        </LinearLayout>
+
+
+                    </LinearLayout>
+                </LinearLayout>
+                <!--<TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="No.of Rides Published :"
+                    android:layout_below="@+id/genderheading_publisher"
+                    android:textSize="18sp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="20dp"
+                    android:id="@+id/noofridesheading_publisher"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="2"
+                    android:layout_below="@+id/genderheading_publisher"
+                    android:layout_toRightOf="@+id/noofridesheading_publisher"
+                    android:textSize="18sp"
+                    android:layout_margin="20dp"
+                    android:id="@+id/noofrides_aboutpublisher"
+                    />
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="  Rating :"
+                    android:layout_below="@+id/noofridesheading_publisher"
+                    android:textSize="18sp"
+                    android:layout_marginLeft="120dp"
+                    android:layout_marginTop="20dp"
+                    android:id="@+id/ratingheading_publisher"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="4.5"
+                    android:layout_below="@+id/noofridesheading_publisher"
+                    android:layout_toRightOf="@+id/ratingheading_publisher"
+                    android:textSize="18sp"
+                    android:layout_margin="20dp"
+                    android:id="@+id/publisherrating_about_publisher"
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="   No.of 5 star Ratings :"
+                    android:layout_below="@+id/ratingheading_publisher"
+                    android:textSize="18sp"
+                    android:layout_marginLeft="12dp"
+                    android:layout_marginTop="20dp"
+                    android:id="@+id/fiveheading"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="4.5"
+                    android:layout_below="@+id/ratingheading_publisher"
+                    android:layout_toRightOf="@+id/fiveheading"
+                    android:textSize="18sp"
+                    android:layout_margin="20dp"
+                    android:id="@+id/nooffivestar"
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="   No.of 4 star Ratings :"
+                    android:layout_below="@+id/fiveheading"
+                    android:textSize="18sp"
+                    android:layout_marginLeft="12dp"
+                    android:layout_marginTop="20dp"
+                    android:id="@+id/fourheading"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="4.5"
+                    android:layout_below="@+id/fiveheading"
+                    android:layout_toRightOf="@+id/fourheading"
+                    android:textSize="18sp"
+                    android:layout_margin="20dp"
+                    android:id="@+id/nooffourstar"
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="   No.of 3 star Ratings :"
+                    android:layout_below="@+id/fourheading"
+                    android:textSize="18sp"
+                    android:layout_marginLeft="12dp"
+                    android:layout_marginTop="20dp"
+                    android:id="@+id/threeheading"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="4.5"
+                    android:layout_below="@+id/fourheading"
+                    android:layout_toRightOf="@+id/threeheading"
+                    android:textSize="18sp"
+                    android:layout_margin="20dp"
+                    android:id="@+id/noofthreestar"
+                    />
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="   No.of 2 star Ratings :"
+                    android:layout_below="@+id/threeheading"
+                    android:textSize="18sp"
+                    android:layout_marginLeft="12dp"
+                    android:layout_marginTop="20dp"
+                    android:id="@+id/twoheading"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="4.5"
+                    android:layout_below="@+id/threeheading"
+                    android:layout_toRightOf="@+id/twoheading"
+                    android:textSize="18sp"
+                    android:layout_margin="20dp"
+                    android:id="@+id/nooftwostar"
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="   No.of 1 star Ratings :"
+                    android:layout_below="@+id/twoheading"
+                    android:textSize="18sp"
+                    android:layout_marginLeft="12dp"
+                    android:layout_marginTop="20dp"
+                    android:id="@+id/oneheading"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="4.5"
+                    android:layout_below="@+id/twoheading"
+                    android:layout_toRightOf="@+id/oneheading"
+                    android:textSize="18sp"
+                    android:layout_margin="20dp"
+                    android:id="@+id/noofonestar"
+                    />-->
+
+                <TextView
+                    android:id="@+id/txtReviews_booker"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="30dp"
+                    android:layout_below="@id/ReviewContent_booker"
+                    android:text="Reviews"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/reviewrecyclerview_booker"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_below="@+id/txtReviews_booker" />
+
+
+            </RelativeLayout>
+
+
+        </LinearLayout>
+    </ScrollView>
+
+</RelativeLayout>

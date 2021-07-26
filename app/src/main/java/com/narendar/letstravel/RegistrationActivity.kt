@@ -8,6 +8,7 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 
@@ -36,23 +37,32 @@ class RegistrationActivity : AppCompatActivity() {
         var usernameInput = findViewById<EditText>(R.id.usernameInput)
         var mobileInput = findViewById<EditText>(R.id.mobileInput)
         var passwordInput = findViewById<EditText>(R.id.passwordInput)
+        var confirmPassword = findViewById<EditText>(R.id.confirmPasswordInput)
         var gender = findViewById<EditText>(R.id.gender)
+        var age = findViewById<EditText>(R.id.editTextAge)
 
         registerButton.setOnClickListener {
 
-            if(TextUtils.isEmpty(gender.text.toString())) {
-                gender.setError("Please enter gender ")
-                return@setOnClickListener
-            } else if(TextUtils.isEmpty(firstnameInput.text.toString())) {
+           if(TextUtils.isEmpty(firstnameInput.text.toString())) {
                 firstnameInput.setError("Please enter first name ")
                 return@setOnClickListener
             } else if(TextUtils.isEmpty(lastnameInput.text.toString())) {
                 lastnameInput.setError("Please enter last name ")
                 return@setOnClickListener
-            }else if(TextUtils.isEmpty(usernameInput.text.toString())) {
+            }else   if(TextUtils.isEmpty(gender.text.toString())) {
+               gender.setError("Please enter gender ")
+               return@setOnClickListener
+           } else if(TextUtils.isEmpty(age.text.toString())) {
+                age.setError("Please enter Age ")
+                return@setOnClickListener
+            } else if(TextUtils.isEmpty(usernameInput.text.toString())) {
                 usernameInput.setError("Please enter user name ")
                 return@setOnClickListener
             }else if(TextUtils.isEmpty(passwordInput.text.toString())) {
+                passwordInput.setError("Please enter password ")
+                return@setOnClickListener
+            }else  if (!passwordInput.text.toString().equals(confirmPassword.text.toString())){
+                Toast.makeText(applicationContext,"password not match",Toast.LENGTH_SHORT).show()
                 passwordInput.setError("Please enter password ")
                 return@setOnClickListener
             }
@@ -63,10 +73,59 @@ class RegistrationActivity : AppCompatActivity() {
                     if(it.isSuccessful) {
                         val currentUser = auth.currentUser
                         val currentUSerDb = databaseReference?.child((currentUser?.uid!!))
-                        currentUSerDb?.child("firstname")?.setValue(firstnameInput.text.toString())
-                        currentUSerDb?.child("lastname")?.setValue(lastnameInput.text.toString())
-                        currentUSerDb?.child("gender")?.setValue(gender.text.toString())
-                        currentUSerDb?.child("mobileno")?.setValue(mobileInput.text.toString())
+
+                        val user: FirebaseUser? = auth.currentUser
+                        val userId:String = currentUser!!.uid
+                        databaseReference = FirebaseDatabase.getInstance().getReference("profile").child(userId)
+
+                        val hashMap:HashMap<String,String> = HashMap()
+                        hashMap.put("userId",userId)
+                        hashMap.put("profileImage","")
+                        hashMap.put("noofridespublished","0")
+                        hashMap.put("noof5starratings","0")
+                        hashMap.put("noof4starratings","0")
+                        hashMap.put("noof3starratings","0")
+                        hashMap.put("noof2starratings","0")
+                        hashMap.put("noof1starratings","0")
+                        hashMap.put("totalrating","0")
+                        hashMap.put("totalreviews","0")
+
+                        hashMap.put("noofridestaken","0")
+                        hashMap.put("noof5starratingsasuser","0")
+                        hashMap.put("noof4starratingsasuser","0")
+                        hashMap.put("noof3starratingsasuser","0")
+                        hashMap.put("noof2starratingsasuser","0")
+                        hashMap.put("noof1starratingsasuser","0")
+                        hashMap.put("totalratingasuser","0")
+                        hashMap.put("totalreviewsasuser","0")
+
+                        hashMap.put("firstname",firstnameInput.text.toString())
+                        hashMap.put("lastname",lastnameInput.text.toString())
+                        hashMap.put("userName",firstnameInput.text.toString())
+                        hashMap.put("gender",gender.text.toString())
+                        hashMap.put("mobileno",mobileInput.text.toString())
+                        hashMap.put("email",usernameInput.text.toString())
+                        hashMap.put("age",age.text.toString())
+                        hashMap.put("businessAccount","No")
+
+
+
+                        databaseReference!!.setValue(hashMap).addOnCompleteListener(this){
+                            if (it.isSuccessful){
+                                //open home activity
+
+                                firstnameInput.setText("")
+                                usernameInput.setText("")
+                                lastnameInput.setText("")
+                                age.setText("")
+                                gender.setText("")
+                                mobileInput.setText("")
+
+
+
+                            }
+                        }
+
 
                         Toast.makeText(this@RegistrationActivity, "Registration Success. ", Toast.LENGTH_LONG).show()
                         startActivity(Intent(this@RegistrationActivity, MainActivity::class.java))

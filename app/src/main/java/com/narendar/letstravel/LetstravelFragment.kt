@@ -8,6 +8,8 @@ import android.view.ViewGroup
 import android.widget.TableLayout
 import androidx.viewpager.widget.ViewPager
 import com.google.android.material.tabs.TabLayout
+import com.narendar.letstravel.travelfragments.FindFragment
+import com.narendar.letstravel.travelfragments.ShareFragment
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER

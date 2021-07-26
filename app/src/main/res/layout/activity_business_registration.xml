@@ -1,0 +1,323 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#C4E3DCDC"
+    android:padding="16dp"
+    tools:context=".serviceprovider.BusinessRegistrationActivity">
+
+
+    <LinearLayout
+        android:layout_width="325dp"
+        android:layout_height="643dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="40dp"
+        android:layout_marginBottom="0dp"
+        android:orientation="vertical"
+        android:translationX="-27dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Registration"
+            android:textColor="#e65100"
+            android:textSize="25sp"
+            android:textStyle="bold" />
+
+
+        <com.google.android.material.textfield.TextInputLayout
+
+            android:id="@+id/stationInput"
+
+            android:layout_width="match_parent"
+
+            android:layout_height="wrap_content"
+
+            android:layout_marginTop="30dp"
+            android:background="#ffffff"
+
+            android:backgroundTint="#ffffff"
+            android:drawableTint="#3F51B5"
+
+            android:hint="station name">
+
+            <com.google.android.material.textfield.TextInputEditText
+
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:background="#ffffff"
+                android:inputType="text"
+                android:paddingLeft="16dp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+
+            android:id="@+id/locationInput"
+
+            android:layout_width="match_parent"
+
+            android:layout_height="wrap_content"
+
+            android:layout_marginTop="12dp"
+
+
+            android:background="#ffffff"
+            android:drawableTint="#3F51B5"
+
+
+            android:hint="Location">
+
+            <com.google.android.material.textfield.TextInputEditText
+
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:background="#ffffff"
+                android:inputType="text"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <com.google.android.material.textfield.TextInputLayout
+
+            android:id="@+id/nameInput"
+
+            android:layout_width="match_parent"
+
+            android:layout_height="wrap_content"
+
+            android:layout_marginTop="12dp"
+
+
+            android:background="#ffffff"
+
+
+            android:drawableTint="#3F51B5"
+
+
+            android:hint=" Name">
+
+            <com.google.android.material.textfield.TextInputEditText
+
+
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:background="#ffffff"
+                android:inputType="text"
+
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+
+            android:id="@+id/usernameInput"
+
+            android:layout_width="match_parent"
+
+            android:layout_height="wrap_content"
+
+            android:layout_marginTop="12dp"
+            android:background="#ffffff"
+
+            android:drawableTint="#3F51B5"
+
+
+            android:hint="E-mail">
+
+            <com.google.android.material.textfield.TextInputEditText
+
+
+                android:layout_width="match_parent"
+
+                android:layout_height="60dp"
+                android:background="#ffffff"
+                android:inputType="textEmailAddress"
+
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+
+            android:id="@+id/mobileInput"
+
+            android:layout_width="match_parent"
+
+            android:layout_height="wrap_content"
+
+            android:layout_marginTop="12dp"
+            android:background="#ffffff"
+
+            android:drawableTint="#3F51B5"
+
+
+            android:hint="Mobile Number">
+
+            <com.google.android.material.textfield.TextInputEditText
+
+
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:background="#ffffff"
+                android:inputType="textEmailAddress"
+
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+
+            android:id="@+id/passwordInput"
+
+            android:layout_width="match_parent"
+
+            android:layout_height="wrap_content"
+
+            android:layout_marginTop="12dp"
+            android:background="#ffffff"
+
+            android:drawableTint="#3F51B5"
+
+
+            android:hint="Password(min.8 characters">
+
+            <com.google.android.material.textfield.TextInputEditText
+
+
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:background="#ffffff"
+
+                android:inputType="textPassword"
+
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <TextView
+            android:id="@+id/EV_car_services"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_marginTop="12dp"
+            android:background="#ffffff"
+            android:drawableEnd="@android:drawable/arrow_down_float"
+            android:drawableRight="@android:drawable/arrow_down_float"
+            android:drawablePadding="16dp"
+            android:hint="your EV_car services"
+            android:padding="12dp" />
+
+        <TextView
+            android:id="@+id/EV_bike_services"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_marginTop="12dp"
+            android:background="#ffffff"
+            android:drawableEnd="@android:drawable/arrow_down_float"
+            android:drawableRight="@android:drawable/arrow_down_float"
+            android:drawablePadding="16dp"
+            android:hint="your EV_bike services"
+            android:padding="12dp" />
+
+        <TextView
+            android:id="@+id/NonEV_car_services"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_marginTop="12dp"
+            android:background="#ffffff"
+            android:drawableEnd="@android:drawable/arrow_down_float"
+            android:drawableRight="@android:drawable/arrow_down_float"
+            android:drawablePadding="16dp"
+            android:hint="your Non EV_car services"
+            android:padding="12dp" />
+
+        <TextView
+            android:id="@+id/NonEV_bike_services"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_marginTop="12dp"
+            android:background="#ffffff"
+            android:drawableEnd="@android:drawable/arrow_down_float"
+            android:drawableRight="@android:drawable/arrow_down_float"
+            android:drawablePadding="16dp"
+            android:hint="your Non EV_bike services"
+            android:padding="12dp" />
+
+
+        <RelativeLayout
+
+            android:layout_width="match_parent"
+
+            android:layout_height="wrap_content"
+
+            android:layout_margin="4dp">
+
+
+        </RelativeLayout>
+
+
+        <Button
+
+            android:id="@+id/registerButton"
+
+            android:layout_width="match_parent"
+
+            android:layout_height="50dp"
+
+            android:layout_marginLeft="10dp"
+
+            android:layout_marginTop="25dp"
+
+            android:layout_marginRight="10dp"
+            android:backgroundTint="#e65100"
+            android:text="Register "
+            android:textColor="@color/white"
+
+            android:textSize="20sp"
+
+            android:textStyle="bold" />
+
+        <LinearLayout
+
+            android:layout_width="200dp"
+
+            android:layout_height="wrap_content"
+
+            android:layout_gravity="center"
+
+            android:layout_marginTop="28dp"
+
+            android:orientation="horizontal"
+
+            android:padding="8dp">
+
+
+            <TextView
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="Already A Member?"
+                android:textColor="#3F51B5" />
+
+            <TextView
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="Log In"
+                android:textColor="#3F51B5" />
+
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+
+</ScrollView>

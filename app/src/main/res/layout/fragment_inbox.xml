@@ -3,12 +3,32 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".InboxFragment">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".YourrideFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+
+
+
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="match_parent">
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/inboxrecyclerview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="10dp"/>
+
+
+    <!--<androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recent_chats"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/inboxrecyclerview"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"/>-->
+
+    </RelativeLayout>
 
 </FrameLayout>

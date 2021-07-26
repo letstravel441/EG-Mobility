@@ -5,10 +5,100 @@
     android:layout_height="match_parent"
     tools:context=".YourrideFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="match_parent">
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    <TextView
+        android:id="@+id/ShareClass"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="#000000"
+        android:textStyle="bold"
+        android:layout_margin="5dp"
+        android:text="@string/rides_shared" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/sharerecyclerview"
+        android:layout_below="@+id/ShareClass"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:layout_marginBottom="10dp"/>
+
+    <TextView
+        android:id="@+id/bookedRides"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="#000000"
+        android:textStyle="bold"
+        android:layout_margin="5dp"
+        android:layout_below="@+id/sharerecyclerview"
+        android:text="Rides Booked" />
+
+    <androidx.recyclerview.widget.RecyclerView
+
+        android:id="@+id/bookedRides_recyclerview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_below="@+id/bookedRides"
+        android:layout_marginBottom="5dp"/>
+        <TextView
+            android:id="@+id/bookedRides_completed"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="#000000"
+            android:textStyle="bold"
+            android:layout_margin="5dp"
+            android:layout_below="@+id/bookedRides_recyclerview"
+            android:text="Completed Booked Rides" />
+
+        <androidx.recyclerview.widget.RecyclerView
+
+            android:id="@+id/bookedRides_completed_recyclerview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_below="@+id/bookedRides_completed"
+            android:layout_marginBottom="10dp"/>
+        <TextView
+            android:id="@+id/sharedRides_completed"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="#000000"
+            android:textStyle="bold"
+            android:layout_margin="5dp"
+            android:layout_below="@+id/bookedRides_completed_recyclerview"
+            android:text="Completed Shared Rides" />
+
+        <androidx.recyclerview.widget.RecyclerView
+
+            android:id="@+id/sharedRides_completed_recyclerview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_below="@+id/sharedRides_completed"
+            android:layout_marginBottom="10dp"/>
+    <TextView
+        android:id="@+id/emailofuserid"
+
+        android:textSize="18sp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+
+        />
+
+
+    </RelativeLayout>
+    </ScrollView>
 </FrameLayout>

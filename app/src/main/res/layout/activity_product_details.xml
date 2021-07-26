@@ -1,0 +1,385 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ProductDetails"
+        android:background="@color/white">
+
+        <com.smarteist.autoimageslider.SliderView
+            android:id="@+id/product_slider"
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:gravity="center"
+            android:scaleType="centerCrop"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp"
+            app:iss_auto_cycle="true"
+            app:iss_delay="0"
+            app:iss_corner_radius="5"
+            app:sliderAutoCycleDirection="back_and_forth"
+            app:sliderIndicatorGravity="center_horizontal|bottom"
+            app:iss_selected_dot="@drawable/selected_dot"
+            app:iss_unselected_dot="@drawable/unselected_dot"
+            app:iss_period="1000"
+            tools:ignore="MissingClass" />
+
+        <TextView
+            android:id="@+id/product_title_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/product_slider"
+            android:text="Bike ABS"
+            android:textSize="24sp"
+            android:textAlignment="center"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="17dp"
+            android:textColor="@color/black"/>
+
+        <TextView
+            android:id="@+id/product_price_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/product_title_2"
+            android:text="Rs. XYZ"
+            android:textSize="21sp"
+            android:textAlignment="center"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="8dp"
+            android:layout_marginStart="17dp"
+            android:textColor="@color/black"/>
+
+        <ImageButton
+            android:id="@+id/add_product_to_wishlist"
+            android:layout_width="34dp"
+            android:layout_height="34dp"
+            android:layout_below="@+id/product_slider"
+            android:background="@drawable/ic_bookmark"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="17dp"
+            android:layout_marginTop="10dp"/>
+
+        <TextView
+            android:id="@+id/product_colour"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/add_product_to_wishlist"
+            android:text="Colour"
+            android:textSize="19sp"
+            android:textAlignment="center"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="17dp"
+            android:layout_marginTop="5dp"
+            android:textColor="@color/black"/>
+
+        <Button
+            android:id="@+id/product_share"
+            android:layout_width="120dp"
+            android:layout_height="56dp"
+            android:layout_below="@+id/product_price_2"
+            android:layout_marginStart="53dp"
+            android:layout_marginTop="15dp"
+            android:text="SHARE"
+            android:textColor="@color/black"/>
+
+        <Button
+            android:id="@+id/message_seller"
+            android:layout_width="120dp"
+            android:layout_height="56dp"
+            android:layout_below="@+id/product_price_2"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="53dp"
+            android:layout_marginTop="15dp"
+            android:text="MESSAGE SELLER"
+            android:textColor="@color/black"/>
+
+
+        <FrameLayout
+            android:id="@+id/overview_frame"
+            android:layout_width="match_parent"
+            android:layout_height="190dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_below="@+id/product_share"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/ic_rectangle">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/overview"
+                    android:text="OVERVIEW"
+                    android:textColor="@color/black"
+                    android:textSize="20sp"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginTop="12dp"/>
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:id="@+id/bike_brand"
+                    android:src="@drawable/ic_brand_tag"
+                    android:layout_below="@+id/overview"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginStart="12dp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/brand_2"
+                    android:text="Brand"
+                    android:textColor="@color/black"
+                    android:textSize="16sp"
+                    android:layout_below="@+id/overview"
+                    android:layout_marginTop="10dp"
+                    android:layout_toEndOf="@+id/bike_brand"
+                    android:layout_marginStart="5dp"/>
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@drawable/ic_calender"
+                    android:id="@+id/calender"
+                    android:layout_below="@+id/bike_brand"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginStart="12dp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/yearOfBuy_2"
+                    android:text="Year Of Buy"
+                    android:textColor="@color/black"
+                    android:textSize="16sp"
+                    android:layout_below="@+id/bike_brand"
+                    android:layout_marginTop="10dp"
+                    android:layout_toEndOf="@+id/calender"
+                    android:layout_marginStart="5dp"/>
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:id="@+id/mileage_icon"
+                    android:src="@drawable/ic_mileage"
+                    android:layout_below="@+id/calender"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginStart="12dp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/mileage_2"
+                    android:text="Mileage"
+                    android:textColor="@color/black"
+                    android:textSize="16sp"
+                    android:layout_below="@+id/calender"
+                    android:layout_marginTop="10dp"
+                    android:layout_toEndOf="@+id/mileage_icon"
+                    android:layout_marginStart="5dp"/>
+
+                <ImageView
+                    android:layout_width="23dp"
+                    android:layout_height="23dp"
+                    android:id="@+id/location_pin"
+                    android:src="@drawable/ic_location_pin"
+                    android:layout_below="@+id/mileage_icon"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginStart="10dp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/sellerLocation_2"
+                    android:text="Seller Location"
+                    android:textColor="@color/black"
+                    android:textSize="16sp"
+                    android:layout_below="@+id/mileage_icon"
+                    android:layout_marginTop="10dp"
+                    android:layout_toEndOf="@+id/mileage_icon"
+                    android:layout_marginStart="5dp"/>
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:id="@+id/road"
+                    android:src="@drawable/ic_road"
+                    android:layout_below="@+id/overview"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginStart="184dp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/odometerStatus_2"
+                    android:text="Distance Travelled"
+                    android:textColor="@color/black"
+                    android:textSize="16sp"
+                    android:layout_below="@+id/overview"
+                    android:layout_marginTop="10dp"
+                    android:layout_toEndOf="@+id/road"
+                    android:layout_marginStart="5dp"/>
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:id="@+id/ownership"
+                    android:src="@drawable/ic_ownership"
+                    android:layout_below="@+id/road"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginStart="184dp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/ownershipStatus_2"
+                    android:text="Ownership Status"
+                    android:textColor="@color/black"
+                    android:textSize="16sp"
+                    android:layout_below="@+id/road"
+                    android:layout_marginTop="10dp"
+                    android:layout_toEndOf="@+id/ownership"
+                    android:layout_marginStart="5dp"/>
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:id="@+id/fuel"
+                    android:src="@drawable/ic_fuel"
+                    android:layout_below="@+id/ownership"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginStart="184dp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/fuelType_2"
+                    android:text="Fuel Type"
+                    android:textColor="@color/black"
+                    android:textSize="16sp"
+                    android:layout_below="@+id/ownership"
+                    android:layout_marginTop="10dp"
+                    android:layout_toEndOf="@+id/fuel"
+                    android:layout_marginStart="5dp"/>
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:id="@+id/body_type"
+                    android:src="@drawable/ic_body_type"
+                    android:layout_below="@+id/fuel"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginStart="184dp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/bodyType_2"
+                    android:text="Body Type"
+                    android:textColor="@color/black"
+                    android:textSize="16sp"
+                    android:layout_below="@+id/fuel"
+                    android:layout_marginTop="10dp"
+                    android:layout_toEndOf="@+id/body_type"
+                    android:layout_marginStart="5dp"/>
+
+            </RelativeLayout>
+
+        </FrameLayout>
+
+        <FrameLayout
+            android:id="@+id/insurance_frame"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:background="@drawable/ic_rectangle_frame"
+            android:layout_below="@id/overview_frame"
+            android:layout_marginTop="20dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="fill_parent">
+
+                <TextView
+                    android:id="@+id/insurance_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Insurance status"
+                    android:textSize="15dp"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginTop="3dp"
+                    android:textColor="@color/black"/>
+
+                <TextView
+                    android:id="@+id/insuranceStatus_2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/insurance_title"
+                    android:padding="10dp"
+                    android:text="Insurance status"
+                    android:textColor="@color/black"/>
+
+            </RelativeLayout>
+
+        </FrameLayout>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:background="@drawable/ic_rectangle_frame"
+            android:layout_below="@id/insurance_frame"
+            android:layout_marginTop="20dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="20dp">
+
+            <androidx.core.widget.NestedScrollView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="fill_parent">
+
+
+                    <TextView
+                        android:id="@+id/description_box_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Description Box"
+                        android:textSize="15dp"
+                        android:layout_marginStart="5dp"
+                        android:layout_marginTop="3dp"
+                        android:textColor="@color/black"/>
+
+                    <TextView
+                        android:id="@+id/addAComment_2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Description Box"
+                        android:textColor="@color/black"
+                        android:padding="10dp"
+                        android:layout_below="@+id/description_box_title"/>
+
+
+                </RelativeLayout>
+
+            </androidx.core.widget.NestedScrollView>
+
+        </FrameLayout>
+
+    </RelativeLayout>
+
+</androidx.core.widget.NestedScrollView>

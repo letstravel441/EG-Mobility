@@ -17,10 +17,19 @@
             android:id="@+id/about_app"
             android:icon="@drawable/ic_about_app"/>
 
+        <item
+            android:title="Business Account"
+            android:id="@+id/business"
+            android:icon="@drawable/ic_business"/>
 
+        <item
+            android:title="Your Service Bookings"
+            android:id="@+id/your_servicebookings"
+            android:icon="@drawable/ic_booking"/>
         <item
             android:title="@string/logout"
             android:id="@+id/logout"
+            android:icon="@drawable/ic_logout"
           />
 
         />

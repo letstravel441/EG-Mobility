@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".mybike.Sell1Activity"
+    android:background="@color/white">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="40dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Product Details"
+            android:textColor="@color/black"
+            android:textSize="30sp"
+            android:textStyle="bold" />
+
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_marginTop="40dp"
+            android:background="#ffffff"
+            android:id="@+id/brand"
+            android:backgroundTint="#ffffff"
+            android:drawablePadding="15dp"
+            android:drawableTint="#FF03DAC5"
+            android:hint="Bike Brand"
+            android:textColorHint="@color/black"
+            android:textColor="@color/black"
+            android:inputType="text"
+            android:paddingLeft="16dp" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_marginTop="18dp"
+            android:background="#ffffff"
+            android:drawablePadding="15dp"
+            android:drawableTint="#3F51B5"
+            android:id="@+id/model"
+            android:hint="Bike Model"
+            android:textColorHint="@color/black"
+            android:inputType="text"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp"
+            android:textColor="@color/black"/>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_marginTop="18dp"
+            android:background="#ffffff"
+            android:drawablePadding="15dp"
+            android:drawableTint="#3F51B5"
+            android:id="@+id/Price"
+            android:hint="Price"
+            android:textColorHint="@color/black"
+            android:inputType="text"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp"
+            android:textColor="@color/black"/>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_marginTop="18dp"
+            android:background="#ffffff"
+            android:id="@+id/fuelType"
+            android:drawablePadding="15dp"
+            android:drawableTint="#3F51B5"
+            android:hint="fuel Type"
+            android:textColorHint="@color/black"
+            android:inputType="text"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp"
+            android:textColor="@color/black"/>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_marginTop="18dp"
+            android:background="#ffffff"
+            android:id="@+id/status"
+            android:drawablePadding="15dp"
+            android:drawableTint="#3F51B5"
+            android:hint="Ownership Status"
+            android:textColorHint="@color/black"
+            android:inputType="text"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp"
+            android:textColor="@color/black"/>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_marginTop="18dp"
+            android:background="#ffffff"
+            android:id="@+id/bodyType"
+            android:drawablePadding="15dp"
+            android:drawableTint="#3F51B5"
+            android:hint="Body Type"
+            android:textColorHint="@color/black"
+            android:inputType="text"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp"
+            android:textColor="@color/black"/>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_marginTop="18dp"
+            android:background="#ffffff"
+            android:id="@+id/colour"
+            android:drawablePadding="15dp"
+            android:drawableTint="#3F51B5"
+            android:hint="Colour"
+            android:textColorHint="@color/black"
+            android:inputType="text"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp"
+            android:textColor="@color/black"/>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_marginTop="18dp"
+            android:background="#ffffff"
+            android:id="@+id/sellerLocation"
+            android:drawablePadding="15dp"
+            android:drawableTint="#3F51B5"
+            android:hint="Bike sale location"
+            android:textColorHint="@color/black"
+            android:inputType="text"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp"
+            android:textColor="@color/black"/>
+
+
+        <Button
+            android:id="@+id/saveButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="10dp"
+            android:backgroundTint="#93C572"
+            android:text="Save and Continue"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="60dp"
+            android:orientation="horizontal"
+            android:padding="8dp">
+        </LinearLayout>
+
+    </LinearLayout>
+
+</RelativeLayout>
