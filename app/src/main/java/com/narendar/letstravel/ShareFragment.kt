@@ -38,8 +38,8 @@ class ShareFragment : Fragment() {
     lateinit var sharedroplocation : EditText
 
    lateinit var publisherimage : String
-
-
+    lateinit var rating: String
+    lateinit var noofridespublished:String
     var shareday = 0
     var sharemonth = 0
     var shareyear = 0
@@ -117,7 +117,7 @@ class ShareFragment : Fragment() {
         val emailofuser = view.findViewById<TextView>(R.id.emailofuser)
 
 
-        userreference?.addValueEventListener(object : ValueEventListener {
+        userreference?.addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
 
                 name.text =snapshot.child("firstname").value.toString()
@@ -126,6 +126,8 @@ class ShareFragment : Fragment() {
                 emailofuser.text =  user?.email
              //   mobile.text = "Mobile Number - > " + snapshot.child("mobileno").value.toString()
                 publisherimage = snapshot.child("profileImage").value.toString()
+                rating = snapshot.child("totalrating").value.toString()
+                noofridespublished=snapshot.child("noofridespublished").value.toString()
             }
 
             override fun onCancelled(error: DatabaseError) {
@@ -190,7 +192,7 @@ class ShareFragment : Fragment() {
             val shareFare = sharefare.text.toString()
            val passengersbooked : String = "0"
 
-            saveFireStore(emailofuser.text.toString(),name.text.toString(),textView1.text.toString(), textView3.text.toString(),btnshareDate,sharePassengers,shareFare, user?.uid!!.toString(), publisherimage , textView2.text.toString(),textView4.text.toString(),passengersbooked)
+            saveFireStore(emailofuser.text.toString(),name.text.toString(),textView1.text.toString(), textView3.text.toString(),btnshareDate,sharePassengers,shareFare, user?.uid!!.toString(), publisherimage , textView2.text.toString(),textView4.text.toString(),passengersbooked,rating,noofridespublished)
 
             sharedroplocation!!.text.clear()
             sharepickuplocation!!.text.clear()
@@ -233,7 +235,7 @@ class ShareFragment : Fragment() {
 
 
 
-    fun saveFireStore(emailofuser : String ,name:String, sharepickuplocation: String, sharedroplocation: String,btnsharedate:String ,sharePassengers : String , sharefare:String,publisherId : String, publisherimage : String,share_pickup_latlng : String,share_drop_latlng : String,passengersbooked: String) {
+    fun saveFireStore(emailofuser : String ,name:String, sharepickuplocation: String, sharedroplocation: String,btnsharedate:String ,sharePassengers : String , sharefare:String,publisherId : String, publisherimage : String,share_pickup_latlng : String,share_drop_latlng : String,passengersbooked: String,rating: String,noofridespublished:String) {
         val db = FirebaseFirestore.getInstance()
         val ride = db.collection("users").document()
         val rideId = ride.id
@@ -248,6 +250,8 @@ class ShareFragment : Fragment() {
         user["shareFare"] = sharefare
         user["sharePassengers"] = sharePassengers
         user["rideId"] = rideId
+        user["totalrating"]=rating
+        user["noofridespublished"]=noofridespublished
         user["Status"]="Not Booked"
         user["passengersBooked"] = passengersbooked
         user["sharePickupLatlng"] = share_pickup_latlng

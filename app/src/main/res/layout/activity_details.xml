@@ -15,7 +15,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Date"
-
         android:layout_margin="10dp"
         android:textColor="#2196f3"
         android:textSize="22sp"

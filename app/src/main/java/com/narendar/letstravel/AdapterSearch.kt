@@ -25,6 +25,7 @@ class AdapterSearch(val context:Context,private  val searchRidesList: ArrayList<
         val llContent : LinearLayout = itemView.findViewById(R.id.llContent_search)
         val book: Button = itemView.findViewById(R.id.bookride)
         val userimg_search : ImageView = itemView.findViewById(R.id.userimg_search)
+        val rating: TextView = itemView.findViewById(R.id.ratings_search)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AdapterSearch.SearchRidesViewHolder {
@@ -40,6 +41,11 @@ class AdapterSearch(val context:Context,private  val searchRidesList: ArrayList<
         holder.searchDate.text = searchRides.shareDate
         holder.searchFare.text = searchRides.shareFare
 
+        if(searchRides.noofridespublished=="0"){
+            holder.rating.text="4.5"
+        }else {
+            holder.rating.text = searchRides.totalrating
+        }
         context.let { Glide.with(it).load(searchRides.publisherimage).placeholder(R.drawable.profile_image).into(holder.userimg_search) }
 
         holder.llContent.setOnClickListener {
@@ -54,7 +60,7 @@ class AdapterSearch(val context:Context,private  val searchRidesList: ArrayList<
             intent.putExtra("publisherId", searchRides.publisherId)
             intent.putExtra("publisherimage", searchRides.publisherimage)
             intent.putExtra("passengersBooked", searchRides.passengersBooked)
-
+            intent.putExtra("rating",holder.rating.text.toString())
             context.startActivity(intent)
 
         }

@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.widget.CheckBox
 import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.widget.Toolbar
 import com.google.android.material.slider.RangeSlider
 import com.narendar.letstravel.R
 import java.text.NumberFormat
@@ -26,12 +27,17 @@ class FilterActivity : AppCompatActivity() {
         setContentView(R.layout.activity_filter)
 
         //back button
-        val actionBar = supportActionBar
+        val actionBar = findViewById<Toolbar>(R.id.filter_toolbar)
+        setSupportActionBar(actionBar)
+        supportActionBar?.title ="Filter"
+        supportActionBar?.setHomeButtonEnabled(true)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        supportActionBar?.setHomeAsUpIndicator(R.drawable.ic_back)
         // showing the back button in action bar
-        actionBar!!.title = "Filter"
+       /* actionBar!!.title = "Filter"
         actionBar?.setHomeAsUpIndicator(R.drawable.ic_back)
         actionBar?.setDisplayHomeAsUpEnabled(true)
-        actionBar?.setDisplayShowHomeEnabled(true)
+        actionBar?.setDisplayShowHomeEnabled(true)*/
 
 
         //price filter

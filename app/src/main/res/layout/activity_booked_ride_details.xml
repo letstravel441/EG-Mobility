@@ -188,7 +188,7 @@ xmlns:app="http://schemas.android.com/apk/res-auto">
             android:drawablePadding="10dp"
             android:text="Rating:"/>
         <TextView
-            android:id="@+id/ratings_search"
+            android:id="@+id/ratings_bookedRideDetails"
             android:layout_weight="1"
             android:layout_width="0dp"
             android:layout_marginStart="10dp"

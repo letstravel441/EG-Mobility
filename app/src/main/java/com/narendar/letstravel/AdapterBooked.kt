@@ -30,6 +30,7 @@ class AdapterBooked (val context: Context, private  val BookedRidesList: ArrayLi
         holder.shareDate.text = bookedRides.bookDate
         holder.shareFare.text = bookedRides.Fare
         holder.message.text = bookedRides.message
+        holder.ratingofpublisher.text=bookedRides.ratingofpublisher
         holder.llContent.setOnClickListener {
             if(bookedRides.message=="") {
                 val intent = Intent(context, BookedRideDetails::class.java)
@@ -47,6 +48,7 @@ class AdapterBooked (val context: Context, private  val BookedRidesList: ArrayLi
                 intent.putExtra("publisherId", bookedRides.publisherId)
                 intent.putExtra("bookerId", bookedRides.bookerId)
                 intent.putExtra("bookername", bookedRides.BookerName)
+                intent.putExtra("ratingofpublisher",bookedRides.ratingofpublisher)
                 context.startActivity(intent)
             }
 
@@ -120,6 +122,7 @@ class AdapterBooked (val context: Context, private  val BookedRidesList: ArrayLi
         val message : TextView = itemView.findViewById(R.id.removing_booked)
         val publisherImage : ImageView = itemView.findViewById(R.id.userimg_booked)
         val llContent : LinearLayout=itemView.findViewById(R.id.llContent_bookedridedetails)
+        val ratingofpublisher: TextView = itemView.findViewById(R.id.ratings_booked)
     }
     fun removeRide(p : Int){
         BookedRidesList.removeAt(p)

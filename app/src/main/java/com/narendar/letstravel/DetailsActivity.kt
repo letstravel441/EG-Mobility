@@ -40,8 +40,9 @@ class DetailsActivity : AppCompatActivity() {
         var noOfseatsBooked : TextView = findViewById(R.id.noofseatsbooked_details)
        var bookPassengers = bookpassengers.text.toString()
 
+        val rating  = findViewById<TextView>(R.id.ratings_details)
 
-
+        rating.text = intent.getStringExtra("rating")
         date_details.text= intent.getStringExtra("date")
         pickuplocation_details.text= intent.getStringExtra("pickup")
         droplocation_details.text= intent.getStringExtra("destination")
@@ -143,7 +144,7 @@ class DetailsActivity : AppCompatActivity() {
                   val passengersbooked=bookPassengers.toInt() + passengersBoked!!.toInt()
 
                    saveFireStore(emailofuser.text.toString(),name1.text.toString(),
-                       bookPickuplocation, bookDroplocation,btnbookDate,bookPassengers, user?.uid!!.toString(), bookerimage,bookFare,publishername,sharepickuplocation,sharedroplocation,rideID,noofpassengers_details.text.toString(),passengersbooked.toString(),date_details.text.toString(),publisherId!!)
+                       bookPickuplocation, bookDroplocation,btnbookDate,bookPassengers, user?.uid!!.toString(), bookerimage,bookFare,publishername,sharepickuplocation,sharedroplocation,rideID,noofpassengers_details.text.toString(),passengersbooked.toString(),date_details.text.toString(),publisherId!!,rating.text.toString())
                }
             updatestatus(rideID,bookPassengers.toInt(),passengersBoked.toInt())
 
@@ -232,7 +233,7 @@ class DetailsActivity : AppCompatActivity() {
 
 
     }
-    fun saveFireStore(emailofuser : String ,bookerName:String, bookpickuplocation: String, bookdroplocation: String,btnbookdate:String ,bookPassengers : String , bookerId : String, bookerimage : String,bookFare: String, publisherName:String,sharePickuplocation: String, shareDroplocation: String,publishedrideId : String,totalPassengers : String,passengersBooked : String,shareDate:String,publisherId:String) {
+    fun saveFireStore(emailofuser : String ,bookerName:String, bookpickuplocation: String, bookdroplocation: String,btnbookdate:String ,bookPassengers : String , bookerId : String, bookerimage : String,bookFare: String, publisherName:String,sharePickuplocation: String, shareDroplocation: String,publishedrideId : String,totalPassengers : String,passengersBooked : String,shareDate:String,publisherId:String,ratingofpublisher:String) {
         val db = FirebaseFirestore.getInstance()
         val ride = db.collection("booked").document()
         val rideId = ride.id
@@ -247,6 +248,7 @@ class DetailsActivity : AppCompatActivity() {
         user["bookPassengers"] = bookPassengers
         user["rideId"] = rideId
         user["Fare"]= bookFare
+        user["ratingofpublisher"]=ratingofpublisher
         user["publisherName"]=publisherName
         user["sharePickuplocation"]=sharePickuplocation
         user["shareDroplocation"]=shareDroplocation

@@ -26,4 +26,10 @@
     <string name="enter_password">Enter Password</string>
     <string name="enter_confirm_password">Enter Confirm Password</string>
     <string name="inbox">Inbox</string>
+
+
+    <array name="initial_slider_values">
+        <item>0</item>
+        <item>200000</item>
+    </array>
 </resources>

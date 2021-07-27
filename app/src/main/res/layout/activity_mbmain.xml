@@ -7,6 +7,13 @@
     android:id="@+id/container"
     android:orientation="vertical"
     tools:context=".mybike.MBMainActivity">
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/mybike_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="?attr/actionBarSize"
+        android:background="#EE6C00"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark"/>
 
     <fragment
         android:layout_width="match_parent"
@@ -14,6 +21,7 @@
         android:name="androidx.navigation.fragment.NavHostFragment"
         app:navGraph="@navigation/navigation"
         app:defaultNavHost="true"
+        android:layout_below="@id/mybike_toolbar"
         android:id="@+id/container_fragment"
         android:layout_above="@+id/bottom_navigation_view"/>
 

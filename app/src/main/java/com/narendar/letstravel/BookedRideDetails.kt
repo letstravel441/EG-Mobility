@@ -13,6 +13,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.firestore.FirebaseFirestore
+import kotlinx.android.synthetic.main.fragment_find.*
 
 class BookedRideDetails : AppCompatActivity() {
 
@@ -38,8 +39,9 @@ class BookedRideDetails : AppCompatActivity() {
         val cancelBookedRideDetails = findViewById<Button>(R.id.cancelride_bookedRideDetails)
         val chatBookedRideDetails = findViewById<Button>(R.id.chat_bookedRideDetails)
         val datepublishedride = findViewById<TextView>(R.id.date_bookedRideDetails)
+        val ratingofpublisher = findViewById<TextView>(R.id.ratings_bookedRideDetails)
         datepublishedride.text = intent.getStringExtra("date")
-
+        ratingofpublisher.text=intent.getStringExtra("ratingofpublisher")
         publishername.text = intent.getStringExtra("publishername")
         pickupBookedRideDetails.text = intent.getStringExtra("pickup")
         dropBookedRideDetails.text = intent.getStringExtra("destination")

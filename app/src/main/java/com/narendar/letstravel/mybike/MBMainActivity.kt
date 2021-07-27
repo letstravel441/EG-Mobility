@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import androidx.appcompat.widget.Toolbar
 import androidx.navigation.Navigation.findNavController
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
@@ -20,6 +21,9 @@ class MBMainActivity : AppCompatActivity() {
 
         val navController = findNavController(R.id.container_fragment)
         val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottom_navigation_view)
+        val actionBar = findViewById<Toolbar>(R.id.mybike_toolbar)
+        setSupportActionBar(actionBar)
+        supportActionBar?.title ="My Bike"
         bottomNavigationView.setupWithNavController(navController)
 
     }

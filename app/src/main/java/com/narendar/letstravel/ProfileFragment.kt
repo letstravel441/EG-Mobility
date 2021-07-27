@@ -66,8 +66,7 @@ class ProfileFragment : Fragment() {
         val lastnameText = view.findViewById<TextView>(R.id.lastnameText)
         val mobile = view.findViewById<TextView>(R.id.mobile)
         val email = view.findViewById<TextView>(R.id.email)
-
-       // Glide.with(context).load(user.profileImage).placeholder(R.drawable.profile_image).into(holder.imgUser)
+        imgProfilePic = view.findViewById(R.id. imgProfilePic)
 
         auth = FirebaseAuth.getInstance()
         database = FirebaseDatabase.getInstance()
@@ -104,7 +103,7 @@ class ProfileFragment : Fragment() {
 
         btnSave = view.findViewById(R.id.btnSave)
          progressBar = view.findViewById(R.id.progressBar)
-        imgProfilePic = view.findViewById(R.id. imgProfilePic)
+
 
         imgProfilePic.setOnClickListener {
             chooseImage()
