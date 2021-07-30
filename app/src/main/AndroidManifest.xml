@@ -42,7 +42,9 @@
         <activity android:name=".NewActivity" />
         <activity android:name=".SharedRidesDetails" />
         <activity android:name=".ProfileActivity" />
-        <activity android:name=".ChatActivity" />
+        <activity android:name=".ChatActivity"
+            android:label="My Bike"
+            android:parentActivityName=".mybike.MBMainActivity" />
 
         <service
             android:name=".FirebaseService"

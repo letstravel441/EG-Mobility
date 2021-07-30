@@ -33,6 +33,7 @@ class FilterActivity : AppCompatActivity() {
         supportActionBar?.setHomeButtonEnabled(true)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.setHomeAsUpIndicator(R.drawable.ic_back)
+        actionBar.setNavigationOnClickListener { finish() }
         // showing the back button in action bar
        /* actionBar!!.title = "Filter"
         actionBar?.setHomeAsUpIndicator(R.drawable.ic_back)

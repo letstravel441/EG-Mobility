@@ -24,12 +24,12 @@ class MBChatActivity : AppCompatActivity() {
         setContentView(com.narendar.letstravel.R.layout.activity_mbchat)
 
         //back button
-     /*   val actionBar = getSupportActionBar()
-        // showing the back button in action bar
-        actionBar!!.title = "Chat"
-        actionBar?.setHomeAsUpIndicator(com.narendar.letstravel.R.drawable.ic_back)
-        actionBar?.setDisplayHomeAsUpEnabled(true)
-        actionBar?.setDisplayShowHomeEnabled(true)*/
+//        val actionBar = getSupportActionBar()
+//        // showing the back button in action bar
+//        actionBar!!.title = "Chat"
+//        actionBar?.setHomeAsUpIndicator(com.narendar.letstravel.R.drawable.ic_back)
+//        actionBar?.setDisplayHomeAsUpEnabled(true)
+//        actionBar?.setDisplayShowHomeEnabled(true)
 
         var toolbarr = findViewById<Toolbar>(com.narendar.letstravel.R.id.toolbar_mybike)
 
@@ -37,6 +37,7 @@ class MBChatActivity : AppCompatActivity() {
         supportActionBar?.setHomeButtonEnabled(true)
         supportActionBar?.title="chat"
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        toolbarr.setNavigationOnClickListener { finish() }
 
         //showing recent chats in recyclerview
         val adapter = GroupAdapter<GroupieViewHolder>()
