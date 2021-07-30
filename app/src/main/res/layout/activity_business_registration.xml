@@ -18,6 +18,16 @@
         android:layout_marginBottom="0dp"
         android:orientation="vertical"
         android:translationX="-27dp">
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:id="@+id/text_view1"
+            />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:id="@+id/text_view2" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -54,32 +64,21 @@
                 android:paddingLeft="16dp" />
         </com.google.android.material.textfield.TextInputLayout>
 
-        <com.google.android.material.textfield.TextInputLayout
+        <EditText
 
             android:id="@+id/locationInput"
 
             android:layout_width="match_parent"
 
-            android:layout_height="wrap_content"
+            android:layout_height="60dp"
 
             android:layout_marginTop="12dp"
-
-
             android:background="#ffffff"
             android:drawableTint="#3F51B5"
-
-
-            android:hint="Location">
-
-            <com.google.android.material.textfield.TextInputEditText
-
-                android:layout_width="match_parent"
-                android:layout_height="60dp"
-                android:background="#ffffff"
-                android:inputType="text"
-                android:paddingLeft="16dp"
-                android:paddingRight="16dp" />
-        </com.google.android.material.textfield.TextInputLayout>
+            android:hint="Location"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp"
+            />
 
 
         <com.google.android.material.textfield.TextInputLayout

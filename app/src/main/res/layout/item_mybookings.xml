@@ -27,7 +27,7 @@
         <LinearLayout
             android:id="@+id/llContent_booked"
             android:layout_width="match_parent"
-            android:layout_height="140dp"
+            android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:background="#ffffff"
             android:weightSum="6">
@@ -76,7 +76,7 @@
                     android:text="location"
                     android:textStyle="bold"
                     android:padding="10dp"
-                    android:textSize="15sp" />
+                    android:textSize="10dp" />
 
                 <TextView
                     android:id="@+id/typeservice2"
@@ -87,7 +87,7 @@
                     android:text="Typeofservice"
                     android:textStyle="bold"
                     android:padding="10dp"
-                    android:textSize="15sp"  />
+                    android:textSize="15dp"  />
             </RelativeLayout>
             <RelativeLayout
                 android:layout_weight="2"
@@ -103,7 +103,7 @@
                     android:padding="10dp"
                     android:text="Status"
                     android:textColor="#F44336"
-                    android:textSize="20dp"
+                    android:textSize="18dp"
                     android:textStyle="bold" />
                 <Button
                     android:id="@+id/cancelservice2"

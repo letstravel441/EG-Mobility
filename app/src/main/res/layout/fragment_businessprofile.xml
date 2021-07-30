@@ -84,14 +84,6 @@
             android:textColor="#111111"
             android:textSize="18sp" />
 
-        <Button
-            android:id="@+id/previous_bookings"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/yourservices"
-            android:layout_marginTop="10dp"
-            android:text="Previous bookings"
-            app:backgroundTint="#FF9800" />
 
         <Button
             android:id="@+id/update_account"
@@ -100,9 +92,8 @@
             android:layout_below="@+id/yourservices"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="23dp"
-            android:text="Update Account"
-
-            android:translationX="200dp"
+            android:text="Update Services"
+            android:translationX="110dp"
             app:backgroundTint="#FF9800" />
     </RelativeLayout>
 </ScrollView>
