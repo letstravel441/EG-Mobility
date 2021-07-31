@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.TextView
+import androidx.appcompat.widget.Toolbar
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.database.*
@@ -11,7 +12,8 @@ import com.narendar.letstravel.R
 import java.util.*
 import kotlin.collections.ArrayList
 
-class FilteredProducts : AppCompatActivity() {
+class
+FilteredProducts : AppCompatActivity() {
 
     private lateinit var database: DatabaseReference
     var minPrice : String ?= null
@@ -26,12 +28,20 @@ class FilteredProducts : AppCompatActivity() {
         setContentView(R.layout.activity_filtered_products)
 
         //back button
-        val actionBar = supportActionBar
-        // showing the back button in action bar
-        actionBar!!.title = "Filtered Products"
-        actionBar?.setHomeAsUpIndicator(R.drawable.ic_back)
-        actionBar?.setDisplayHomeAsUpEnabled(true)
-        actionBar?.setDisplayShowHomeEnabled(true)
+//        val actionBar = supportActionBar
+//        // showing the back button in action bar
+//        actionBar!!.title = "Filtered Products"
+//        actionBar?.setHomeAsUpIndicator(R.drawable.ic_back)
+//        actionBar?.setDisplayHomeAsUpEnabled(true)
+//        actionBar?.setDisplayShowHomeEnabled(true)
+
+        val actionBar = findViewById<Toolbar>(R.id.filter_ttoolbar)
+        setSupportActionBar(actionBar)
+        supportActionBar?.title ="Filtered Products"
+        supportActionBar?.setHomeButtonEnabled(true)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        supportActionBar?.setHomeAsUpIndicator(R.drawable.ic_back)
+        actionBar.setNavigationOnClickListener { finish() }
 
         //display products in recyclerview
         minPrice = intent.getStringExtra("minPrice")

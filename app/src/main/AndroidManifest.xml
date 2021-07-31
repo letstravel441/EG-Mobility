@@ -17,7 +17,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.LetsTravel">
-        <activity android:name=".serviceprovider.BusinessRegistrationActivity"/>
+        <activity android:name=".serviceprovider.BusinessRegistrationActivity"></activity>
         <activity android:name=".serviceprovider.stationdetails" />
         <activity android:name=".serviceprovider.ReceiveNotificationActivity" />
         <activity android:name=".serviceprovider.NotifyActivity" />
@@ -39,6 +39,7 @@
         <activity android:name=".InvisibleActivity" />
         <activity android:name=".BookedRideDetails" />
         <activity android:name=".BookRidesActivity" />
+        <activity android:name=".NewActivity" />
         <activity android:name=".SharedRidesDetails" />
         <activity android:name=".ProfileActivity" />
         <activity android:name=".ChatActivity" />

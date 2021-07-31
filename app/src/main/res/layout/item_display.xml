@@ -11,7 +11,7 @@
     <LinearLayout
         android:id="@+id/llContent"
         android:layout_width="match_parent"
-        android:layout_height="120dp"
+        android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:background="#ffffff"
         android:weightSum="6">
@@ -69,26 +69,6 @@
                 android:textStyle="bold"
                 />
         </RelativeLayout>
-        <RelativeLayout
-            android:layout_weight="2"
-            android:layout_width="0dp"
-            android:layout_height="match_parent">
-            android:gravity="center"
 
-            <Button
-                android:id="@+id/book"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="20dp"
-                android:layout_marginBottom="40dp"
-                android:backgroundTint="#FF5722"
-                android:gravity="center"
-                android:text="Book"
-                android:textSize="16sp"
-                />
-
-        </RelativeLayout>
     </LinearLayout>
 </androidx.cardview.widget.CardView>

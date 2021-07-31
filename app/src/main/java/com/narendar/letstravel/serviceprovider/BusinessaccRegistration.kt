@@ -1,6 +1,7 @@
 package com.narendar.letstravel.serviceprovider
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -164,12 +165,10 @@ class BusinessaccRegistration : Fragment() {
 
         })
         updateaccount.setOnClickListener {
-            Toast.makeText(context,"clicked on  Update Account", Toast.LENGTH_SHORT).show()
-            val fragment= updateaccountFragment()
-
-            val transaction = activity?.supportFragmentManager?.beginTransaction()
-            transaction?.replace(R.id.frame, updateaccountFragment())
-            transaction?.commit()}
+            Toast.makeText(context, "clicked on  Update Account", Toast.LENGTH_SHORT).show()
+            val intent= Intent(it.context,com.narendar.letstravel.serviceprovider.updateaccount::class.java)
+            it.context.startActivity(intent)
+        }
 
         return view
     }

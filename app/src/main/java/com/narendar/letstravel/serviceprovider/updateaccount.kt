@@ -1,37 +1,26 @@
 package com.narendar.letstravel.serviceprovider
 
-import android.app.Activity
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
-import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
-import com.google.android.gms.maps.model.LatLng
-import com.google.android.libraries.places.api.Places
-import com.google.android.libraries.places.api.model.Place
-import com.google.android.libraries.places.widget.Autocomplete
-import com.google.android.libraries.places.widget.AutocompleteActivity
-import com.google.android.libraries.places.widget.model.AutocompleteActivityMode
 import com.google.android.material.textfield.TextInputLayout
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 import com.narendar.letstravel.LoginActivity
 import com.narendar.letstravel.R
-import kotlinx.android.synthetic.main.fragment_serviceprovider.*
 import java.util.*
 
-class BusinessRegistrationActivity : AppCompatActivity() {
-    lateinit var lat1: LatLng
-    var address:String?=null
+
+class updateaccount : AppCompatActivity() {
     lateinit var auth: FirebaseAuth
     var databaseReference :  DatabaseReference? = null
     var database: FirebaseDatabase? = null
-    lateinit var textView1: TextView
-    lateinit var textView11: TextView
+
     var EV_car_services: TextView? = null
     var EV_bike_services: TextView? = null
     var Non_EV_car_services: TextView? = null
@@ -81,15 +70,16 @@ class BusinessRegistrationActivity : AppCompatActivity() {
         "tyre puncture"
     )
     private var reg_station: TextInputLayout? = null
+    private  var reg_location: TextInputLayout? = null
     private  var reg_username: TextInputLayout? = null
     private  var reg_email: TextInputLayout? = null
     private  var reg_mobile: TextInputLayout? = null
     private  var reg_password: TextInputLayout? = null
-    lateinit var reg_location:EditText
-    private var button: Button? = null
+    private var update: Button? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_business_registration)
+        setContentView(R.layout.activity_updateaccount)
+
         auth = FirebaseAuth.getInstance()
         database = FirebaseDatabase.getInstance()
         databaseReference = database?.reference!!.child("Business")
@@ -99,30 +89,14 @@ class BusinessRegistrationActivity : AppCompatActivity() {
         reg_email = findViewById(R.id.usernameInput)
         reg_mobile = findViewById(R.id.mobileInput)
         reg_password = findViewById(R.id.passwordInput)
-        button = findViewById(R.id.registerButton)
-        textView1=findViewById(R.id.text_view1)
-        textView11=findViewById(R.id.text_view2)
-        Places.initialize(this, "AIzaSyAG5Oh9bHDBoqM3BU1S2V0f-8uuo3ZHliw")
-        reg_location.isFocusable = false
+        update= findViewById(R.id.updateacc)
 
-        reg_location.setOnClickListener {
-            val fieldList = listOf(
-                Place.Field.ADDRESS,
-                Place.Field.LAT_LNG,
-                Place.Field.NAME
-            )
-            val intent = this.let { it1 ->
-                Autocomplete.IntentBuilder(AutocompleteActivityMode.OVERLAY, fieldList)
-                    .build(it1)
-            }
-            startActivityForResult(intent, 100)
-        }
         //EV car
         EV_car_services = findViewById(R.id.EV_car_services)
         selectedservice1 = BooleanArray(servicearray1.size)
         EV_car_services?.setOnClickListener(View.OnClickListener {
             val builder = AlertDialog.Builder(
-                this@BusinessRegistrationActivity
+                this@updateaccount
             )
             builder.setTitle("select service")
             builder.setCancelable(false)
@@ -167,7 +141,7 @@ class BusinessRegistrationActivity : AppCompatActivity() {
         selectedservice2 = BooleanArray(servicearray2.size)
         EV_bike_services?.setOnClickListener(View.OnClickListener {
             val builder = AlertDialog.Builder(
-                this@BusinessRegistrationActivity
+                this@updateaccount
             )
             builder.setTitle("select service")
             builder.setCancelable(false)
@@ -212,7 +186,7 @@ class BusinessRegistrationActivity : AppCompatActivity() {
         selectedservice3 = BooleanArray(servicearray3.size)
         Non_EV_car_services?.setOnClickListener(View.OnClickListener {
             val builder = AlertDialog.Builder(
-                this@BusinessRegistrationActivity
+                this@updateaccount
             )
             builder.setTitle("select service")
             builder.setCancelable(false)
@@ -257,7 +231,7 @@ class BusinessRegistrationActivity : AppCompatActivity() {
         selectedservice4 = BooleanArray(servicearray4.size)
         Non_EV_bike_services?.setOnClickListener(View.OnClickListener {
             val builder = AlertDialog.Builder(
-                this@BusinessRegistrationActivity
+                this@updateaccount
             )
             builder.setTitle("select service")
             builder.setCancelable(false)
@@ -297,46 +271,18 @@ class BusinessRegistrationActivity : AppCompatActivity() {
             }
             builder.show()
         })
-        button?.setOnClickListener {
+        update?.setOnClickListener {
             val auth = FirebaseAuth.getInstance()
             val database = FirebaseDatabase.getInstance()
             val databaseReference = database?.reference!!.child("profile")
             val user = auth.currentUser
             val userreference = databaseReference?.child(user?.uid!!)
-            userreference?.addListenerForSingleValueEvent(object : ValueEventListener {
-                override fun onDataChange(snapshot: DataSnapshot) {
-                    val yes = "Yes"
-                    val business =
-                        mapOf<String, String>("businessAccount" to yes)
-                    userreference!!.updateChildren(business)
-                }
-
-                override fun onCancelled(error: DatabaseError) {
-                    TODO("Not yet implemented")
-                }
-
-            })
-            database?.reference!!.child("Business").child(user?.uid!!).addListenerForSingleValueEvent(object : ValueEventListener {
+            database?.reference!!.child("Business").child(user?.uid!!).addListenerForSingleValueEvent(object :
+                ValueEventListener {
                 override fun onDataChange(snapshot: DataSnapshot) {
                     val currentUser = auth.currentUser
                     val currentUSerDb = database?.reference!!.child("Business").child(user?.uid!!)
                     val uid=currentUser?.uid
-                    currentUSerDb?.child("station")?.setValue(reg_station?.getEditText()!!.text.toString())
-                    currentUSerDb?.child("location")?.setValue(address.toString())
-                    currentUSerDb?.child("l0cation1")?.setValue(lat1)
-                    currentUSerDb?.child("username")?.setValue(reg_username?.getEditText()?.getText().toString())
-                    currentUSerDb?.child("mobile")?.setValue(reg_mobile?.getEditText()?.getText().toString())
-                    currentUSerDb?.child("uid")?.setValue(uid)
-                    currentUSerDb?.child("email")?.setValue(reg_email?.getEditText()?.getText().toString())
-                    currentUSerDb?.child("password")?.setValue(reg_password?.getEditText()?.getText().toString())
-                    //FirebaseInstanceId.getInstance().getInstanceId().addOnCompleteListener(
-                    //   OnCompleteListener<Any?> { task ->
-                    //        if (task.isSuccessful) {
-                    //            val token: string = task.result.Token
-                    //        } else {
-                    //        }
-                    //   })
-
                     val userMap1 = HashMap<String, String>()
                     var k=0;
                     for (j in servicelist1.indices)
@@ -369,11 +315,9 @@ class BusinessRegistrationActivity : AppCompatActivity() {
                         k++;
                     }
                     currentUSerDb?.child("non-ev-bike")?.setValue(userMap4)
-                    Toast.makeText(this@BusinessRegistrationActivity , "Registration Success. ", Toast.LENGTH_LONG).show()
-                    startActivity(Intent(this@BusinessRegistrationActivity , LoginActivity::class.java))
+                    Toast.makeText(this@updateaccount, "services updated successfully ", Toast.LENGTH_LONG).show()
+                    startActivity(Intent(this@updateaccount, LoginActivity::class.java))
                     finish()
-
-
 
                 }
 
@@ -381,26 +325,6 @@ class BusinessRegistrationActivity : AppCompatActivity() {
                     TODO("Not yet implemented")
                 }
             })
-
-        }
-    }
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-        if (requestCode == 100 && resultCode == Activity.RESULT_OK) {
-            val place = Autocomplete.getPlaceFromIntent(
-                data!!
-            )
-            reg_location.setText(place.address)
-            textView1.text = String.format("%s", place.name)
-            textView11.text = place.latLng.toString()
-            lat1= place.latLng!!
-            address=place.address
-        }
-
-
-        else if (resultCode == AutocompleteActivity.RESULT_ERROR) {
-            val status = Autocomplete.getStatusFromIntent(data!!)
-            Toast.makeText(BusinessRegistrationActivity().getApplicationContext(), status.statusMessage, Toast.LENGTH_SHORT).show()
         }
     }
 }

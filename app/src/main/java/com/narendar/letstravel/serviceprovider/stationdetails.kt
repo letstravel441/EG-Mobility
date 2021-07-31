@@ -257,15 +257,15 @@ class stationdetails : AppCompatActivity() {
         linkservice1["Datetime"]= btndate as String
         linkservice1["bookedserviceid"]=ref1id
         linkservice1["message"]=""
-        FirebaseFirestore.getInstance().collection("service_provider").document(ref1id)
-            .set(linkservice1)
-            .addOnSuccessListener {
-                Toast.makeText(applicationContext, "Waiting for the servie provider acceptance", Toast.LENGTH_SHORT ).show()
-            }
-            .addOnFailureListener {
-                Toast.makeText(applicationContext,"Failed to send your request please try again",
-                    Toast.LENGTH_SHORT).show()
-            }
+       FirebaseFirestore.getInstance().collection("service_provider").document(ref1id)
+          .set(linkservice1)
+         //   .addOnSuccessListener {
+      //          Toast.makeText(applicationContext, "Waiting for the servie provider acceptance", Toast.LENGTH_SHORT ).show()
+        //    }
+        //    .addOnFailureListener {
+        //       Toast.makeText(applicationContext,"Failed to send your request please try again",
+         //           Toast.LENGTH_SHORT).show()
+         //   }
 
     }
 }

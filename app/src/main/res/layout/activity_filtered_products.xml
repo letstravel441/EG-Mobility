@@ -7,11 +7,20 @@
     tools:context=".mybike.FilteredProducts"
     android:background="@color/white">
 
+    <androidx.appcompat.widget.Toolbar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#EE6C00"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark"
+        android:minHeight="?attr/actionBarSize"
+        android:id="@+id/filter_ttoolbar"/>
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/filtered_product_display"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="20dp"
+        android:layout_margin="10dp"
+        android:layout_below="@id/filter_ttoolbar"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
 
     <TextView

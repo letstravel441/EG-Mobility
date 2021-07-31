@@ -67,12 +67,6 @@ class ServiceproviderFragment : Fragment(){
             }
             startActivityForResult(intent, 100)
         }
-        val auth = FirebaseAuth.getInstance()
-        val database = FirebaseDatabase.getInstance()
-        val databaseReference = database?.reference!!.child("Business")
-        val user = auth.currentUser
-        val usid = databaseReference?.child(user?.uid!!)
-        usid?.child("location")?.setValue(userlocation?.getText().toString())
         bike_1.setOnClickListener {
             Toast.makeText(context,"clicked on  NON EV Car", Toast.LENGTH_SHORT).show()
             val fragment= ev_bike_1Fragment()
@@ -121,6 +115,13 @@ class ServiceproviderFragment : Fragment(){
             userlocation.setText(place.address)
             textView1.text = String.format("%s", place.name)
             textView11.text = place.latLng.toString()
+            val auth = FirebaseAuth.getInstance()
+            val database = FirebaseDatabase.getInstance()
+            val databaseReference = database?.reference!!.child("profile")
+            val user = auth.currentUser
+            val usid = databaseReference?.child(user?.uid!!)
+            usid?.child("local").setValue(place.address)
+            usid?.child("latlng").setValue(place.latLng)
         }
 
 

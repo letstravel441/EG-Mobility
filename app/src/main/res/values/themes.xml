@@ -61,4 +61,11 @@
     <style name="TextAppearance.App.Tooltip" parent="TextAppearance.MaterialComponents.Tooltip">
         <item name="android:textColor">@android:color/black</item>
     </style>
+
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:windowDrawsSystemBarBackgrounds">true</item>
+    </style>
 </resources>

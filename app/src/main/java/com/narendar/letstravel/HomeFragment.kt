@@ -68,7 +68,7 @@ class HomeFragment : Fragment() {
 
         mybike.setOnClickListener {
 
-            Toast.makeText(context,"clicked on  My Bike", Toast.LENGTH_SHORT).show()
+          //  Toast.makeText(context,"clicked on  My Bike", Toast.LENGTH_SHORT).show()
             val intent = Intent(context,MBMainActivity::class.java)
             startActivity(intent)
         }
@@ -94,7 +94,7 @@ class HomeFragment : Fragment() {
         }
         serviceprovider.setOnClickListener {
 
-            Toast.makeText(context,"clicked on  Service Provider", Toast.LENGTH_SHORT).show()
+          //  Toast.makeText(context,"clicked on  Service Provider", Toast.LENGTH_SHORT).show()
             val fragment= ServiceproviderFragment()
 
             val transaction = activity?.supportFragmentManager?.beginTransaction()
