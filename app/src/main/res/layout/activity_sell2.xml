@@ -5,11 +5,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".mybike.Sell2Activity"
-    android:background="@color/white">
-
+    android:background="@color/white"
+    android:layout_gravity="center"
+    android:gravity="center">
 
 
     <TextView
+        android:id="@+id/heading"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
@@ -20,50 +22,80 @@
         android:textSize="30sp"
         android:textStyle="bold" />
 
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="45dp"
-        android:layout_marginTop="60dp"
-        android:background="#ffffff"
-        android:id="@+id/odometerStatus"
-        android:backgroundTint="#ffffff"
-        android:drawablePadding="15dp"
-        android:drawableTint="#FF03DAC5"
-        android:hint="Odometer Status"
-        android:textColorHint="@color/black"
-        android:inputType="text"
-        android:paddingLeft="16dp"
-        android:textColor="@color/black"/>
+    <RelativeLayout>
 
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="45dp"
-        android:layout_marginTop="25dp"
-        android:background="#ffffff"
-        android:drawablePadding="15dp"
-        android:drawableTint="#3F51B5"
-        android:id="@+id/mileage"
-        android:hint="Mileage"
-        android:textColorHint="@color/black"
-        android:inputType="text"
-        android:paddingLeft="16dp"
-        android:paddingRight="16dp"
-        android:textColor="@color/black"/>
+        <EditText
+            android:layout_width="300dp"
+            android:layout_height="45dp"
+            android:layout_marginTop="60dp"
+            android:background="#ffffff"
+            android:id="@+id/odometerStatus"
+            android:backgroundTint="#ffffff"
+            android:drawablePadding="15dp"
+            android:drawableTint="#FF03DAC5"
+            android:hint="Odometer Status"
+            android:textSize="20sp"
+            android:textColorHint="@color/black"
+            android:inputType="number"
+            android:paddingLeft="16dp"
+            android:textColor="@color/black"/>
+
+        <TextView
+            android:layout_width="100dp"
+            android:layout_height="45dp"
+            android:layout_marginTop="60dp"
+            android:gravity="center"
+            android:text="(in kms)"
+            android:textSize="20sp"
+            android:textColor="@color/black"
+            android:layout_toEndOf="@+id/odometerStatus"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout>
+
+        <EditText
+            android:layout_width="300dp"
+            android:layout_height="45dp"
+            android:layout_marginTop="25dp"
+            android:background="#ffffff"
+            android:drawablePadding="15dp"
+            android:drawableTint="#3F51B5"
+            android:id="@+id/mileage"
+            android:hint="Mileage"
+            android:textSize="20sp"
+            android:textColorHint="@color/black"
+            android:inputType="number"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp"
+            android:textColor="@color/black"/>
+
+        <TextView
+            android:layout_width="100dp"
+            android:layout_height="45dp"
+            android:layout_marginTop="25dp"
+            android:gravity="center"
+            android:text="(in kmpl)"
+            android:textSize="20sp"
+            android:textColor="@color/black"
+            android:layout_toEndOf="@+id/mileage"/>
+
+    </RelativeLayout>
+
+
     <TableRow
         android:id="@+id/tableRow1"
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:layout_weight="match_parent"
         android:layout_marginTop="18dp"
-
-        >
+        android:layout_marginEnd="10dp">
 
         <TextView
             android:layout_width="171dp"
             android:layout_height="match_parent"
             android:text=" Insurance Status"
             android:textAlignment="center"
-            android:padding="8dp"
+            android:paddingTop="8dp"
             android:textColor="#000000"
             android:textSize="20sp" />
 
@@ -73,35 +105,49 @@
             android:layout_height="48dp"
             android:spinnerMode="dropdown"
             android:background="@color/light_gray"
-            android:popupBackground="@color/light_gray"
-            />
-
-
+            android:popupBackground="@color/light_gray" />
 
 
     </TableRow>
 
 
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="45dp"
-        android:layout_marginTop="25dp"
-        android:background="#ffffff"
-        android:drawablePadding="15dp"
-        android:drawableTint="#3F51B5"
-        android:id="@+id/year_of_buy"
-        android:hint="Year of Buy"
-        android:textColorHint="@color/black"
-        android:inputType="text"
-        android:paddingLeft="16dp"
-        android:paddingRight="16dp"
-        android:textColor="@color/black"/>
+    <RelativeLayout>
+
+        <EditText
+            android:layout_width="250dp"
+            android:layout_height="45dp"
+            android:layout_marginTop="25dp"
+            android:background="#ffffff"
+            android:drawablePadding="15dp"
+            android:drawableTint="#3F51B5"
+            android:id="@+id/year_of_buy"
+            android:hint="Year of Buy"
+            android:textColorHint="@color/black"
+            android:textSize="20sp"
+            android:inputType="number"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp"
+            android:textColor="@color/black"/>
+
+        <TextView
+            android:layout_width="180dp"
+            android:layout_height="45dp"
+            android:layout_marginTop="25dp"
+            android:gravity="center"
+            android:text="(YYYY format)"
+            android:textSize="20sp"
+            android:textColor="@color/black"
+            android:layout_toEndOf="@+id/year_of_buy"/>
+
+    </RelativeLayout>
+
 
     <EditText
         android:layout_width="match_parent"
         android:layout_height="150dp"
         android:id="@+id/addAComment"
         android:hint="Add a comment"
+        android:textSize="20sp"
         android:textColorHint="@color/black"
         android:textColor="@color/black"
         android:layout_marginTop="25dp"

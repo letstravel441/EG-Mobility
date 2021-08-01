@@ -12,10 +12,11 @@ import com.google.firebase.database.FirebaseDatabase
 import com.narendar.letstravel.R
 import kotlinx.android.synthetic.main.activity_sell1.*
 
+
 class Sell1Activity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
 
-    val brandName :Array<String> = arrayOf("Selected","BMW","Hero","Honda","yamaha","bajaj","Kawasaki","TVS","KTM","Mahindra","Suzuki","Roil Enfield","Vespa","Jawa","Husqvarna","Others")
-    val fuelType :Array<String> = arrayOf("Selected","Petrol","electric","Diesel","Others")
+    val brandName :Array<String> = arrayOf("Selected","BMW","Hero","Honda","Yamaha","Bajaj","Kawasaki","TVS","KTM","Mahindra","Suzuki","Royal Enfield","Vespa","Jawa","Husqvarna","Others")
+    val fuelType :Array<String> = arrayOf("Selected","Petrol","Electric","Diesel","Others")
     val ownershipStatus :Array<String> = arrayOf("Selected","1st Hand","2nd Hand","3rd Hand","Others")
     val bodyType :Array<String> = arrayOf("Selected","Commuter","Cruiser","Moped","Naked","Offroad","Scooter","Sports","Others")
     val colour :Array<String> = arrayOf("Selected","White","Red","Pink","Purple","Blue","Yellow","Green","Orange","Silver","Black","Others")
@@ -56,7 +57,7 @@ class Sell1Activity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
 
         ad1.setDropDownViewResource(
 
-            android.R.layout.simple_spinner_dropdown_item)
+            R.layout.spinner_list)
 
         spinner1.adapter = ad1
 
@@ -66,7 +67,7 @@ class Sell1Activity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
 
         ad2.setDropDownViewResource(
 
-            android.R.layout.simple_spinner_dropdown_item)
+            R.layout.spinner_list)
 
         spinner2.adapter = ad2
 
@@ -77,7 +78,7 @@ class Sell1Activity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
 
         ad3.setDropDownViewResource(
 
-            android.R.layout.simple_spinner_dropdown_item)
+            R.layout.spinner_list)
 
         spinner3.adapter = ad3
 
@@ -87,7 +88,7 @@ class Sell1Activity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
 
         ad4.setDropDownViewResource(
 
-            android.R.layout.simple_spinner_dropdown_item)
+            R.layout.spinner_list)
 
         spinner4.adapter = ad4
 
@@ -97,7 +98,7 @@ class Sell1Activity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
 
         ad5.setDropDownViewResource(
 
-            android.R.layout.simple_spinner_dropdown_item)
+            R.layout.spinner_list)
 
         spinner5.adapter = ad5
 
@@ -147,7 +148,7 @@ class Sell1Activity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
 
                 //me?.child("User uid")?.setValue(currentUser?.uid!!)
 
-                val intent = Intent(this, Sell2::class.java)
+                val intent = Intent(this, Sell2Activity::class.java)
                 intent.putExtra("brandName", spinnerbrand.selectedItem.toString())
                 intent.putExtra("bikeModel", bikeModel.text.toString())
                 intent.putExtra("price", price.text.toString())
@@ -173,22 +174,25 @@ class Sell1Activity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
     }
 
     override fun onItemSelected(parent: AdapterView<*>?, view: View, position: Int, id: Long) {
-        Toast.makeText(applicationContext,
-            brandName[position],
-            Toast.LENGTH_LONG)
-            .show()
-        Toast.makeText(applicationContext,
-            fuelType[position],
-            Toast.LENGTH_LONG)
-            .show()
-        Toast.makeText(applicationContext,
-            ownershipStatus[position],
-            Toast.LENGTH_LONG)
-            .show()
-        Toast.makeText(applicationContext,
-            bodyType[position],
-            Toast.LENGTH_LONG)
-            .show()
+
+//        (spinnerbrand.selectedView as TextView).setTextColor(0x00000000)
+//        (spinnerfuelType.selectedView as TextView).setTextColor(0x00000000)
+//        (spinnerbodyType.selectedView as TextView).setTextColor(0x00000000)
+//        (spinnercolour.selectedView as TextView).setTextColor(0x00000000)
+//        (spinnerstatus.selectedView as TextView).setTextColor(0x00000000)
+
+//        Toast.makeText(applicationContext,
+//            fuelType[position],
+//            Toast.LENGTH_LONG)
+//            .show()
+//        Toast.makeText(applicationContext,
+//            ownershipStatus[position],
+//            Toast.LENGTH_LONG)
+//            .show()
+//        Toast.makeText(applicationContext,
+//            bodyType[position],
+//            Toast.LENGTH_LONG)
+//            .show()
 
     }
 

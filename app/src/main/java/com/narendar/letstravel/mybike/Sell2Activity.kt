@@ -38,8 +38,8 @@ class Sell2Activity : AppCompatActivity(),AdapterView.OnItemSelectedListener {
 
         ad6.setDropDownViewResource(
 
-            android.R.layout.simple_spinner_dropdown_item
-        )
+            R.layout.spinner_list)
+
 
         spinner6.adapter = ad6
     }
@@ -105,10 +105,12 @@ class Sell2Activity : AppCompatActivity(),AdapterView.OnItemSelectedListener {
     }
 
     override fun onItemSelected(parent: AdapterView<*>?, view: View, position: Int, id: Long) {
-        Toast.makeText(applicationContext,
-            InsuranceStatus[position],
-            Toast.LENGTH_LONG)
-            .show()
+//        Toast.makeText(applicationContext,
+//            InsuranceStatus[position],
+//            Toast.LENGTH_LONG)
+//            .show()
+
+//        (spinnerInsurance.selectedView as TextView).setTextColor(0x00000000)
 
     }
 

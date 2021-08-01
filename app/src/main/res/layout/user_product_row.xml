@@ -38,17 +38,30 @@
             android:textColor="@color/black"/>
 
         <TextView
+            android:id="@+id/rupee_3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="₹"
+            android:layout_below="@+id/product_title_3"
+            android:textSize="18sp"
+            android:textAlignment="center"
+            android:layout_marginBottom="8dp"
+            android:layout_marginStart="10dp"
+            android:textColor="@color/black"/>
+
+        <TextView
             android:id="@+id/product_price_3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/product_title_3"
-            android:text="Rs. XYZ"
+            android:text="XYZ"
             android:textSize="16sp"
             android:textAlignment="center"
-            android:layout_marginTop="0dp"
+            android:layout_marginTop="1dp"
             android:layout_marginBottom="8dp"
-            android:layout_marginStart="10dp"
-            android:textColor="@color/black"/>
+            android:layout_marginStart="4dp"
+            android:textColor="@color/black"
+            android:layout_toEndOf="@id/rupee_3"/>
 
         <ImageView
             android:id="@+id/delete_product"

@@ -53,17 +53,31 @@
             android:textColor="@color/black"/>
 
         <TextView
+            android:id="@+id/rupee_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="₹"
+            android:layout_below="@+id/product_title_2"
+            android:textSize="24sp"
+            android:textAlignment="center"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="8dp"
+            android:layout_marginStart="17dp"
+            android:textColor="@color/black"/>
+
+        <TextView
             android:id="@+id/product_price_2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/product_title_2"
-            android:text="Rs. XYZ"
+            android:text="XYZ"
             android:textSize="21sp"
             android:textAlignment="center"
-            android:layout_marginTop="5dp"
+            android:layout_marginTop="6dp"
             android:layout_marginBottom="8dp"
-            android:layout_marginStart="17dp"
-            android:textColor="@color/black"/>
+            android:layout_marginStart="8dp"
+            android:textColor="@color/black"
+            android:layout_toEndOf="@+id/rupee_2"/>
 
         <ImageButton
             android:id="@+id/add_product_to_wishlist"
@@ -197,6 +211,17 @@
                     android:layout_toEndOf="@+id/mileage_icon"
                     android:layout_marginStart="5dp"/>
 
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="kmpl"
+                    android:textColor="@color/black"
+                    android:textSize="16sp"
+                    android:layout_below="@+id/calender"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginStart="3dp"
+                    android:layout_toEndOf="@+id/mileage_2"/>
+
                 <ImageView
                     android:layout_width="23dp"
                     android:layout_height="23dp"
@@ -231,13 +256,24 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/odometerStatus_2"
-                    android:text="Distance Travelled"
+                    android:text="Odometer Status"
                     android:textColor="@color/black"
                     android:textSize="16sp"
                     android:layout_below="@+id/overview"
                     android:layout_marginTop="10dp"
                     android:layout_toEndOf="@+id/road"
                     android:layout_marginStart="5dp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="kms"
+                    android:textColor="@color/black"
+                    android:textSize="16sp"
+                    android:layout_below="@+id/overview"
+                    android:layout_marginTop="10dp"
+                    android:layout_toEndOf="@+id/odometerStatus_2"
+                    android:layout_marginStart="3dp"/>
 
                 <ImageView
                     android:layout_width="20dp"
