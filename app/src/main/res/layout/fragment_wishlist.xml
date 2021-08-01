@@ -7,48 +7,6 @@
     tools:context=".mybike.WishlistFragment"
     android:background="@color/white">
 
-    <EditText
-        android:id="@+id/search_wishlist"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:hint="Search"
-        android:textColorHint="@color/black"
-        android:textColor="@color/black"
-        android:padding="6dp"
-        android:paddingStart="20dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginEnd="10dp"
-        android:layout_marginTop="10dp"
-        android:background="@drawable/custom_search_bar" />
-
-    <ImageView
-        android:id="@+id/search_wishlist_icon"
-        android:layout_width="33dp"
-        android:layout_height="33dp"
-        android:src="@drawable/ic_search"
-        android:layout_marginTop="12dp"
-        android:layout_alignParentEnd="true"
-        android:layout_marginEnd="22dp"/>
-
-    <SearchView
-        android:id="@+id/search_view"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/search_wishlist"
-        android:layout_marginTop="20dp"
-        android:background="@drawable/custom_search_bar"
-        android:layout_marginEnd="10dp"
-        android:layout_marginStart="10dp"
-        android:iconifiedByDefault="false"
-        android:queryHint="Search Here"/>
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recycler_view"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@id/search_view"
-        android:layout_marginTop="20dp"/>
+  
 
 </RelativeLayout>
