@@ -99,7 +99,7 @@ app:cardCornerRadius="5dp">
                 android:text="Datetime"
                 android:textStyle="bold"
                 android:padding="10dp"
-                android:textSize="15sp"  />
+                android:textSize="10sp"  />
         </RelativeLayout>
         <RelativeLayout
             android:layout_weight="2"
