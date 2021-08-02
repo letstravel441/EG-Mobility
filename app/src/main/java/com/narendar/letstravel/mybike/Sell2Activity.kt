@@ -4,18 +4,50 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.TextUtils
-import android.widget.Button
-import android.widget.EditText
+import android.view.View
+import android.widget.*
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
 import com.narendar.letstravel.R
+import kotlinx.android.synthetic.main.activity_sell1.*
+import kotlinx.android.synthetic.main.activity_sell2.*
 
-class Sell2Activity : AppCompatActivity() {
+class Sell2Activity : AppCompatActivity(),AdapterView.OnItemSelectedListener {
+
+    val InsuranceStatus: Array<String> = arrayOf("Selected", "Present", "Absent", "Others")
+
+    lateinit var auth: FirebaseAuth
+    var databaseReference: DatabaseReference? = null
+    var database: FirebaseDatabase? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_sell2)
 
+        database = FirebaseDatabase.getInstance()
+        databaseReference = database?.reference!!.child("Product Details")
+
+        productDetails()
+
+        val spinner6 = findViewById<Spinner>(R.id.spinnerInsurance)
+
+        spinner6.onItemSelectedListener = this
+        val ad6: ArrayAdapter<*> =
+            ArrayAdapter<Any?>(this, android.R.layout.simple_spinner_item, InsuranceStatus)
+
+        ad6.setDropDownViewResource(
+
+            R.layout.spinner_list)
+
+
+        spinner6.adapter = ad6
+    }
+
+
+    private fun productDetails(){
         //val odometerStatus = findViewById<EditText>(R.id.odometerStatus)
         val odometerStatus = findViewById<EditText>(R.id.odometerStatus)
-        val insuranceStatus = findViewById<EditText>(R.id.insuranceStatus)
         val addAComment = findViewById<EditText>(R.id.addAComment)
         val yearOfBuy = findViewById<EditText>(R.id.year_of_buy)
         val mileage = findViewById<EditText>(R.id.mileage)
@@ -35,8 +67,8 @@ class Sell2Activity : AppCompatActivity() {
             if (TextUtils.isEmpty(odometerStatus.text.toString())) {
                 odometerStatus.setError("Please enter Odometer Status ")
                 return@setOnClickListener
-            } else if (TextUtils.isEmpty(insuranceStatus.text.toString())) {
-                insuranceStatus.error = "Please enter Insurance Status "
+            } else if ((spinnerfuelType.selectedItem == "Selected")) {
+                (spinnerInsurance.selectedView as TextView).error = "Select Insurance Status"
                 return@setOnClickListener
             } else if (TextUtils.isEmpty(addAComment.text.toString())) {
                 addAComment.error = "Please add any comments. In case of no comments, add NA."
@@ -53,7 +85,7 @@ class Sell2Activity : AppCompatActivity() {
                 val intent = Intent(this, Sell3Activity::class.java)
 
                 intent.putExtra("odometerStatus", odometerStatus.text.toString())
-                intent.putExtra("insuranceStatus", insuranceStatus.text.toString())
+                intent.putExtra("insuranceStatus", spinnerInsurance.selectedItem.toString())
                 intent.putExtra("addAComment", addAComment.text.toString())
                 intent.putExtra("yearOfBuy", yearOfBuy.text.toString())
                 intent.putExtra("mileage", mileage.text.toString())
@@ -71,4 +103,18 @@ class Sell2Activity : AppCompatActivity() {
             }
         }
     }
+
+    override fun onItemSelected(parent: AdapterView<*>?, view: View, position: Int, id: Long) {
+//        Toast.makeText(applicationContext,
+//            InsuranceStatus[position],
+//            Toast.LENGTH_LONG)
+//            .show()
+
+//        (spinnerInsurance.selectedView as TextView).setTextColor(0x00000000)
+
+    }
+
+
+    override fun onNothingSelected(parent: AdapterView<*>?) {}
+
 }

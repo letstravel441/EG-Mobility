@@ -17,8 +17,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.LetsTravel">
-        <activity android:name=".serviceprovider.updateaccount"></activity>
-        <activity android:name=".serviceprovider.BusinessRegistrationActivity" />
+        <activity android:name=".serviceprovider.BusinessRegistrationActivity"></activity>
         <activity android:name=".serviceprovider.stationdetails" />
         <activity android:name=".serviceprovider.ReceiveNotificationActivity" />
         <activity android:name=".serviceprovider.NotifyActivity" />
@@ -43,10 +42,7 @@
         <activity android:name=".NewActivity" />
         <activity android:name=".SharedRidesDetails" />
         <activity android:name=".ProfileActivity" />
-        <activity
-            android:name=".ChatActivity"
-            android:label="My Bike"
-            android:parentActivityName=".mybike.MBMainActivity" />
+        <activity android:name=".ChatActivity" />
 
         <service
             android:name=".FirebaseService"

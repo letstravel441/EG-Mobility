@@ -1,32 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".mybike.Sell2Activity"
-    android:background="@color/white">
+    android:background="@color/white"
+    android:layout_gravity="center"
+    android:gravity="center">
 
-    <LinearLayout
+
+    <TextView
+        android:id="@+id/heading"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:layout_marginLeft="40dp"
-        android:layout_marginRight="40dp"
-        android:orientation="vertical">
+        android:layout_gravity="center"
+        android:textAlignment="center"
+        android:layout_marginTop="40dp"
+        android:text="Product Details"
+        android:textColor="@color/black"
+        android:textSize="30sp"
+        android:textStyle="bold" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="40dp"
-            android:text="Product Details"
-            android:textColor="@color/black"
-            android:textSize="30sp"
-            android:textStyle="bold" />
+    <RelativeLayout>
 
         <EditText
-            android:layout_width="match_parent"
+            android:layout_width="300dp"
             android:layout_height="45dp"
             android:layout_marginTop="60dp"
             android:background="#ffffff"
@@ -35,13 +34,28 @@
             android:drawablePadding="15dp"
             android:drawableTint="#FF03DAC5"
             android:hint="Odometer Status"
+            android:textSize="20sp"
             android:textColorHint="@color/black"
-            android:inputType="text"
+            android:inputType="number"
             android:paddingLeft="16dp"
             android:textColor="@color/black"/>
 
+        <TextView
+            android:layout_width="100dp"
+            android:layout_height="45dp"
+            android:layout_marginTop="60dp"
+            android:gravity="center"
+            android:text="(in kms)"
+            android:textSize="20sp"
+            android:textColor="@color/black"
+            android:layout_toEndOf="@+id/odometerStatus"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout>
+
         <EditText
-            android:layout_width="match_parent"
+            android:layout_width="300dp"
             android:layout_height="45dp"
             android:layout_marginTop="25dp"
             android:background="#ffffff"
@@ -49,30 +63,58 @@
             android:drawableTint="#3F51B5"
             android:id="@+id/mileage"
             android:hint="Mileage"
+            android:textSize="20sp"
             android:textColorHint="@color/black"
-            android:inputType="text"
+            android:inputType="number"
             android:paddingLeft="16dp"
             android:paddingRight="16dp"
             android:textColor="@color/black"/>
 
-
-        <EditText
-            android:layout_width="match_parent"
+        <TextView
+            android:layout_width="100dp"
             android:layout_height="45dp"
             android:layout_marginTop="25dp"
-            android:background="#ffffff"
-            android:drawablePadding="15dp"
-            android:drawableTint="#3F51B5"
-            android:id="@+id/insuranceStatus"
-            android:hint="Insurance Status"
-            android:textColorHint="@color/black"
-            android:inputType="text"
-            android:paddingLeft="16dp"
-            android:paddingRight="16dp"
-            android:textColor="@color/black"/>
+            android:gravity="center"
+            android:text="(in kmpl)"
+            android:textSize="20sp"
+            android:textColor="@color/black"
+            android:layout_toEndOf="@+id/mileage"/>
+
+    </RelativeLayout>
+
+
+    <TableRow
+        android:id="@+id/tableRow1"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginTop="18dp"
+        android:layout_marginEnd="10dp">
+
+        <TextView
+            android:layout_width="171dp"
+            android:layout_height="match_parent"
+            android:text=" Insurance Status"
+            android:textAlignment="center"
+            android:paddingTop="8dp"
+            android:textColor="#000000"
+            android:textSize="20sp" />
+
+        <Spinner
+            android:id="@+id/spinnerInsurance"
+            android:layout_width="242dp"
+            android:layout_height="48dp"
+            android:spinnerMode="dropdown"
+            android:background="@color/light_gray"
+            android:popupBackground="@color/light_gray" />
+
+
+    </TableRow>
+
+
+    <RelativeLayout>
 
         <EditText
-            android:layout_width="match_parent"
+            android:layout_width="250dp"
             android:layout_height="45dp"
             android:layout_marginTop="25dp"
             android:background="#ffffff"
@@ -81,52 +123,66 @@
             android:id="@+id/year_of_buy"
             android:hint="Year of Buy"
             android:textColorHint="@color/black"
-            android:inputType="text"
+            android:textSize="20sp"
+            android:inputType="number"
             android:paddingLeft="16dp"
             android:paddingRight="16dp"
             android:textColor="@color/black"/>
 
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="150dp"
-            android:id="@+id/addAComment"
-            android:hint="Add a comment"
-            android:textColorHint="@color/black"
-            android:textColor="@color/black"
+        <TextView
+            android:layout_width="180dp"
+            android:layout_height="45dp"
             android:layout_marginTop="25dp"
-            android:background="#ffffff"
-            android:drawablePadding="15dp"
-            android:drawableTint="#3F51B5"
-            android:scrollHorizontally="false"
-            android:scrollbars="vertical"
-            android:inputType="textMultiLine"
-            android:paddingLeft="16dp"
-            android:paddingRight="16dp"/>
-
-
-        <Button
-            android:id="@+id/saveButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginRight="10dp"
-            android:backgroundTint="#93C572"
-            android:text="Save and Continue"
-            android:textColor="@color/black"
+            android:gravity="center"
+            android:text="(YYYY format)"
             android:textSize="20sp"
-            android:textStyle="bold" />
+            android:textColor="@color/black"
+            android:layout_toEndOf="@+id/year_of_buy"/>
 
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="60dp"
-            android:orientation="horizontal"
-            android:padding="8dp">
-        </LinearLayout>
+    </RelativeLayout>
 
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:id="@+id/addAComment"
+        android:hint="Add a comment"
+        android:textSize="20sp"
+        android:textColorHint="@color/black"
+        android:textColor="@color/black"
+        android:layout_marginTop="25dp"
+        android:background="#ffffff"
+        android:drawablePadding="15dp"
+        android:drawableTint="#3F51B5"
+        android:scrollHorizontally="false"
+        android:scrollbars="vertical"
+        android:inputType="textMultiLine"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"/>
+
+
+    <Button
+        android:id="@+id/saveButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="10dp"
+        android:text="Save and Continue"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="60dp"
+        android:orientation="horizontal"
+        android:padding="8dp">
     </LinearLayout>
 
 
-</RelativeLayout>
+
+
+</TableLayout>
