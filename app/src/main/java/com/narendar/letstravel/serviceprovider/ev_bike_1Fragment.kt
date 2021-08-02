@@ -87,7 +87,7 @@ class ev_bike_1Fragment : Fragment() {
         }
 
         ev_bike_batterycharge.setOnClickListener {
-            Toast.makeText(context, "clicked on Oil and filter change", Toast.LENGTH_SHORT).show()
+            Toast.makeText(context, "clicked on battery charge", Toast.LENGTH_SHORT).show()
             val fragment= bike_2Fragment()
 
             val transaction = activity?.supportFragmentManager?.beginTransaction()

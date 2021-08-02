@@ -18,6 +18,7 @@ import com.google.android.libraries.places.widget.AutocompleteActivity
 import com.google.android.libraries.places.widget.model.AutocompleteActivityMode
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.messaging.FirebaseMessaging
 import com.narendar.letstravel.HomeFragment
 import com.narendar.letstravel.R
 import kotlinx.android.synthetic.main.fragment_serviceprovider.*
@@ -67,12 +68,19 @@ class ServiceproviderFragment : Fragment(){
             }
             startActivityForResult(intent, 100)
         }
+        val auth = FirebaseAuth.getInstance()
+        val database = FirebaseDatabase.getInstance()
+        val databaseReference = database?.reference!!.child("profile")
+        val user = auth.currentUser
+        val usid = databaseReference?.child(user?.uid!!)
+        var userid = user?.uid
+        FirebaseMessaging.getInstance().subscribeToTopic("/topics/$userid")
         bike_1.setOnClickListener {
             Toast.makeText(context,"clicked on  EV BIKE", Toast.LENGTH_SHORT).show()
             val fragment= ev_bike_1Fragment()
 
             val transaction = activity?.supportFragmentManager?.beginTransaction()
-            transaction?.replace(R.id.frame, ev_bike_1Fragment())?.addToBackStack("kavya")
+            transaction?.replace(R.id.frame, ev_bike_1Fragment())?.addToBackStack("k")
             transaction?.commit()
 
 
@@ -83,12 +91,16 @@ class ServiceproviderFragment : Fragment(){
             val fragment= bike_2Fragment()
 
             val transaction = activity?.supportFragmentManager?.beginTransaction()
-            transaction?.replace(R.id.frame, bike_2Fragment())?.addToBackStack("kavya")
+            transaction?.replace(R.id.frame, bike_2Fragment())?.addToBackStack("k")
             transaction?.commit()
         }
 
         car_1.setOnClickListener {
             Toast.makeText(context,"clicked on  EV Car ", Toast.LENGTH_SHORT).show()
+            val fragment=ev_car1Fragment()
+            val transaction = activity?.supportFragmentManager?.beginTransaction()
+            transaction?.replace(R.id.frame, ev_car1Fragment())?.addToBackStack("k")
+            transaction?.commit()
         }
 
         car_2.setOnClickListener {
@@ -96,7 +108,7 @@ class ServiceproviderFragment : Fragment(){
             val fragment= Car_2Fragment()
 
             val transaction = activity?.supportFragmentManager?.beginTransaction()
-            transaction?.replace(R.id.frame, Car_2Fragment())?.addToBackStack("kavya")
+            transaction?.replace(R.id.frame, Car_2Fragment())?.addToBackStack("k")
             transaction?.commit()
         }
 
