@@ -71,57 +71,6 @@ class Adaptermybookings (val context: Context, private  val MybookingsList: Arra
             builder.setPositiveButton(
                 "Cancel"
             ) { dialogInterface, i ->
-                var mRequestQue: RequestQueue? = null
-                val URL = "https://fcm.googleapis.com/fcm/send"
-
-                val serviceuid= bookingservice.serviceproviderid
-
-                mRequestQue = Volley.newRequestQueue(your_servicebookings@context)
-                FirebaseMessaging.getInstance().subscribeToTopic(serviceuid as String)
-
-
-                //send notification to service provider that service request is cancelled by user
-                val mainObj = JSONObject()
-                try {
-                    mainObj.put("to", "/topics/"+serviceuid)
-                    val notificationObj = JSONObject()
-                    notificationObj.put("title", "Service Provider")
-                    notificationObj.put("body", "Requested service has been cancelled by the user")
-                    val extraData = JSONObject()
-                    extraData.put("user_name", "adcd")
-                    extraData.put("pn_num", "xxxxxx")
-                    extraData.put("service","car_breakdown")
-                    extraData.put("booking_time","1200")
-                    mainObj.put("notification", notificationObj)
-                    mainObj.put("data", extraData)
-                    val request: JsonObjectRequest =
-                        object : JsonObjectRequest(
-                            Request.Method.POST, URL,
-                            mainObj,
-
-                            Response.Listener<JSONObject?>() {
-                                fun onResponse(response: JSONObject?) {
-                                    //code here will run on success
-                                }
-                            }, Response.ErrorListener() {
-                                fun onErrorResponse(error: VolleyError?) {
-                                    //code here will run on error
-                                }
-                            }
-                        ) {
-                            override fun getHeaders(): MutableMap<String, String>? {
-                                val header: MutableMap<String, String> =
-                                    HashMap()
-                                header["content-type"] = "application/json"
-                                header["authorization"] =
-                                    "key=AAAAqTgcW8Y:APA91bGaeM8hM5D4UL_wqQIhKQt2cB9dk6R7C_Ban_ATf_rribh3EmkPZ3moLtMmJ7NYzAGlhFJv0FeCHPTahuaLi9rrhUfs3GiD9hKj_p7P3fL_sAfgQ9TAcGwDmO4gqdpn-7-Pym7e"
-                                return header
-                            }
-                        }
-                    mRequestQue?.add(request)
-                } catch (e: JSONException) {
-                    e.printStackTrace()
-                }
                 var db = FirebaseFirestore.getInstance()
                 db.collection("service_provider").whereEqualTo("serviceproviderid", bookingservice.serviceproviderid).whereEqualTo("userid",bookingservice.userid).whereEqualTo("type",bookingservice.type).whereEqualTo("nameservice",bookingservice.nameservice)
                     .addSnapshotListener(object : EventListener<QuerySnapshot> {

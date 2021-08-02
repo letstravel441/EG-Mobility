@@ -42,11 +42,11 @@ class Adaptermyservices (val context: Context, private  val MyservicesList: Arra
         stringBuilder.append(sp_services.nameservice)
         holder.typeofservice3.text = stringBuilder
         holder.messagesp.text = sp_services.message
+        holder.datetime.text=sp_services.Datetime
         //holder.llContent.setOnClickListener {
 
         //}
 
-        if (sp_services.message == "") {
             holder.deny.setOnClickListener(View.OnClickListener {
                 val builder = AlertDialog.Builder(holder.username3.getContext())
                 builder.setTitle("Deny Service")
@@ -54,57 +54,7 @@ class Adaptermyservices (val context: Context, private  val MyservicesList: Arra
                 builder.setPositiveButton(
                     "DENY"
                 ) { dialogInterface, i ->
-                    var mRequestQue: RequestQueue? = null
-                    val URL = "https://fcm.googleapis.com/fcm/send"
-                    val useruid = sp_services.userid
 
-                    mRequestQue = Volley.newRequestQueue(your_servicebookings@ context)
-                    FirebaseMessaging.getInstance().subscribeToTopic(useruid as String)
-                    //send notification to service provider that service request is cancelled by user
-                    val mainObj = JSONObject()
-                    try {
-                        mainObj.put("to", "/topics/" + useruid)
-                        val notificationObj = JSONObject()
-                        notificationObj.put("title", "Service Provider")
-                        notificationObj.put(
-                            "body",
-                            "Your request has been denied by the service provider"
-                        )
-                        val extraData = JSONObject()
-                        extraData.put("user_name", "adcd")
-                        extraData.put("pn_num", "xxxxxx")
-                        extraData.put("service", "car_breakdown")
-                        extraData.put("booking_time", "1200")
-                        mainObj.put("notification", notificationObj)
-                        mainObj.put("data", extraData)
-                        val request: JsonObjectRequest =
-                            object : JsonObjectRequest(
-                                Request.Method.POST, URL,
-                                mainObj,
-
-                                Response.Listener<JSONObject?>() {
-                                    fun onResponse(response: JSONObject?) {
-                                        //code here will run on success
-                                    }
-                                }, Response.ErrorListener() {
-                                    fun onErrorResponse(error: VolleyError?) {
-                                        //code here will run on error
-                                    }
-                                }
-                            ) {
-                                override fun getHeaders(): MutableMap<String, String>? {
-                                    val header: MutableMap<String, String> =
-                                        HashMap()
-                                    header["content-type"] = "application/json"
-                                    header["authorization"] =
-                                        "key=AAAAqTgcW8Y:APA91bGaeM8hM5D4UL_wqQIhKQt2cB9dk6R7C_Ban_ATf_rribh3EmkPZ3moLtMmJ7NYzAGlhFJv0FeCHPTahuaLi9rrhUfs3GiD9hKj_p7P3fL_sAfgQ9TAcGwDmO4gqdpn-7-Pym7e"
-                                    return header
-                                }
-                            }
-                        mRequestQue?.add(request)
-                    } catch (e: JSONException) {
-                        e.printStackTrace()
-                    }
                     var db = FirebaseFirestore.getInstance()
                     db.collection("service_user")
                         .whereEqualTo("serviceproviderid", sp_services.serviceproviderid)
@@ -146,56 +96,6 @@ class Adaptermyservices (val context: Context, private  val MyservicesList: Arra
                 builder.setPositiveButton(
                     "ACCEPT"
                 ) { dialogInterface, i ->
-                    var mRequestQue: RequestQueue? = null
-                    val URL = "https://fcm.googleapis.com/fcm/send"
-                    val useruid = sp_services.userid
-
-                    mRequestQue = Volley.newRequestQueue(your_servicebookings@ context)
-                    FirebaseMessaging.getInstance().subscribeToTopic(useruid as String)
-                    //send notification to service provider that service request is cancelled by user
-                    val mainObj = JSONObject()
-                    try {
-                        mainObj.put("to", "/topics/" + useruid)
-                        val notificationObj = JSONObject()
-                        notificationObj.put("title", "Service Provider")
-                        notificationObj.put(
-                            "body",
-                            "Your request is accepted by the service provider"
-                        )
-                        val extraData = JSONObject()
-                        extraData.put("user_name", "adcd")
-                        extraData.put("pn_num", "xxxxxx")
-                        extraData.put("service", "car_breakdown")
-                        extraData.put("booking_time", "1200")
-                        mainObj.put("notification", notificationObj)
-                        mainObj.put("data", extraData)
-                        val request: JsonObjectRequest =
-                            object : JsonObjectRequest(Request.Method.POST, URL,
-                                mainObj,
-
-                                Response.Listener<JSONObject?>() {
-                                    fun onResponse(response: JSONObject?) {
-                                        //code here will run on success
-                                    }
-                                }, Response.ErrorListener() {
-                                    fun onErrorResponse(error: VolleyError?) {
-                                        //code here will run on error
-                                    }
-                                }
-                            ) {
-                                override fun getHeaders(): MutableMap<String, String>? {
-                                    val header: MutableMap<String, String> =
-                                        HashMap()
-                                    header["content-type"] = "application/json"
-                                    header["authorization"] =
-                                        "key=AAAAqTgcW8Y:APA91bGaeM8hM5D4UL_wqQIhKQt2cB9dk6R7C_Ban_ATf_rribh3EmkPZ3moLtMmJ7NYzAGlhFJv0FeCHPTahuaLi9rrhUfs3GiD9hKj_p7P3fL_sAfgQ9TAcGwDmO4gqdpn-7-Pym7e"
-                                    return header
-                                }
-                            }
-                        mRequestQue?.add(request)
-                    } catch (e: JSONException) {
-                        e.printStackTrace()
-                    }
                     var db = FirebaseFirestore.getInstance()
                     db.collection("service_user")
                         .whereEqualTo("serviceproviderid", sp_services.serviceproviderid)
@@ -244,7 +144,7 @@ class Adaptermyservices (val context: Context, private  val MyservicesList: Arra
                 ) { dialogInterface, i -> }
                 builder.show()
             })
-        }
+
     }
 
     override fun getItemCount(): Int {
@@ -258,6 +158,7 @@ class Adaptermyservices (val context: Context, private  val MyservicesList: Arra
         val accept: Button = itemView.findViewById(R.id.accept3)
         val deny: Button =itemView.findViewById(R.id.deny3)
         val messagesp : TextView = itemView.findViewById(R.id.messagesp)
+        val datetime:TextView=itemView.findViewById(R.id.datetime3)
 
         val llContent : LinearLayout =itemView.findViewById(R.id.llContent_bookingsdetail)
     }

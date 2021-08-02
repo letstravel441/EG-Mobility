@@ -68,7 +68,7 @@ class ServiceproviderFragment : Fragment(){
             startActivityForResult(intent, 100)
         }
         bike_1.setOnClickListener {
-            Toast.makeText(context,"clicked on  NON EV Car", Toast.LENGTH_SHORT).show()
+            Toast.makeText(context,"clicked on  EV BIKE", Toast.LENGTH_SHORT).show()
             val fragment= ev_bike_1Fragment()
 
             val transaction = activity?.supportFragmentManager?.beginTransaction()

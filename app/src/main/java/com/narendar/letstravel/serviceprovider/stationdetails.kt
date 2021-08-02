@@ -6,6 +6,7 @@ import android.media.RingtoneManager
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.*
 import androidx.core.app.NotificationCompat
 import com.android.volley.Request
@@ -15,28 +16,33 @@ import com.android.volley.VolleyError
 import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.Volley
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.database.DataSnapshot
-import com.google.firebase.database.DatabaseError
-import com.google.firebase.database.FirebaseDatabase
-import com.google.firebase.database.ValueEventListener
+import com.google.firebase.auth.FirebaseUser
+import com.google.firebase.database.*
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.messaging.FirebaseMessaging
+import com.google.gson.Gson
+import com.narendar.letstravel.NotificationData
+import com.narendar.letstravel.PushNotification
 import com.narendar.letstravel.R
+import com.narendar.letstravel.RetrofitInstance
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import org.json.JSONException
 import org.json.JSONObject
 import java.text.SimpleDateFormat
 import java.util.*
 
 class stationdetails : AppCompatActivity() {
-    private var mRequestQue: RequestQueue? = null
-    private val URL = "https://fcm.googleapis.com/fcm/send"
     var shareday = 0
     var sharemonth = 0
     var shareyear = 0
     var sharehour = 0
     var sharemin = 0
     var formate = SimpleDateFormat("EEE ddMMM,yyyy hh:mm a", Locale.US)
-
+    var firebaseUser: FirebaseUser? = null
+    var reference: DatabaseReference? = null
+    var topic = ""
     override fun onCreate(savedInstanceState: Bundle?) {
 
 
@@ -94,7 +100,7 @@ class stationdetails : AppCompatActivity() {
         val ty=b?.get("type_service") as CharSequence?
         val auth = FirebaseAuth.getInstance()
         val database = FirebaseDatabase.getInstance()
-        val databaseReference = database?.reference!!.child("Business")
+        val databaseReference = database?.reference!!.child("profile")
         val user = auth.currentUser
         val usid = databaseReference?.child(user?.uid!!)
         val userid=user?.uid
@@ -104,9 +110,9 @@ class stationdetails : AppCompatActivity() {
         usid?.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
 
-                user_name =snapshot.child("username").value.toString()
+                user_name =snapshot.child("userName").value.toString()
                 user_email=snapshot.child("email").value.toString()
-                user_mobile=snapshot.child("mobile").value.toString()
+                user_mobile=snapshot.child("mobileno").value.toString()
             }
 
             override fun onCancelled(error: DatabaseError) {
@@ -114,18 +120,7 @@ class stationdetails : AppCompatActivity() {
             }
         })
 
-        if (intent.hasExtra("service_noti")) {
-            val i = Intent(this@stationdetails, ReceiveNotificationActivity::class.java)
-            i.putExtra("service_noti", getIntent().getStringExtra("service_noti"))
-            i.putExtra("user_name_noti", getIntent().getStringExtra("user_name_noti"))
-            i.putExtra("pn_num",getIntent().getStringExtra("pn_num"))
-            startActivity(i)
-        }
-//        else {
-//            val i1 = Intent(this, NotifyActivity::class.java)
-//        }
-        mRequestQue = Volley.newRequestQueue(this)
-        FirebaseMessaging.getInstance().subscribeToTopic(serviceuid as String)
+
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             val notificationChannel = NotificationChannel(
@@ -142,7 +137,8 @@ class stationdetails : AppCompatActivity() {
 
         confirm.setOnClickListener{
 
-            saveFireStore(stationnamedetail.text.toString(),btndate.text.toString(),emaildetail.text.toString(),mobile.text.toString(),location.text.toString(),serviceuid,userid.toString(),ty.toString(),nameservice.toString(),user_name.toString(),user_email.toString(),user_mobile.toString())
+            saveFireStore(stationnamedetail.text.toString(),btndate.text.toString(),emaildetail.text.toString(),mobile.text.toString(),location.text.toString(),
+                serviceuid as String,userid.toString(),ty.toString(),nameservice.toString(),user_name.toString(),user_email.toString(),user_mobile.toString())
             //startActivity(Intent(this@stationdetails,confirmbtn::class.java))
             //finish()
             val notificationManager = applicationContext.getSystemService(
@@ -167,50 +163,48 @@ class stationdetails : AppCompatActivity() {
             builder.priority = NotificationCompat.PRIORITY_HIGH
             //   builder.addAction(R.drawable.ic_launcher_foreground, "CANCEL BOOKING", pendingIntent)
             notificationManager.notify(1, builder.build())
+            //send notification
+            var message: String = "New service booking request"
 
 
-            // sendNotification();
-            // sendNotification
-            val mainObj = JSONObject()
-            try {
-                mainObj.put("to", "/topics/"+serviceuid)
-                val notificationObj = JSONObject()
-                notificationObj.put("title", "Service Provider")
-                notificationObj.put("body", "New service booking request")
-                //   val extraData = JSONObject()
-                //  extraData.put("user_name", "adcd")
-                //  extraData.put("pn_num", "xxxxxx")
-                //  extraData.put("service","car_breakdown")
-                //  extraData.put("booking_time","1200")
-                mainObj.put("notification", notificationObj)
-                //  mainObj.put("data", extraData)
-                val request: JsonObjectRequest =
-                    object : JsonObjectRequest(Request.Method.POST, URL,
-                        mainObj,
+            var   topic = "/topics/$serviceuid"
 
-                        Response.Listener<JSONObject?>() {
-                            fun onResponse(response: JSONObject?) {
-                                //code here will run on success
-                            }
-                        }, Response.ErrorListener() {
-                            fun onErrorResponse(error: VolleyError?) {
-                                //code here will run on error
-                            }
-                        }
-                    ) {
-                        override fun getHeaders(): MutableMap<String, String>? {
-                            val header: MutableMap<String, String> =
-                                HashMap()
-                            header["content-type"] = "application/json"
-                            header["authorization"] =
-                                "key=AAAAqTgcW8Y:APA91bGaeM8hM5D4UL_wqQIhKQt2cB9dk6R7C_Ban_ATf_rribh3EmkPZ3moLtMmJ7NYzAGlhFJv0FeCHPTahuaLi9rrhUfs3GiD9hKj_p7P3fL_sAfgQ9TAcGwDmO4gqdpn-7-Pym7e"
-                            return header
-                        }
+
+            var  auth = FirebaseAuth.getInstance()
+            var database = FirebaseDatabase.getInstance()
+            var  databaseReference = database?.reference!!.child("profile")
+
+            val user = auth.currentUser
+            val userreference = databaseReference?.child(user?.uid!!)
+
+
+            var firebaseUser = FirebaseAuth.getInstance().currentUser!!
+
+            databaseReference =
+                FirebaseDatabase.getInstance().getReference("profile").child(firebaseUser!!.uid)
+
+            var nameofuser : String
+
+
+            userreference?.addListenerForSingleValueEvent(object : ValueEventListener {
+                override fun onDataChange(snapshot: DataSnapshot) {
+
+                    nameofuser=   snapshot.child("firstname").value.toString()
+                    PushNotification(
+                        NotificationData( nameofuser,message),
+                        topic).also {
+                        sendNotification(it)
                     }
-                mRequestQue?.add(request)
-            } catch (e: JSONException) {
-                e.printStackTrace()
-            }
+
+                    //context?.let { Glide.with(it).load(snapshot.child("profileImage").value.toString()).placeholder(R.drawable.profile_image).into(imgProfilePic) }
+                }
+
+                override fun onCancelled(error: DatabaseError) {
+                    TODO("Not yet implemented")
+                }
+            })
+
+
 
         }
     }
@@ -266,6 +260,20 @@ class stationdetails : AppCompatActivity() {
         //       Toast.makeText(applicationContext,"Failed to send your request please try again",
          //           Toast.LENGTH_SHORT).show()
          //   }
+
+    }
+    private fun sendNotification(notification: PushNotification) = CoroutineScope(Dispatchers.IO).launch {
+        try {
+            val response = RetrofitInstance.api.postNotification(notification)
+            if(response.isSuccessful) {
+                Log.d("TAG", "Response: ${Gson().toJson(response)}")
+            } else {
+                Log.e("TAG", response.errorBody()!!.string())
+            }
+        } catch(e: Exception) {
+
+            Log.e("TAG", e.toString())
+        }
 
     }
 }
