@@ -67,7 +67,7 @@ class Sell2Activity : AppCompatActivity(),AdapterView.OnItemSelectedListener {
             if (TextUtils.isEmpty(odometerStatus.text.toString())) {
                 odometerStatus.setError("Please enter Odometer Status ")
                 return@setOnClickListener
-            } else if ((spinnerfuelType.selectedItem == "Selected")) {
+            } else if ((spinnerInsurance.selectedItem == "Selected")) {
                 (spinnerInsurance.selectedView as TextView).error = "Select Insurance Status"
                 return@setOnClickListener
             } else if (TextUtils.isEmpty(addAComment.text.toString())) {
@@ -109,7 +109,7 @@ class Sell2Activity : AppCompatActivity(),AdapterView.OnItemSelectedListener {
 //            InsuranceStatus[position],
 //            Toast.LENGTH_LONG)
 //            .show()
-
+//
 //        (spinnerInsurance.selectedView as TextView).setTextColor(0x00000000)
 
     }

@@ -320,6 +320,7 @@ class FilterActivity : AppCompatActivity() {
                 intent.putExtra("ageOfBike", ageOfBike)
 
                 startActivity(intent)
+                finish()
             }
 
         }

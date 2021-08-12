@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
+import android.view.View
 import android.widget.Button
 import android.widget.FrameLayout
 import android.widget.TextView
@@ -52,6 +53,7 @@ class MainActivity : AppCompatActivity() {
         toolbar = findViewById(R.id.toolbar)
         frameLayout = findViewById(R.id.frame)
         navigationView = findViewById(R.id.navigationView)
+        val headerView : View = navigationView.getHeaderView(0)
         setUpToolbar()
 
         openDashboard()
@@ -63,6 +65,23 @@ class MainActivity : AppCompatActivity() {
             openletsTravel()
 
         }
+
+        val profile: TextView = headerView.findViewById(R.id.usernamenav)
+        if(auth.currentUser != null) {
+             val database = FirebaseDatabase.getInstance()
+             var databaseReference = database?.reference!!.child("profile")
+            val userreference = databaseReference?.child(auth.currentUser!!.uid)
+            userreference?.addValueEventListener(object : ValueEventListener {
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    profile.text = "Welcome," + "\n" +snapshot.child("firstname").value.toString() +" " + snapshot.child("lastname").value.toString()
+                }
+
+                override fun onCancelled(error: DatabaseError) {
+                TODO("Not yet implemented")
+            }
+        })
+    }
+
 
         val actionBarDrawerToggle = ActionBarDrawerToggle(this@MainActivity ,drawerLayout,
             R.string.open_drawer,
@@ -91,11 +110,13 @@ class MainActivity : AppCompatActivity() {
                     drawerLayout.closeDrawers()
                 }
                 R.id.profile -> {
-                    supportFragmentManager.beginTransaction()
-                        .replace(R.id.frame, ProfileFragment())
+//                    supportFragmentManager.beginTransaction()
+//                        .replace(R.id.frame, ProfileFragment())
+//                        .addToBackStack(null)
+//                        .commit()
+                    startActivity(Intent(this ,Profile::class.java))
 
-                        .commit()
-                    supportActionBar?.title="Profile"
+                  //  supportActionBar?.title="Profile"
                     drawerLayout.closeDrawers()
                 }
 
@@ -112,12 +133,14 @@ class MainActivity : AppCompatActivity() {
                     val database = FirebaseDatabase.getInstance()
                     val databaseReference = database?.reference!!.child("profile")
                     val user = auth.currentUser
+                    if(user != null){
                     val userreference = databaseReference?.child(user?.uid!!)
                     userreference?.addListenerForSingleValueEvent(object : ValueEventListener {
                         override fun onDataChange(snapshot: DataSnapshot) {
                             if(snapshot.child("businessAccount").value.toString()=="No"){
                                 val intent = Intent(this@MainActivity,BusinessRegistrationActivity::class.java)
                                 startActivity(intent)
+                                drawerLayout.closeDrawers()
                             }else{
                                 supportFragmentManager.beginTransaction()
                                     .replace(R.id.frame, BusinessaccRegistration())
@@ -133,20 +156,31 @@ class MainActivity : AppCompatActivity() {
                         }
 
                     })
+                    }else{
+                        startActivity(Intent(this, MobileNumber::class.java))
+                        drawerLayout.closeDrawers()
+                    }
 
                 }
                 R.id.your_servicebookings -> {
+                    if(FirebaseAuth.getInstance().currentUser != null){
                     supportFragmentManager.beginTransaction()
                         .replace(R.id.frame, your_servicebookings())
 
                         .commit()
                     supportActionBar?.title="Your Service Bookings"
                     drawerLayout.closeDrawers()
+                    } else {
+                        startActivity(Intent(this, MobileNumber::class.java))
+                        drawerLayout.closeDrawers()
+                    }
                 }
                 R.id.logout -> {
                     auth.signOut()
-                    startActivity(Intent(this@MainActivity, LoginActivity::class.java))
+                    startActivity(intent)
+                    overridePendingTransition(0, 0)
                     finish()
+                    drawerLayout.closeDrawers()
 
                 }
 
@@ -182,6 +216,7 @@ class MainActivity : AppCompatActivity() {
         val fragment= HomeFragment()
         val transaction = supportFragmentManager.beginTransaction()
         transaction.replace(R.id.frame, HomeFragment())
+           // .addToBackStack(null)
         transaction.commit()
         supportActionBar?.title="EG MOBILITY"
         navigationView.setCheckedItem(R.id.home)
@@ -192,8 +227,9 @@ class MainActivity : AppCompatActivity() {
 
         val transaction = supportFragmentManager.beginTransaction()
         transaction.replace(R.id.frame, LetstravelFragment())
+         //   .addToBackStack(null)
         transaction.commit()
-        supportActionBar?.title="EG MOBILITY"
+        supportActionBar?.title="Electrogati"
         navigationView.setCheckedItem(R.id.home)
     }
 
@@ -201,14 +237,17 @@ class MainActivity : AppCompatActivity() {
 
         val frag = supportFragmentManager.findFragmentById(R.id.frame)
 
+//        if(supportFragmentManager.backStackEntryCount ==1 ) finish()
+//        else super.onBackPressed()
+
         when(frag) {
             !is HomeFragment ->openDashboard()
             else ->super.onBackPressed()
 
-        }
+       }
 
 
-   // }
+   //}
 
        // loadProfile()
 
@@ -248,4 +287,10 @@ class MainActivity : AppCompatActivity() {
             finish()
         }
     } */
+  override fun onRestart() {
+      super.onRestart()
+      startActivity(intent)
+      overridePendingTransition(0, 0)
+      finish()
+  }
 }

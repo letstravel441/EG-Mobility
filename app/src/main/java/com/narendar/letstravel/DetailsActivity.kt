@@ -1,5 +1,6 @@
 package com.narendar.letstravel
 
+import android.content.Context
 import android.content.Intent
 import android.media.Image
 import androidx.appcompat.app.AppCompatActivity
@@ -22,10 +23,11 @@ import kotlinx.coroutines.launch
 import java.lang.Exception
 
 class DetailsActivity : AppCompatActivity() {
-    lateinit var bookerimage : String
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_details)
+
+
 
         val name_details: TextView = findViewById(R.id.name_details)
         val date_details: TextView = findViewById(R.id.date_details)
@@ -38,7 +40,8 @@ class DetailsActivity : AppCompatActivity() {
         val userimg_details : ImageView = findViewById(R.id.userimg_details)
         var noOfSeatsAvailable : TextView = findViewById(R.id.noofseatsAvailable)
         var noOfseatsBooked : TextView = findViewById(R.id.noofseatsbooked_details)
-       var bookPassengers = bookpassengers.text.toString()
+        val sharedPreferences = getSharedPreferences("production", Context.MODE_PRIVATE)
+       val bookPassengers = sharedPreferences.getString("bp", null)
 
         val rating  = findViewById<TextView>(R.id.ratings_details)
 
@@ -67,6 +70,7 @@ class DetailsActivity : AppCompatActivity() {
         supportActionBar?.setHomeButtonEnabled(true)
         supportActionBar?.title="Ride Details"
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        toolbar.setNavigationOnClickListener { finish() }
 
         name_details.text = intent.getStringExtra("name")
         var userimg_string =intent.getStringExtra("publisherimage")
@@ -75,7 +79,7 @@ class DetailsActivity : AppCompatActivity() {
         val database = FirebaseDatabase.getInstance()
         val databaseReference = database?.reference!!.child("profile")
         val user = auth.currentUser
-        val userreference = databaseReference?.child(user?.uid!!)
+
 
         val name1 = findViewById<TextView>(R.id.nameofuser)
         val emailofuser = findViewById<TextView>(R.id.emailofuser)
@@ -83,31 +87,22 @@ class DetailsActivity : AppCompatActivity() {
         val rideID = intent.getStringExtra("rideId")
 
 
-        userreference?.addValueEventListener(object : ValueEventListener {
-            override fun onDataChange(snapshot: DataSnapshot) {
 
-                name1.text =snapshot.child("firstname").value.toString()
-
-                //   lastnameText.text = "Last name - -> " + snapshot.child("lastname").value.toString()
-                emailofuser.text =  user?.email
-                //   mobile.text = "Mobile Number - > " + snapshot.child("mobileno").value.toString()
-                bookerimage = snapshot.child("profileImage").value.toString()
-            }
-
-            override fun onCancelled(error: DatabaseError) {
-                TODO("Not yet implemented")
-            }
-        })
 
         var publisherId = intent.getStringExtra("publisherId")
+        if(FirebaseAuth.getInstance().currentUser != null){
+            if(FirebaseAuth.getInstance().currentUser!!.uid == publisherId) finish()
+        }
         var name = intent.getStringExtra("name")
 
         chat_details.setOnClickListener {
+            if(user != null){
             val intent = Intent(this@DetailsActivity, ChatActivity ::class.java)
 
             intent.putExtra("userId",publisherId)
             intent.putExtra("userName", name)
             startActivity(intent)
+            } else startActivity(Intent(this, MobileNumber::class.java))
         }
 
 
@@ -119,13 +114,40 @@ class DetailsActivity : AppCompatActivity() {
         }
 
 
+//        val noofpassengers_details: TextView =findViewById(R.id.noofpassengers_details)
+//        Toast.makeText(this, "1)${noofpassengers_details.text.toString()}-2)${bookPassengers!!}-3)${passengersBoked}", Toast.LENGTH_LONG).show()
+//        val bookPickuplocation = sharedPreferences.getString("t1", null)
+//        val bookDroplocation = sharedPreferences.getString("t2", null)
+//        val btnbookDate = sharedPreferences.getString("bbd", null)
+//                 Toast.makeText(this, "-${bookPassengers}-${btnbookDate}-${bookPickuplocation}-${bookDroplocation}", Toast.LENGTH_LONG).show()
+
+
         bookride_details.setOnClickListener {
 
+        if(user != null ){
+            val userreference = databaseReference?.child(user?.uid!!)
+            var bookerimage : String = ""
+            userreference?.addValueEventListener(object : ValueEventListener {
+                override fun onDataChange(snapshot: DataSnapshot) {
+
+                    name1.text =snapshot.child("firstname").value.toString()
+
+                    //   lastnameText.text = "Last name - -> " + snapshot.child("lastname").value.toString()
+                    emailofuser.text =  user?.email
+                    //   mobile.text = "Mobile Number - > " + snapshot.child("mobileno").value.toString()
+                    bookerimage = snapshot.child("profileImage").value.toString()
+                }
+
+                override fun onCancelled(error: DatabaseError) {
+                    TODO("Not yet implemented")
+                }
+            })
 
 
-            val bookPickuplocation = textView1.text.toString()
-            val bookDroplocation = textView2.text.toString()
-            val btnbookDate = btnbookdate.text.toString()
+
+            val bookPickuplocation = sharedPreferences.getString("t1", null)
+            val bookDroplocation = sharedPreferences.getString("t2", null)
+            val btnbookDate = sharedPreferences.getString("bbd", null)
 
             val bookFare = amount_details.text.toString()
             val publishername = name_details.text.toString()
@@ -133,20 +155,21 @@ class DetailsActivity : AppCompatActivity() {
             val sharedroplocation=droplocation_details.text.toString()
             val noofpassengers_details: TextView =findViewById(R.id.noofpassengers_details)
 
+            var x = noofpassengers_details.text.toString().toInt() -  bookPassengers!!.toInt() - passengersBoked!!.toInt()
 
-            var x = noofpassengers_details.text.toString().toInt() -  bookPassengers.toInt() - passengersBoked!!.toInt()
+           // Toast.makeText(this, "1. ${noofpassengers_details.text.toString().toInt()} 2. ${bookPassengers!!.toInt()} 3. ${passengersBoked.toInt()}", Toast.LENGTH_LONG).show()
 
 
 
 
            if(x>=0){
                if (rideID != null) {
-                  val passengersbooked=bookPassengers.toInt() + passengersBoked!!.toInt()
+                  val passengersbooked= bookPassengers!!.toInt() + passengersBoked!!.toInt()
 
                    saveFireStore(emailofuser.text.toString(),name1.text.toString(),
-                       bookPickuplocation, bookDroplocation,btnbookDate,bookPassengers, user?.uid!!.toString(), bookerimage,bookFare,publishername,sharepickuplocation,sharedroplocation,rideID,noofpassengers_details.text.toString(),passengersbooked.toString(),date_details.text.toString(),publisherId!!,rating.text.toString())
+                       bookPickuplocation!!, bookDroplocation!!,btnbookDate!! ,bookPassengers!!, user?.uid!!.toString(), bookerimage,bookFare,publishername,sharepickuplocation,sharedroplocation,rideID,noofpassengers_details.text.toString(),passengersbooked.toString(),date_details.text.toString(),publisherId!!,rating.text.toString())
                }
-            updatestatus(rideID,bookPassengers.toInt(),passengersBoked.toInt())
+            updatestatus(rideID,bookPassengers!!.toInt(),passengersBoked.toInt())
 
              // notification
 
@@ -222,6 +245,9 @@ class DetailsActivity : AppCompatActivity() {
            }
 
 
+        }else {
+            startActivity(Intent(this, MobileNumber::class.java))
+        }
         }
 
         Glide.with(this@DetailsActivity).load(userimg_string).placeholder(R.drawable.profile_image).into(userimg_details)
@@ -295,6 +321,12 @@ class DetailsActivity : AppCompatActivity() {
             Log.e("TAG", e.toString())
         }
 
+    }
+    override fun onRestart(){
+        super.onRestart()
+        startActivity(intent)
+        finish()
+        overridePendingTransition(0, 0)
     }
 
 

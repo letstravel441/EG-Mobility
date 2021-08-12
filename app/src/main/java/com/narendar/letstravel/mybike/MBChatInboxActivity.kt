@@ -1,5 +1,6 @@
 package com.narendar.letstravel.mybike
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -10,6 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
+import com.narendar.letstravel.MobileNumber
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.GroupieViewHolder
 import kotlinx.android.synthetic.main.activity_mbchat_inbox.*
@@ -27,6 +29,7 @@ class MBChatInboxActivity : AppCompatActivity() {
         //getting users ID's
         val fromId = intent.getStringExtra("fromId")
         val fromUsername = intent.getStringExtra("fromUsername")
+        val user = FirebaseAuth.getInstance().currentUser
         val toId = FirebaseAuth.getInstance().currentUser?.uid
         val toUsername = FirebaseAuth.getInstance().currentUser?.email
 
@@ -46,6 +49,7 @@ class MBChatInboxActivity : AppCompatActivity() {
         supportActionBar?.setHomeButtonEnabled(true)
         supportActionBar?.title=fromUsername
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        toolbarr.setNavigationOnClickListener { finish() }
 
         //recyclerview using groupie library
         val adapter = GroupAdapter<GroupieViewHolder>()
@@ -65,6 +69,7 @@ class MBChatInboxActivity : AppCompatActivity() {
             val enterMessage = findViewById<EditText>(com.narendar.letstravel.R.id.enter_message)
             val text = enterMessage.text.toString()
 
+
             val reference = FirebaseDatabase.getInstance().getReference("/user-messages/$fromId/$toId").push()
             val fromReference = FirebaseDatabase.getInstance().getReference("/user-messages/$toId/$fromId").push()
 
@@ -83,6 +88,7 @@ class MBChatInboxActivity : AppCompatActivity() {
 
             val recentMessageFromRef = FirebaseDatabase.getInstance().getReference("/recent-messages/$toId/$fromId")
             recentMessageFromRef.setValue(chatMessage)
+
 
         }
 

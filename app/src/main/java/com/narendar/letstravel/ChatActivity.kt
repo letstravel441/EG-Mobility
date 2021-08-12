@@ -113,8 +113,7 @@ class ChatActivity : AppCompatActivity() {
                     override fun onDataChange(snapshot: DataSnapshot) {
 
                         nameofuser=   snapshot.child("firstname").value.toString()
-                        PushNotification(NotificationData( nameofuser,message),
-                            topic).also {
+                        PushNotification(NotificationData( nameofuser,message), topic).also {
                             sendNotification(it)
                         }
 

@@ -81,10 +81,14 @@ class YourrideFragment : Fragment() {
         val database = FirebaseDatabase.getInstance()
         val databaseReference = database?.reference!!.child("profile")
         val user = auth.currentUser
-        val userreference = databaseReference?.child(user?.uid!!)
+
 
        var  emailofuser = view.findViewById<TextView>(R.id.emailofuserid)
 
+
+        if(user != null){
+
+        val userreference = databaseReference?.child(user?.uid!!)
         userreference?.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
 
@@ -100,6 +104,7 @@ class YourrideFragment : Fragment() {
                 TODO("Not yet implemented")
             }
         })
+        }
 
         val s = emailofuser.text.toString()
 

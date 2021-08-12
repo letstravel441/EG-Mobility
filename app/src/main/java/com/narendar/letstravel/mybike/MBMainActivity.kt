@@ -24,7 +24,15 @@ class MBMainActivity : AppCompatActivity() {
         val actionBar = findViewById<Toolbar>(R.id.mybike_toolbar)
         setSupportActionBar(actionBar)
         supportActionBar?.title ="My Bike"
+        actionBar.setNavigationOnClickListener { finish() }
         bottomNavigationView.setupWithNavController(navController)
+
+        if(FirebaseAuth.getInstance().currentUser == null){
+
+        val p = bottomNavigationView.menu.size()
+        for(i in 1 until p) bottomNavigationView.menu.getItem(i).isEnabled = false
+
+        }
 
     }
 
@@ -38,11 +46,17 @@ class MBMainActivity : AppCompatActivity() {
         when(item.itemId) {
             R.id.logout -> {
                 FirebaseAuth.getInstance().signOut()
-                val intent = Intent(this, LoginActivity::class.java)
-                intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK.or(Intent.FLAG_ACTIVITY_NEW_TASK)
-                startActivity(intent)
+                overridePendingTransition(0, 0)
+                finish()
+
             }
         }
         return super.onOptionsItemSelected(item)
+    }
+    override fun onRestart() {
+        super.onRestart()
+        startActivity(intent)
+        overridePendingTransition(0, 0)
+        finish()
     }
 }

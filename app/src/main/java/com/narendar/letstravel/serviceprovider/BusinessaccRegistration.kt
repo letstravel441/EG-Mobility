@@ -65,9 +65,9 @@ class BusinessaccRegistration : Fragment() {
 
                 stationname.text = "Station Name - " + snapshot.child("station").value.toString()
                 username.text = "User Name - " + snapshot.child("username").value.toString()
-                email.text = "E-mail -  " + user?.email
+                email.text = "E-mail -  " + snapshot.child("email").value.toString()
                 location.text = "Location - " + snapshot.child("location").value.toString()
-                mobile.text = "Mobile Number - " + snapshot.child("mobile").value.toString()
+                mobile.text = "Mobile Number - " + user!!.phoneNumber
                 var stringbuilder= StringBuilder();
                 lateinit var selectedservice: BooleanArray
                 selectedservice=BooleanArray(6)

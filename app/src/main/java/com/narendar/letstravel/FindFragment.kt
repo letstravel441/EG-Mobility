@@ -3,7 +3,9 @@ package com.narendar.letstravel.travelfragments
 import android.app.Activity
 import android.app.DatePickerDialog
 import android.app.TimePickerDialog
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.text.TextUtils
 import android.view.LayoutInflater
@@ -32,14 +34,14 @@ import java.util.*
 ;
 lateinit var bookpickuplocation: EditText
 lateinit var bookdroplocation: EditText
-lateinit var btnbookdate: Button
+lateinit var btnbookdate: Button // 1
 lateinit var bookpassengers: EditText
 
-lateinit var textView1: TextView
+lateinit var textView1: TextView  //2
 lateinit var textView11:TextView
 
 
-lateinit var textView2:TextView
+lateinit var textView2:TextView  //3
 lateinit var textView22:TextView
 
 class FindFragment : Fragment() {
@@ -47,6 +49,8 @@ class FindFragment : Fragment() {
 
 
     lateinit var bookerimage : String
+    lateinit var startPos : String
+    lateinit var endPos: String
 
     var uday = 0
     var umonth = 0
@@ -67,11 +71,16 @@ class FindFragment : Fragment() {
         btnbookdate = view.findViewById<Button>(R.id.btnbookdate)
         bookpassengers = view.findViewById<EditText>(R.id.bookpassengers)
 
+        val sharedPrefernces = activity?.getSharedPreferences("production", Context.MODE_PRIVATE)
+
+
 
 
 
         textView1 = view.findViewById<TextView>(R.id.text_view1_find)
         textView11 = view.findViewById<TextView>(R.id.text_view11_find)
+
+
 
         Places.initialize(requireActivity().getApplicationContext(), "AIzaSyAG5Oh9bHDBoqM3BU1S2V0f-8uuo3ZHliw")
         bookpickuplocation.isFocusable = false
@@ -91,6 +100,13 @@ class FindFragment : Fragment() {
 
         textView2 = view.findViewById<TextView>(R.id.text_view2_find)
         textView22 = view.findViewById<TextView>(R.id.text_view22_find)
+
+//        sharedPrefernces?.edit()?.apply{
+//            putString("bp", bookpassengers.text.toString())
+//            putString("bbd", btnbookdate.text.toString())
+//            putString("t1", textView1.text.toString())
+//            putString("t2", textView2.text.toString())
+//        }?.apply()
 
         Places.initialize(requireActivity().getApplicationContext(), "AIzaSyAG5Oh9bHDBoqM3BU1S2V0f-8uuo3ZHliw")
         bookdroplocation.isFocusable = false
@@ -143,6 +159,9 @@ class FindFragment : Fragment() {
 
         }
 
+
+
+
         search.setOnClickListener {
             if(TextUtils.isEmpty(bookpickuplocation.text.toString())) {
                 bookpickuplocation.setError("Please enter Pickup Location ")
@@ -154,7 +173,20 @@ class FindFragment : Fragment() {
                 bookpassengers.setError("Please enter No of Passengers ")
                 return@setOnClickListener
             }
+
+
+   //         Toast.makeText(context, "-${bookpassengers.text.toString()}-${btnbookdate.text.toString()}-${textView1.text.toString()}-${textView2.text.toString()}", Toast.LENGTH_LONG).show()
+
+            sharedPrefernces?.edit()?.apply{
+                putString("bp", bookpassengers.text.toString())
+                putString("bbd", btnbookdate.text.toString())
+                putString("t1", textView1.text.toString())
+                putString("t2", textView2.text.toString())
+            }?.apply()
             val intent = Intent(context, SearchActivity ::class.java)
+            intent.putExtra("start", startPos)
+            intent.putExtra("end", endPos)
+         //   intent.putExtra("bp", bookpassengers.text.toString())
             startActivity(intent)
 
             bookpickuplocation.text.clear()
@@ -176,6 +208,7 @@ class FindFragment : Fragment() {
             bookpickuplocation.setText(place.address)
             textView1.text = String.format("%s", place.name)
             textView11.text = place.latLng.toString()
+            startPos = place.latLng.toString()
         }else if (requestCode == 50 && resultCode == Activity.RESULT_OK) {
             val place = Autocomplete.getPlaceFromIntent(
                 data!!
@@ -183,6 +216,7 @@ class FindFragment : Fragment() {
             bookdroplocation.setText(place.address)
             textView2.text = String.format("%s", place.name)
             textView22.text = place.latLng.toString()
+            endPos= place.latLng.toString()
 
         }else if (resultCode == AutocompleteActivity.RESULT_ERROR) {
             val status = Autocomplete.getStatusFromIntent(data!!)

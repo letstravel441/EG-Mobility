@@ -11,10 +11,11 @@ import android.widget.ImageSwitcher
 import android.widget.ImageView
 import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.database.DatabaseReference
-import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.*
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
+import com.narendar.letstravel.NotificationData
+import com.narendar.letstravel.PushNotification
 import com.narendar.letstravel.R
 import java.util.*
 import kotlin.collections.ArrayList
@@ -71,7 +72,7 @@ class Sell3Activity : AppCompatActivity() {
         ref?.child("titleSort")?.setValue(bikeModel.toString().lowercase())
 
         ref?.child("price")?.setValue(price.toString())
-        ref?.child("username")?.setValue(currentUser?.email)
+
 
         ref?.child("productID")?.setValue(product)
 
@@ -86,6 +87,22 @@ class Sell3Activity : AppCompatActivity() {
         ref?.child("comment")?.setValue(addAComment.toString())
         ref?.child("yearOfBuy")?.setValue(yearOfBuy.toString())
         ref?.child("mileage")?.setValue(mileage.toString())
+
+        val userreference = FirebaseDatabase.getInstance().getReference("profile").child(currentUser!!.uid)
+
+        userreference?.addListenerForSingleValueEvent(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+
+                ref?.child("username")?.setValue(snapshot.child("email").value.toString())
+                }
+
+                //context?.let { Glide.with(it).load(snapshot.child("profileImage").value.toString()).placeholder(R.drawable.profile_image).into(imgProfilePic) }
+
+
+            override fun onCancelled(error: DatabaseError) {
+                TODO("Not yet implemented")
+            }
+        })
 
 
         imageSwitcher.setFactory { ImageView(applicationContext) }
@@ -112,7 +129,7 @@ class Sell3Activity : AppCompatActivity() {
         save.setOnClickListener {
             val intent = Intent(this, MBMainActivity::class.java)
             // start your next activity
-            startActivity(intent)
+
 
             val fileName = UUID.randomUUID().toString()
             val imageFolder: StorageReference =
@@ -145,6 +162,7 @@ class Sell3Activity : AppCompatActivity() {
                     }
                 }
             }
+            startActivity(intent)
         }
     }
 

@@ -72,9 +72,10 @@ class ServiceproviderFragment : Fragment(){
         val database = FirebaseDatabase.getInstance()
         val databaseReference = database?.reference!!.child("profile")
         val user = auth.currentUser
-        val usid = databaseReference?.child(user?.uid!!)
+       val usid = databaseReference?.child(user?.uid!!)
         var userid = user?.uid
         FirebaseMessaging.getInstance().subscribeToTopic("/topics/$userid")
+
         bike_1.setOnClickListener {
             Toast.makeText(context,"clicked on  EV BIKE", Toast.LENGTH_SHORT).show()
             val fragment= ev_bike_1Fragment()

@@ -12,6 +12,7 @@ import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
+import com.narendar.letstravel.MobileNumber
 import com.narendar.letstravel.R
 import com.smarteist.autoimageslider.SliderView
 
@@ -103,6 +104,7 @@ class ProductDetails : AppCompatActivity() {
         supportActionBar?.title =title
         supportActionBar?.setHomeButtonEnabled(true)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        actionBar.setNavigationOnClickListener { finish() }
         // showing the back button in action bar
         //actionBar!!.title = title
         //actionBar?.setHomeAsUpIndicator(R.drawable.ic_back)
@@ -113,6 +115,7 @@ class ProductDetails : AppCompatActivity() {
         //message seller
         val messageSeller = findViewById<Button>(R.id.message_seller)
         messageSeller.setOnClickListener {
+            if(FirebaseAuth.getInstance().currentUser != null){
             if (fromId == FirebaseAuth.getInstance().currentUser?.uid) {
                 Toast.makeText(this,"Can't open chat.", Toast.LENGTH_SHORT).show()
             }else{
@@ -121,6 +124,7 @@ class ProductDetails : AppCompatActivity() {
                 intent.putExtra("fromUsername", fromUsername)
                 startActivity(intent)
             }
+            } else startActivity(Intent(this, MobileNumber::class.java))
         }
 
         //share button
@@ -133,5 +137,11 @@ class ProductDetails : AppCompatActivity() {
             shareIntent.putExtra(Intent.EXTRA_TEXT, productUrl)
             startActivity(Intent.createChooser(shareIntent, "Share via"))
         }
+    }
+    override fun onRestart() {
+        super.onRestart()
+        startActivity(intent)
+        overridePendingTransition(0, 0)
+        finish()
     }
 }

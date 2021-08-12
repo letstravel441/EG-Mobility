@@ -8,6 +8,7 @@ import android.os.Bundle
 import android.provider.MediaStore
 import android.view.View
 import android.widget.*
+import androidx.appcompat.widget.Toolbar
 import com.bumptech.glide.Glide
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
@@ -38,6 +39,8 @@ class ProfileActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(com.narendar.letstravel.R.layout.activity_profile)
+
+
 
         firebaseUser = FirebaseAuth.getInstance().currentUser!!
 

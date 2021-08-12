@@ -21,6 +21,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 import com.google.firebase.firestore.FirebaseFirestore
 import com.narendar.letstravel.MapsActivity
+import com.narendar.letstravel.MobileNumber
 import com.narendar.letstravel.R
 import java.text.SimpleDateFormat
 import java.util.*
@@ -111,12 +112,14 @@ class ShareFragment : Fragment() {
         val databaseReference = database?.reference!!.child("profile")
 
         val user = auth.currentUser
-        val userreference = databaseReference?.child(user?.uid!!)
+
 
         val name = view.findViewById<TextView>(R.id.nameofuser)
         val emailofuser = view.findViewById<TextView>(R.id.emailofuser)
 
 
+        if(user != null){
+        val userreference = databaseReference?.child(user?.uid!!)
         userreference?.addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
 
@@ -134,6 +137,11 @@ class ShareFragment : Fragment() {
                 TODO("Not yet implemented")
             }
         })
+        }
+//        else {
+//                startActivity(Intent(context, MobileNumber::class.java))
+//            }
+
 
 
         Places.initialize(requireActivity().getApplicationContext(), "AIzaSyAG5Oh9bHDBoqM3BU1S2V0f-8uuo3ZHliw")

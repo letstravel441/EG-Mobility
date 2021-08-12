@@ -93,7 +93,8 @@ class InboxFragment : Fragment() {
 
 
     fun getUsersList() {
-        val firebase: FirebaseUser = FirebaseAuth.getInstance().currentUser!!
+        val firebase: FirebaseUser? = FirebaseAuth.getInstance().currentUser
+        if(firebase != null ){
 
         var userid = firebase.uid
         FirebaseMessaging.getInstance().subscribeToTopic("/topics/$userid")
@@ -129,5 +130,9 @@ class InboxFragment : Fragment() {
             }
 
         })
+        }
+//        else {
+//            startActivity(Intent(context, MobileNumber::class.java))
+//        }
     }
 }

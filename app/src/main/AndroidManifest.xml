@@ -19,8 +19,7 @@
         android:theme="@style/Theme.LetsTravel">
         <activity android:name=".serviceprovider.BusinessRegistrationActivity"></activity>
         <activity android:name=".serviceprovider.stationdetails" />
-        <activity android:name=".serviceprovider.ReceiveNotificationActivity" />
-        <activity android:name=".serviceprovider.NotifyActivity" />
+        <activity android:name=".serviceprovider.updateaccount" />
         <activity android:name=".serviceprovider.confirmbtn" />
         <activity android:name=".serviceprovider.Bookingdetails" />
         <activity android:name=".mybike.FilteredProducts" />
@@ -81,6 +80,19 @@
         <activity android:name=".RegistrationActivity" />
         <activity android:name=".LoginActivity" />
         <activity android:name=".MainActivity" />
+        <activity
+            android:name=".VerificationLayout"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="adjustResize|stateHidden" />
+        <activity
+            android:name=".MobileNumber"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="adjustResize|stateHidden" />
+        <activity
+            android:name=".Details"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="adjustResize|stateHidden" />
+        <activity android:name=".Profile" />
     </application>
 
 </manifest>

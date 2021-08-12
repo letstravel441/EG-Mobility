@@ -34,8 +34,9 @@ class ProfileFragment : Fragment() {
      lateinit var btnSave : Button
     lateinit  var progressBar : ProgressBar
     lateinit var imgProfilePic : ImageView
+    lateinit var userreference: DatabaseReference
 
-    private lateinit var firebaseUser: FirebaseUser
+
 
 
     private var filePath: Uri? = null
@@ -73,18 +74,26 @@ class ProfileFragment : Fragment() {
         databaseReference = database?.reference!!.child("profile")
 
         val user = auth.currentUser
-        val userreference = databaseReference?.child(user?.uid!!)
+
         storage = FirebaseStorage.getInstance()
         storageRef = storage.reference
 
-        firebaseUser = FirebaseAuth.getInstance().currentUser!!
 
+
+
+
+
+        if (user == null) {
+            startActivity(Intent(activity,MobileNumber::class.java))
+           // activity?.finish()
+           activity?.supportFragmentManager?.beginTransaction()?.remove(this)?.commit();
+        }
+       // databaseReference = FirebaseDatabase.getInstance().getReference("profile").child(firebaseUser.uid)
+        if(user != null ) {
+            val firebaseUser = FirebaseAuth.getInstance().currentUser!!
+        val userreference = databaseReference?.child(user.uid)
         databaseReference =
             FirebaseDatabase.getInstance().getReference("profile").child(firebaseUser.uid)
-
-
-
-
         userreference?.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
 
@@ -101,6 +110,7 @@ class ProfileFragment : Fragment() {
             }
         })
 
+
         btnSave = view.findViewById(R.id.btnSave)
          progressBar = view.findViewById(R.id.progressBar)
 
@@ -112,6 +122,7 @@ class ProfileFragment : Fragment() {
         btnSave.setOnClickListener {
             uploadImage()
             progressBar.visibility = View.VISIBLE
+        }
         }
 
 
@@ -137,6 +148,11 @@ class ProfileFragment : Fragment() {
                 }
             }
     }
+
+//    fun onBackPressed() {
+//        activity?.supportFragmentManager?.popBackStack()
+//        return
+//    }
 
     private fun chooseImage() {
         val intent: Intent = Intent()

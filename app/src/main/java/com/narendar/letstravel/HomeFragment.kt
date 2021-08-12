@@ -9,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.Toast
+import com.google.firebase.auth.FirebaseAuth
 import com.narendar.letstravel.mybike.MBMainActivity
 import com.narendar.letstravel.serviceprovider.ServiceproviderFragment
 
@@ -95,11 +96,13 @@ class HomeFragment : Fragment() {
         serviceprovider.setOnClickListener {
 
           //  Toast.makeText(context,"clicked on  Service Provider", Toast.LENGTH_SHORT).show()
+            if(FirebaseAuth.getInstance().currentUser != null){
             val fragment= ServiceproviderFragment()
 
             val transaction = activity?.supportFragmentManager?.beginTransaction()
-            transaction?.replace(R.id.frame, ServiceproviderFragment())
+            transaction?.replace(R.id.frame, fragment)?.addToBackStack("kavya")
             transaction?.commit()
+            } else startActivity(Intent(context, MobileNumber::class.java))
         }
 
 

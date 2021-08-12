@@ -49,11 +49,11 @@ class AboutPublisher : AppCompatActivity() {
         var databaseReference = database?.reference!!.child("profile")
 
         val user = auth.currentUser
-        val userreference = databaseReference?.child(user?.uid!!)
+     //   val userreference = databaseReference?.child(user?.uid!!)
         var storage = FirebaseStorage.getInstance()
         var   storageRef = storage.reference
 
-        var firebaseUser = FirebaseAuth.getInstance().currentUser!!
+ //       var firebaseUser = FirebaseAuth.getInstance().currentUser!!
 
         databaseReference =
             FirebaseDatabase.getInstance().getReference("profile").child(userid!!)

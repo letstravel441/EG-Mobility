@@ -44,6 +44,7 @@ class MBHomeFragment : Fragment() {
                 if (snapshot.exists()) {
 
                     for (h in snapshot.children) {
+
                         val product = h.getValue(ProductsList::class.java)
                         products.add(product!!)
                     }

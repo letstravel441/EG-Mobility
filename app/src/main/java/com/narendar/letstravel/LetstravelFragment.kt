@@ -7,7 +7,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TableLayout
 import androidx.viewpager.widget.ViewPager
+import com.google.android.material.tabs.TabItem
 import com.google.android.material.tabs.TabLayout
+import com.google.firebase.auth.FirebaseAuth
 import com.narendar.letstravel.travelfragments.FindFragment
 import com.narendar.letstravel.travelfragments.ShareFragment
 
@@ -43,17 +45,36 @@ class LetstravelFragment : Fragment() {
 
         var viewPager = view.findViewById<ViewPager>(R.id.viewpager) as ViewPager
         var tablayout = view.findViewById<TabLayout>(R.id.tablayout) as TabLayout
+        var t2 = view.findViewById<TabItem>(R.id.secondItem)
+        var t3 = view.findViewById<TabItem>(R.id.thirditem)
+        var t4 = view.findViewById<TabItem>(R.id.fourthitem)
+
+
+        val tabLayout = view.findViewById<TabLayout>(R.id.tablayout) as TabLayout
+
+
 
 
         val fragmentAdapter = FragmentAdapter(requireActivity()!!.supportFragmentManager)
         fragmentAdapter.addFragment(FindFragment(),"FIND")
         fragmentAdapter.addFragment(ShareFragment(),"OFFER")
         fragmentAdapter.addFragment(InboxFragment(),"INBOX")
-        fragmentAdapter.addFragment(YourrideFragment(),"YOUR RIDE")
+        fragmentAdapter.addFragment(YourrideFragment(),"YOUR RIDES")
 
 
         viewPager.adapter = fragmentAdapter
         tablayout.setupWithViewPager(viewPager)
+
+        if(FirebaseAuth.getInstance().currentUser == null){
+            disableTab(tabLayout, 1)
+            disableTab(tabLayout, 2)
+            disableTab(tabLayout, 3)
+//            t2.visibility = View.INVISIBLE
+//            t3.visibility = View.INVISIBLE
+//            t4.visibility = View.INVISIBLE
+
+        }
+
 
         return view
     }
@@ -76,5 +97,9 @@ class LetstravelFragment : Fragment() {
                     putString(ARG_PARAM2, param2)
                 }
             }
+    }
+    private fun disableTab(tabLayout: TabLayout, index: Int){
+        (tabLayout.getChildAt(0) as ViewGroup ).getChildAt(index).setEnabled(false)
+
     }
 }
