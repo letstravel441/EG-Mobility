@@ -74,6 +74,9 @@ class Adaptermyservices (val context: Context, private  val MyservicesList: Arra
                                                 "message",
                                                 "Service request is Cancelled By Service Provider"
                                             )
+                                        FirebaseFirestore.getInstance().collection("service_user")
+                                            .document(i.id)
+                                            .update("status", "Denied")
                                     }
 
                                 }
