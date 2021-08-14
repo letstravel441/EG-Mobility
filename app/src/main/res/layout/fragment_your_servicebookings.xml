@@ -16,7 +16,7 @@
                 android:id="@+id/servicebookings1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="#000000"
+                android:textColor="#3F51B5"
                 android:textStyle="bold"
                 android:layout_margin="5dp"
                 android:text="My Bookings" />
@@ -33,7 +33,7 @@
                 android:id="@+id/servicesprovided1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="#000000"
+                android:textColor="#3F51B5"
                 android:textStyle="bold"
                 android:layout_margin="5dp"
                 android:layout_below="@+id/mybookings"

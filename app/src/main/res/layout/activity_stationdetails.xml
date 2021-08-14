@@ -25,7 +25,7 @@
             android:layout_marginTop="10dp"
             android:padding="10dp"
             android:text="Station Name:"
-            android:textColor="#111111"
+            android:textColor="#3F51B5"
             android:textSize="18sp" />
 
 
@@ -38,7 +38,7 @@
             android:layout_marginTop="10dp"
             android:padding="10dp"
             android:text="e-mail:"
-            android:textColor="#111111"
+            android:textColor="#3F51B5"
             android:textSize="18sp" />
 
 
@@ -50,7 +50,7 @@
             android:layout_marginTop="10dp"
             android:padding="10dp"
             android:text="location:"
-            android:textColor="#111111"
+            android:textColor="#3F51B5"
             android:textSize="18sp" />
 
         <TextView
@@ -61,7 +61,7 @@
             android:layout_marginTop="10dp"
             android:padding="10dp"
             android:text="Mobile number:"
-            android:textColor="#111111"
+            android:textColor="#3F51B5"
             android:textSize="18sp" />
         <Button
             android:id="@+id/btndate"
