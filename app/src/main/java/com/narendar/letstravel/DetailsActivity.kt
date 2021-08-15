@@ -21,14 +21,13 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import java.lang.Exception
-
+//This activity is opened when clicked on the layout of any ride in SearchActivity to show the complete details of the ride.
 class DetailsActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_details)
 
-
-
+        //Declaration and Initialisation of views through intent coming from AdapterSearch.
         val name_details: TextView = findViewById(R.id.name_details)
         val date_details: TextView = findViewById(R.id.date_details)
         val pickuplocation_details: TextView = findViewById(R.id.pickuplocation_details)
@@ -60,11 +59,8 @@ class DetailsActivity : AppCompatActivity() {
 
         noOfSeatsAvailable.text = y.toString()
 
-
+//Initialisation of toolbar and assigning title to it
         var toolbar = findViewById<Toolbar>(R.id.toolbar_details)
-
-
-
 
         setSupportActionBar(toolbar)
         supportActionBar?.setHomeButtonEnabled(true)
@@ -94,7 +90,7 @@ class DetailsActivity : AppCompatActivity() {
             if(FirebaseAuth.getInstance().currentUser!!.uid == publisherId) finish()
         }
         var name = intent.getStringExtra("name")
-
+//Code used for moving to ChatActivity through intent
         chat_details.setOnClickListener {
             if(user != null){
             val intent = Intent(this@DetailsActivity, ChatActivity ::class.java)
@@ -105,7 +101,7 @@ class DetailsActivity : AppCompatActivity() {
             } else startActivity(Intent(this, MobileNumber::class.java))
         }
 
-
+//Code for moving to AboutPublisher activity when user clicks on publisher profile
         userimg_details.setOnClickListener {
             val intent = Intent(this@DetailsActivity,AboutPublisher ::class.java)
 
@@ -114,14 +110,8 @@ class DetailsActivity : AppCompatActivity() {
         }
 
 
-//        val noofpassengers_details: TextView =findViewById(R.id.noofpassengers_details)
-//        Toast.makeText(this, "1)${noofpassengers_details.text.toString()}-2)${bookPassengers!!}-3)${passengersBoked}", Toast.LENGTH_LONG).show()
-//        val bookPickuplocation = sharedPreferences.getString("t1", null)
-//        val bookDroplocation = sharedPreferences.getString("t2", null)
-//        val btnbookDate = sharedPreferences.getString("bbd", null)
-//                 Toast.makeText(this, "-${bookPassengers}-${btnbookDate}-${bookPickuplocation}-${bookDroplocation}", Toast.LENGTH_LONG).show()
 
-
+//Following code will be in action when user clicks on the Book Ride button.
         bookride_details.setOnClickListener {
 
         if(user != null ){
@@ -144,7 +134,7 @@ class DetailsActivity : AppCompatActivity() {
             })
 
 
-
+            //Here all the details of person who booked the will be stored into varianles and then passed to saveFireStore function.
             val bookPickuplocation = sharedPreferences.getString("t1", null)
             val bookDroplocation = sharedPreferences.getString("t2", null)
             val btnbookDate = sharedPreferences.getString("bbd", null)
@@ -160,7 +150,8 @@ class DetailsActivity : AppCompatActivity() {
            // Toast.makeText(this, "1. ${noofpassengers_details.text.toString().toInt()} 2. ${bookPassengers!!.toInt()} 3. ${passengersBoked.toInt()}", Toast.LENGTH_LONG).show()
 
 
-
+//Code will check whether seats are available or not.
+            //If available then saveFireStore function will be called.
 
            if(x>=0){
                if (rideID != null) {
@@ -169,17 +160,13 @@ class DetailsActivity : AppCompatActivity() {
                    saveFireStore(emailofuser.text.toString(),name1.text.toString(),
                        bookPickuplocation!!, bookDroplocation!!,btnbookDate!! ,bookPassengers!!, user?.uid!!.toString(), bookerimage,bookFare,publishername,sharepickuplocation,sharedroplocation,rideID,noofpassengers_details.text.toString(),passengersbooked.toString(),date_details.text.toString(),publisherId!!,rating.text.toString())
                }
+               //Following code is used for two purposes
+               //One is to the update the status of ridestatus as booked in that ride in users collection
+               //Other one is to send the notification to publisher that a particular person booked your ride.
             updatestatus(rideID,bookPassengers!!.toInt(),passengersBoked.toInt())
 
              // notification
-
-
                    var message: String = "Ride booked"
-
-
-
-
-
 
                     var   topic = "/topics/$publisherId"
 
@@ -218,24 +205,6 @@ class DetailsActivity : AppCompatActivity() {
                        })
 
 
-
-
-                       /*    PushNotification(NotificationData( userName!!,message),
-                                 topic).also {
-                                 sendNotification(it)
-                             }*/
-
-
-
-
-
-
-
-
-
-
-             // end
-
                val intent = Intent(this@DetailsActivity, BookRidesActivity::class.java)
                startActivity(intent)
 
@@ -253,12 +222,8 @@ class DetailsActivity : AppCompatActivity() {
         Glide.with(this@DetailsActivity).load(userimg_string).placeholder(R.drawable.profile_image).into(userimg_details)
 
 
-
-
-
-
-
     }
+    //This function will be helpful in creating a new file for that booked ride with all the necessary details in booked collection in FireStore Database.
     fun saveFireStore(emailofuser : String ,bookerName:String, bookpickuplocation: String, bookdroplocation: String,btnbookdate:String ,bookPassengers : String , bookerId : String, bookerimage : String,bookFare: String, publisherName:String,sharePickuplocation: String, shareDroplocation: String,publishedrideId : String,totalPassengers : String,passengersBooked : String,shareDate:String,publisherId:String,ratingofpublisher:String) {
         val db = FirebaseFirestore.getInstance()
         val ride = db.collection("booked").document()

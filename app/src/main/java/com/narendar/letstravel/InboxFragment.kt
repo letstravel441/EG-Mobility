@@ -18,7 +18,8 @@ import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.*
 import com.google.firebase.messaging.FirebaseMessaging
 import de.hdodenhof.circleimageview.CircleImageView
-
+//Actually this fragment is used for displaying all chats of that person where atleast one message in between those two persons.
+//But at present we are showing all the users of app
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
 private const val ARG_PARAM1 = "param1"
@@ -91,7 +92,7 @@ class InboxFragment : Fragment() {
             }
     }
 
-
+//This function will store all users of app into userList and then that list is passed to InboxAdapter to display them on the screen.
     fun getUsersList() {
         val firebase: FirebaseUser? = FirebaseAuth.getInstance().currentUser
         if(firebase != null ){

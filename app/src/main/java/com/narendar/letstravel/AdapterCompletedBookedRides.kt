@@ -13,7 +13,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.google.firebase.firestore.FirebaseFirestore
-
+//This adapter is used for displaying completed booked rides in yourrides fragment.
 class AdapterCompletedBookedRides (val context: Context, private  val BookedRidesList: ArrayList<BookedRides>) :
     RecyclerView.Adapter<AdapterCompletedBookedRides.CompletedBookedRidesViewHolder>(){
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AdapterCompletedBookedRides.CompletedBookedRidesViewHolder {

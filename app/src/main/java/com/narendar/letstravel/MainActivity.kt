@@ -22,7 +22,7 @@ import com.narendar.letstravel.serviceprovider.BusinessRegistrationActivity
 import com.narendar.letstravel.serviceprovider.BusinessaccRegistration
 import com.narendar.letstravel.serviceprovider.your_servicebookings
 import java.util.*
-
+//This is the main activity where different fragments gets opened as a part of it.
 
 class MainActivity : AppCompatActivity() {
     lateinit var auth: FirebaseAuth
@@ -82,7 +82,7 @@ class MainActivity : AppCompatActivity() {
         })
     }
 
-
+//The Code from line 86 to 91 is used for creating a hamburger icon on toolbar and giving functionality for it.
         val actionBarDrawerToggle = ActionBarDrawerToggle(this@MainActivity ,drawerLayout,
             R.string.open_drawer,
             R.string.close_drawer
@@ -92,7 +92,8 @@ class MainActivity : AppCompatActivity() {
 
 
 
-
+// Following code is used for selecting the items of menu present in navigation drawer.
+        //When clicked on any particular item, corresponding fragment will be opened.
         navigationView.setNavigationItemSelectedListener {
 
             if(previousMenuItem!=null)
@@ -128,6 +129,8 @@ class MainActivity : AppCompatActivity() {
                     supportActionBar?.title="About App"
                     drawerLayout.closeDrawers()
                 }
+                //In Business item, if user does not have Business Account, he goes for BusinessRegistrationActivity.
+                //Else he moves to Business profile Fragment.
                 R.id.business -> {
                     val auth = FirebaseAuth.getInstance()
                     val database = FirebaseDatabase.getInstance()
@@ -192,7 +195,7 @@ class MainActivity : AppCompatActivity() {
 
 
     }
-
+//This function is used for setting the title of tool bar.
     fun setUpToolbar()
     {
         setSupportActionBar(toolbar)
@@ -201,7 +204,7 @@ class MainActivity : AppCompatActivity() {
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
     }
 
-
+//When clicked on hamburger icon, navigation drawer comes from left. For this following function will be helpful.
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         val id=item.itemId
         if(id==android.R.id.home)
@@ -210,7 +213,7 @@ class MainActivity : AppCompatActivity() {
         }
         return super.onOptionsItemSelected(item)
     }
-
+//By default Home fragment will be opened when main activity is opened because as it is the main screen of the app.
     fun openDashboard()
     {
         val fragment= HomeFragment()
@@ -221,7 +224,7 @@ class MainActivity : AppCompatActivity() {
         supportActionBar?.title="EG MOBILITY"
         navigationView.setCheckedItem(R.id.home)
     }
-
+//This function is used for opening Lets travel fragment.
     fun openletsTravel()
     {
 

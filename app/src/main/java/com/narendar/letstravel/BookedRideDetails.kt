@@ -14,7 +14,7 @@ import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.fragment_find.*
-
+//This activity is opened when user clicks on the layout of bookedrides in yourrides fragment.
 class BookedRideDetails : AppCompatActivity() {
 
     lateinit var auth: FirebaseAuth
@@ -23,7 +23,7 @@ class BookedRideDetails : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_booked_ride_details)
-
+        //Declaration and Initialisation of views through intent from AdapterBooked.
         val publishername = findViewById<TextView>(R.id.name_bookedRideDetails)
         val pickupBookedRideDetails = findViewById<TextView>(R.id.pickuplocation_bookedRideDetails)
         val dropBookedRideDetails = findViewById<TextView>(R.id.droplocation_bookedRideDetails)
@@ -55,7 +55,7 @@ class BookedRideDetails : AppCompatActivity() {
         val bookedRideId = intent.getStringExtra("rideId")
 
         val publisherId =  intent.getStringExtra("publisherId")
-
+        //Code for moving to Chat Activity through intent when passenger wants to communicate with publisher.
         chatBookedRideDetails.setOnClickListener {
             val intent = Intent(this@BookedRideDetails, ChatActivity ::class.java)
 
@@ -66,7 +66,7 @@ class BookedRideDetails : AppCompatActivity() {
 
 
 
-
+        //Code for assigning and updating seats availabity in this page.
         var available : Int
         var booked : Any?
         var total:Any?
@@ -81,6 +81,7 @@ class BookedRideDetails : AppCompatActivity() {
                 availableBookedRideDetails.text= available.toString()
             }
         }
+        //If passenger wants to cancel the ride, following code is helpful.
         cancelBookedRideDetails.setOnClickListener(View.OnClickListener {
             val builder = AlertDialog.Builder(this)
             builder.setTitle("Cancel Ride")
@@ -118,7 +119,7 @@ class BookedRideDetails : AppCompatActivity() {
             builder.show()
         })
 
-
+    //Code for visibility of finish button
        var a :Any?
         db.collection("users").document(publishedRideId!!).get().addOnCompleteListener {
                 result -> if(result.isSuccessful){ a = result.result.get("ridestarted")
@@ -136,7 +137,7 @@ class BookedRideDetails : AppCompatActivity() {
         var rideId = intent.getStringExtra("rideId")
 
         var completeride = findViewById<Button>(R.id.completedRide)
-
+//Following code will leads to review page where passenger wants to rate and review the ride when passenger clicks on finish button.
         completeride.setOnClickListener {
 
             val intent = Intent(this@BookedRideDetails, ReviewActivity::class.java)
@@ -149,57 +150,7 @@ class BookedRideDetails : AppCompatActivity() {
              startActivity(intent)
 
 
-               /*     val builder = AlertDialog.Builder(this)
-                    // Get the layout inflater
-                    val inflater = layoutInflater;
-
-                    // Inflate and set the layout for the dialog
-                    // Pass null as the parent view because its going in the dialog layout
-                    builder.setView(inflater.inflate(R.layout.dialog_review, null))
-                        // Add action buttons
-            var ratingdialog = findViewById<EditText>(R.id.rate)
-            var review = findViewById<EditText>(R.id.review)
-                          builder.setPositiveButton(
-                          "Submit"
-                           ) { dialogInterface, i ->
-
-
-                             databaseReference = FirebaseDatabase.getInstance().getReference("profile").child(publisherId!!)
-
-                              val hashMap:HashMap<String,String> = HashMap()
-                              hashMap.put("reviewerid",bookerId!!)
-                              hashMap.put("reviewername",bookername!!)
-                              hashMap.put("ratingofreviewer",ratingdialog.text.toString())
-                              hashMap.put("review",review.text.toString())
-
-
-                              databaseReference!!.child("reviews").setValue(hashMap).addOnCompleteListener(this){
-                                  if (it.isSuccessful){
-                                      //open home activity
-
-                                      Toast.makeText(this@BookedRideDetails, "Feedback submitted ", Toast.LENGTH_SHORT ).show()
-                                      onBackPressed()
-
-
-
-                                  }
-                                  else{
-                                      Toast.makeText(this@BookedRideDetails, "Feedback not submitted ", Toast.LENGTH_SHORT ).show()
-
-                                  }
-                              }
-
-
-                            }
-                            .setNegativeButton(
-                                "No"
-                            ) { dialogInterface, i ->
-                                Toast.makeText(this@BookedRideDetails, "Feedback not submitted ", Toast.LENGTH_SHORT ).show()
-
-                            }
-                                    builder.create()
-                                    builder.show()
-                               */ }
+                }
 
             }
 

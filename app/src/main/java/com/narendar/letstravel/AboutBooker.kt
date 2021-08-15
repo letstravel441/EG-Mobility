@@ -1,5 +1,5 @@
 package com.narendar.letstravel
-
+//This activity is opened when publisher of the ride clicks on the co-passenger's profile. From this they can know about their co-passenger reviews and ratings as a passenger.
 import android.animation.ObjectAnimator
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -18,26 +18,29 @@ import com.google.firebase.database.ValueEventListener
 import com.google.firebase.storage.FirebaseStorage
 
 class AboutBooker : AppCompatActivity() {
+    //Declaration of arrayList of reviews and recyclerview
     var reviewsList = ArrayList<review>()
     lateinit var  reviewRecyclerView : RecyclerView
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_about_booker)
 
-
+        //Initialisation of toolbar and assigning title to it
         var toolbar = findViewById<Toolbar>(R.id.toolbar_about_booker)
 
         setSupportActionBar(toolbar)
         supportActionBar?.title="About CoPassenger"
+        //Initialisation of recycler view.
         reviewRecyclerView=findViewById(R.id.reviewrecyclerview_booker)
         reviewRecyclerView.layoutManager = LinearLayoutManager(this, LinearLayout.VERTICAL, false)
 
-
+        //Declaration and initialisation of other views through intent from AdapterCoPassengers.
         var firstnamebooker = findViewById<TextView>(R.id.bookername_about_booker)
         var bookerage = findViewById<TextView>(R.id.bookerage)
         var gender = findViewById<TextView>(R.id.bookergender_about_booker)
         var userid = intent.getStringExtra("bookerId")
 
+        //Declaration of database and assigning values to the above declared variables
        var auth = FirebaseAuth.getInstance()
        var database = FirebaseDatabase.getInstance()
        var databaseReference = database?.reference!!.child("profile")
@@ -131,7 +134,7 @@ class AboutBooker : AppCompatActivity() {
             }
         })
 
-
+//Here reviews of a passenger are fetched from database and stored in a reviewsList and passed to AdapterBookerReviews for displaying on the mobile.
         val data = databaseReference.child("reviewsasuser")
 
 

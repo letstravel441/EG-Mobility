@@ -14,7 +14,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.firestore.*
-
+//This adapter is used for displaying published rides of a publisher in yourrides fragment.
 class AdapterShare(val context:Context,private  val sharedRidesList: ArrayList<SharedRides>) :RecyclerView.Adapter<AdapterShare.SharedRidesViewHolder>(){
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AdapterShare.SharedRidesViewHolder {
         val itemView=LayoutInflater.from(parent.context).inflate(R.layout.shared_rides_item,parent,false)
@@ -29,7 +29,7 @@ class AdapterShare(val context:Context,private  val sharedRidesList: ArrayList<S
         holder.shareDate.text = sharedRides.shareDate
         holder.status.text=sharedRides.Status
         holder.shareFare.text = sharedRides.shareFare
-
+//When publisher clicks on the layout of any particular published ride, it will lead to an SharedRideDetails where all the details of that ride will be shown.
         holder.llContent.setOnClickListener {
             val intent = Intent(context, SharedRidesDetails::class.java)
             intent.putExtra("pickup", sharedRides.sharePickuplocation)
@@ -52,7 +52,7 @@ class AdapterShare(val context:Context,private  val sharedRidesList: ArrayList<S
         if(sharedRides.ridestarted=="Yes"||sharedRides.ridestarted=="Completed"){
             holder.delete.visibility=View.GONE
         }
-
+        // If publisher wants to cancel the ride, following code helps in this regard and delete that particular ride from database.
         holder.delete.setOnClickListener(View.OnClickListener {
             val builder = AlertDialog.Builder(holder.Name.getContext())
 

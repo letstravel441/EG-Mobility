@@ -11,7 +11,7 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.firestore.FirebaseFirestore
-
+//This adapter is used for displaying co-passengers list for publisher in SharedRidesDetails.
 class AdapterCoPassengers(val context: Context, private  val CoPassengersRidesList: ArrayList<CoPassengerRides>) :
     RecyclerView.Adapter<AdapterCoPassengers.CoPassengersViewHolder>(){
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AdapterCoPassengers.CoPassengersViewHolder {
@@ -44,7 +44,7 @@ class AdapterCoPassengers(val context: Context, private  val CoPassengersRidesLi
         if(bookedRides.ridestarted=="Yes"||bookedRides.ridestarted=="Completed"){
             holder.delete.visibility=View.GONE
         }
-
+        // Code for moving to chat activity when publisher clicks on chat button.
         holder.chat.setOnClickListener {
             val intent = Intent(context, ChatActivity ::class.java)
 
@@ -53,7 +53,7 @@ class AdapterCoPassengers(val context: Context, private  val CoPassengersRidesLi
             context.startActivity(intent)
         }
 
-
+        //Code for cancelling the ride of a particular passenger by publisher of the ride and updating corresponding details of ride in firestore database.
         holder.delete.setOnClickListener(View.OnClickListener {
             val builder = AlertDialog.Builder(holder.bookerName.getContext())
 
@@ -123,6 +123,7 @@ class AdapterCoPassengers(val context: Context, private  val CoPassengersRidesLi
         val llContent : LinearLayout =itemView.findViewById(R.id.llContent_coPassengers)
         val review: Button = itemView.findViewById(R.id.review_coPassengers)
     }
+    //Code for removing item from recycler view.
     fun removeRide(p : Int){
         CoPassengersRidesList.removeAt(p)
         notifyDataSetChanged()
