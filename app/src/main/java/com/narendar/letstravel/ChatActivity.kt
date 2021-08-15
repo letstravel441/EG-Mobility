@@ -19,7 +19,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import java.lang.Exception
 import java.util.ArrayList
-
+//This activity is opened when chat button is clicked which shows the messages between those particular users.
 class ChatActivity : AppCompatActivity() {
 
 
@@ -31,7 +31,7 @@ class ChatActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(com.narendar.letstravel.R.layout.activity_chat)
-
+        //Declaration and Initialisation of recycler view which is helpful in displaying the messages between those users.
         var chatRecyclerView = findViewById<RecyclerView>(com.narendar.letstravel.R.id.chatRecyclerView)
 
         chatRecyclerView.layoutManager = LinearLayoutManager(this, LinearLayout.VERTICAL, false)
@@ -78,7 +78,7 @@ class ChatActivity : AppCompatActivity() {
                 }
             }
         })
-
+        //Following code will be in action when user clicks on send button
         btnSendMessage.setOnClickListener {
             var message: String = etMessage.text.toString()
 
@@ -138,7 +138,7 @@ class ChatActivity : AppCompatActivity() {
 
         readMessage(firebaseUser!!.uid, userId)
     }
-
+// This function is used for storing new message in database which will be called when user clicks on send button.
     private fun sendMessage(senderId: String, receiverId: String, message: String) {
         var reference: DatabaseReference? = FirebaseDatabase.getInstance().getReference()
 
@@ -150,7 +150,7 @@ class ChatActivity : AppCompatActivity() {
         reference!!.child("Chat").push().setValue(hashMap)
 
     }
-
+//This function will be in action for displaying the older messages.
     fun readMessage(senderId: String, receiverId: String) {
 
         var chatRecyclerView = findViewById<RecyclerView>(com.narendar.letstravel.R.id.chatRecyclerView)
@@ -181,7 +181,7 @@ class ChatActivity : AppCompatActivity() {
             }
         })
     }
-
+//This function is used for sending notifications when  there is a new message
      private fun sendNotification(notification: PushNotification) = CoroutineScope(Dispatchers.IO).launch {
         try {
             val response = RetrofitInstance.api.postNotification(notification)

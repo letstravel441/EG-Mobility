@@ -9,7 +9,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import de.hdodenhof.circleimageview.CircleImageView
-
+//This adapter is used for displaying older messages in ChatActivity
+//If it is a sent message, then item_right layout file will be used.
+//If it is a received message, then item_left layout file will be used.
 class ChatAdapter(private val context: Context, private val chatList: ArrayList<Chat>) :
     RecyclerView.Adapter<ChatAdapter.ViewHolder>() {
 

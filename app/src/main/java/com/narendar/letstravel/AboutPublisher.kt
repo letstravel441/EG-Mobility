@@ -1,5 +1,5 @@
 package com.narendar.letstravel
-
+//This activity is opened when a passenger clicks on publisher profile.This shows details of publisher like rating , reviews etc.,.
 import android.animation.ObjectAnimator
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -15,19 +15,21 @@ import com.google.firebase.database.*
 import com.google.firebase.storage.FirebaseStorage
 
 class AboutPublisher : AppCompatActivity() {
+    //Declaration of arrayList of reviews and recyclerview
     var reviewsList = ArrayList<review>()
     lateinit var  reviewRecyclerView : RecyclerView
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_about_publisher)
-
+        //Initialisation of toolbar and assigning title to it
         var toolbar = findViewById<Toolbar>(R.id.toolbar_about_publisher)
 
         setSupportActionBar(toolbar)
         supportActionBar?.title="About Publisher"
+        //Initialisation of recycler view.
         reviewRecyclerView=findViewById(R.id.reviewrecyclerview)
            reviewRecyclerView.layoutManager = LinearLayoutManager(this, LinearLayout.VERTICAL, false)
-
+        //Declaration and initialisation of other views through intent from AdapterCoPassengers.
         var publishername = findViewById<TextView>(R.id.publishername_about_publisher)
         var publisherage = findViewById<TextView>(R.id.publisherage)
         var gender = findViewById<TextView>(R.id.publishergender_about_publisher)
@@ -43,7 +45,7 @@ class AboutPublisher : AppCompatActivity() {
 
 
         var userid = intent.getStringExtra("publisherid")
-
+        //Declaration of database and assigning values to the above declared variables
         var auth = FirebaseAuth.getInstance()
         var database = FirebaseDatabase.getInstance()
         var databaseReference = database?.reference!!.child("profile")
@@ -106,7 +108,7 @@ class AboutPublisher : AppCompatActivity() {
                 TODO("Not yet implemented")
             }
         })
-
+//Here reviews of a publisher are fetched from database and stored in a reviewsList and passed to AdapterBookerReviews for displaying on the mobile.
 
         val data = databaseReference.child("reviews")
 

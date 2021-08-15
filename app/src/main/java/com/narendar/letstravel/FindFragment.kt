@@ -1,5 +1,5 @@
 package com.narendar.letstravel.travelfragments
-
+//This fragment is used when user wants to search for rides.
 import android.app.Activity
 import android.app.DatePickerDialog
 import android.app.TimePickerDialog
@@ -32,6 +32,7 @@ import java.text.SimpleDateFormat
 import java.util.*
 
 ;
+//Declaration of views
 lateinit var bookpickuplocation: EditText
 lateinit var bookdroplocation: EditText
 lateinit var btnbookdate: Button // 1
@@ -51,7 +52,7 @@ class FindFragment : Fragment() {
     lateinit var bookerimage : String
     lateinit var startPos : String
     lateinit var endPos: String
-
+// Variables declared are used for storing date and time.
     var uday = 0
     var umonth = 0
     var uyear = 0
@@ -64,7 +65,7 @@ class FindFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val view = inflater.inflate(R.layout.fragment_find, container, false)
-
+//Initialisation of views
         bookpickuplocation = view.findViewById<EditText>(R.id.bookpickuplocation)
         bookdroplocation = view.findViewById<EditText>(R.id.bookdroplocation)
         val search = view.findViewById<Button>(R.id.search)
@@ -81,7 +82,7 @@ class FindFragment : Fragment() {
         textView11 = view.findViewById<TextView>(R.id.text_view11_find)
 
 
-
+//Following Code is for AutoComplete feature where place suggestions are shown when user clicks on pick up and drop locations and store corresponding location in sharedPreference file.
         Places.initialize(requireActivity().getApplicationContext(), "AIzaSyAG5Oh9bHDBoqM3BU1S2V0f-8uuo3ZHliw")
         bookpickuplocation.isFocusable = false
 
@@ -123,6 +124,7 @@ class FindFragment : Fragment() {
             }
             startActivityForResult(intent, 50)
         }
+        //Following code is used for selecting data and time by the user in Find fragment and store those values in corresponding variables
         val cal: Calendar = Calendar.getInstance()
         val date = formate.format(cal.time)
         btnbookdate.text=date

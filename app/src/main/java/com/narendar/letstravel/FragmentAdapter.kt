@@ -3,7 +3,7 @@ package com.narendar.letstravel
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentStatePagerAdapter
-
+//This adapter is used for displaying particular fragment when clicked on that option in home screen of Lets Travel.
 class FragmentAdapter(fm : FragmentManager) : FragmentStatePagerAdapter(fm,
     BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT) {
 

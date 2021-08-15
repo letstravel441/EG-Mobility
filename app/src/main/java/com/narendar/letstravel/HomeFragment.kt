@@ -12,7 +12,7 @@ import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
 import com.narendar.letstravel.mybike.MBMainActivity
 import com.narendar.letstravel.serviceprovider.ServiceproviderFragment
-
+//It is home fragment where all  major options of this app will be visible.
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
 private const val ARG_PARAM1 = "param1"
@@ -53,7 +53,7 @@ class HomeFragment : Fragment() {
         val serviceprovider         =  view.findViewById<ImageView>(R.id.serviceprovider)
 
 
-
+// Following code will leads to that corresponding features when clicked on that option.
 
         letstravel.setOnClickListener {
 

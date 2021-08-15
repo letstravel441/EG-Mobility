@@ -9,7 +9,7 @@ import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
-
+//This activity is used for Logging into the app.
 class LoginActivity : AppCompatActivity() {
 
     lateinit var auth: FirebaseAuth
@@ -18,7 +18,7 @@ class LoginActivity : AppCompatActivity() {
         setContentView(R.layout.activity_login)
 
         auth = FirebaseAuth.getInstance()
-
+//If user is already logged in, then that user navigates to Home screen directly.
         val currentuser = auth.currentUser
         if(currentuser != null) {
             startActivity(Intent(this@LoginActivity, MainActivity::class.java))
@@ -28,7 +28,7 @@ class LoginActivity : AppCompatActivity() {
         login()
 
     }
-
+//This function will be called when the person clicks on the login button.
     private fun login() {
 
         var loggedin = findViewById<Button>(R.id.loggedin)
@@ -55,7 +55,7 @@ class LoginActivity : AppCompatActivity() {
                 }
 
         }
-
+//Following 3 lines of code will make us move to Registration page if he has not registered.
         var registerText = findViewById<TextView>(R.id.registerText)
         registerText.setOnClickListener{
             startActivity(Intent(this@LoginActivity, RegistrationActivity::class.java))

@@ -12,7 +12,7 @@ import com.google.android.material.tabs.TabLayout
 import com.google.firebase.auth.FirebaseAuth
 import com.narendar.letstravel.travelfragments.FindFragment
 import com.narendar.letstravel.travelfragments.ShareFragment
-
+//This fragment gets opened when user clicks on the Lets travel option in Home fragment.
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
 private const val ARG_PARAM1 = "param1"
@@ -48,13 +48,13 @@ class LetstravelFragment : Fragment() {
         var t2 = view.findViewById<TabItem>(R.id.secondItem)
         var t3 = view.findViewById<TabItem>(R.id.thirditem)
         var t4 = view.findViewById<TabItem>(R.id.fourthitem)
-
+//This fragment consists of a tabLayout below toolbar which consists of four options "FIND" , "OFFER" , "INBOX" and "YOUR RIDES"
 
         val tabLayout = view.findViewById<TabLayout>(R.id.tablayout) as TabLayout
 
 
 
-
+//When clicked on any particular option , corresponding fragment will be opened with the help of FragmentAdapter.
         val fragmentAdapter = FragmentAdapter(requireActivity()!!.supportFragmentManager)
         fragmentAdapter.addFragment(FindFragment(),"FIND")
         fragmentAdapter.addFragment(ShareFragment(),"OFFER")

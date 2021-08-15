@@ -13,7 +13,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.google.firebase.firestore.FirebaseFirestore
-
+//This adapter is used for displaying booked rides in yourrides fragment.
 class AdapterBooked (val context: Context, private  val BookedRidesList: ArrayList<BookedRides>) :
     RecyclerView.Adapter<AdapterBooked.BookedRidesViewHolder>(){
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AdapterBooked.BookedRidesViewHolder {
@@ -62,17 +62,18 @@ class AdapterBooked (val context: Context, private  val BookedRidesList: ArrayLi
         if(bookedRides.ridestarted=="Yes"||bookedRides.ridestarted=="Completed"){
             holder.delete.visibility=View.GONE
         }
+        //Code for cancelling the ride by the passenger
         holder.delete.setOnClickListener(View.OnClickListener {
             val builder = AlertDialog.Builder(holder.Name.getContext())
 
-
+        //When cancelling the ride, this code helps to create a dialog box to confirm the cancellation.
 
             builder.setTitle("Cancel Ride")
             builder.setMessage("Do you want to cancel Ride?")
             builder.setPositiveButton(
                 "Cancel"
             ) { dialogInterface, i ->
-
+            //If passenger confirms the cancellation, corresponding seats of the ride in the database are updated.
                 var totalseats = bookedRides.totalseats
                 val passengersbooked = bookedRides.passengersBooked
                 val bookpassengers = bookedRides.bookPassengers
@@ -111,7 +112,7 @@ class AdapterBooked (val context: Context, private  val BookedRidesList: ArrayLi
     override fun getItemCount(): Int {
         return BookedRidesList.size
     }
-
+    //This BookedRidesViewHolder helps in holding the views of the item.
     public class BookedRidesViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
         val Name: TextView = itemView.findViewById(R.id.name_booked)
         val sharePickuplocation: TextView = itemView.findViewById(R.id.source_booked)
@@ -124,6 +125,7 @@ class AdapterBooked (val context: Context, private  val BookedRidesList: ArrayLi
         val llContent : LinearLayout=itemView.findViewById(R.id.llContent_bookedridedetails)
         val ratingofpublisher: TextView = itemView.findViewById(R.id.ratings_booked)
     }
+    //This function is used for removing a item from recyclerview.
     fun removeRide(p : Int){
         BookedRidesList.removeAt(p)
         notifyDataSetChanged()

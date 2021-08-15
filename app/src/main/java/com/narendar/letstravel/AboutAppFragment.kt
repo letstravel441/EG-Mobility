@@ -1,5 +1,5 @@
 package com.narendar.letstravel
-
+//It is a fragment which comes into the action when user clicks on About App option in navigation menu which is present on toolbar.
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater

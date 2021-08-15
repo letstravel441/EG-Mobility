@@ -10,7 +10,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import de.hdodenhof.circleimageview.CircleImageView
-
+//This adapter is used in Inbox Fragment for dispaying the chats of the user.
 class InboxAdapter(private val context: Context, private val userList: ArrayList<User>) :
     RecyclerView.Adapter<InboxAdapter.ViewHolder>() {
 
@@ -29,7 +29,7 @@ class InboxAdapter(private val context: Context, private val userList: ArrayList
         val user = userList[position]
         holder.txtUserName.text = user.userName
         Glide.with(context).load(user.profileImage).placeholder(R.drawable.profile_image).into(holder.imgUser)
-
+//When user clicks on any layout of chat , he or she will lead to ChatActivity page.
         holder.layoutUser.setOnClickListener {
             val intent = Intent(context,ChatActivity::class.java)
             intent.putExtra("userId",user.userId)

@@ -9,7 +9,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.database.ValueEventListener
 import de.hdodenhof.circleimageview.CircleImageView
-
+//This adapter is used for displaying reviews of passenger in AboutBooker activity.
 class AdapterBookerReviews(private val context: ValueEventListener, private val reviewsList: ArrayList<review>):
     RecyclerView.Adapter<AdapterBookerReviews.ViewHolder>(){
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AdapterBookerReviews.ViewHolder {
