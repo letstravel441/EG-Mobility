@@ -9,7 +9,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.database.ValueEventListener
 import de.hdodenhof.circleimageview.CircleImageView
-
+// this adapter is used in about publisher activity to dispaly reviews
 class ReviewAdapter(private val context: ValueEventListener, private val reviewsList: ArrayList<review>):
 RecyclerView.Adapter<ReviewAdapter.ViewHolder>(){
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ReviewAdapter.ViewHolder {

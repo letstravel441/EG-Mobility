@@ -21,7 +21,8 @@ import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 import java.io.IOException
-
+// not used
+// but can be used by writing an intent from other activity or fragment
 
 class MapsActivity : FragmentActivity(), OnMapReadyCallback {
 

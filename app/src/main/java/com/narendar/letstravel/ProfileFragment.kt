@@ -21,7 +21,7 @@ import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
 import java.io.IOException
 import java.util.*
-
+// used for showing profile of user in navigation drawer
 private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
 
@@ -31,6 +31,7 @@ class ProfileFragment : Fragment() {
     private var param1: String? = null
     private var param2: String? = null
 
+
      lateinit var btnSave : Button
     lateinit  var progressBar : ProgressBar
     lateinit var imgProfilePic : ImageView
@@ -38,7 +39,7 @@ class ProfileFragment : Fragment() {
 
 
 
-
+//
     private var filePath: Uri? = null
 
     private val PICK_IMAGE_REQUEST: Int = 2020
@@ -81,7 +82,7 @@ class ProfileFragment : Fragment() {
 
 
 
-
+// fetching user data from realtime data base
 
         if (user == null) {
             startActivity(Intent(activity,MobileNumber::class.java))
@@ -153,6 +154,7 @@ class ProfileFragment : Fragment() {
 //        activity?.supportFragmentManager?.popBackStack()
 //        return
 //    }
+//function not working properly
 
     private fun chooseImage() {
         val intent: Intent = Intent()
@@ -177,7 +179,7 @@ class ProfileFragment : Fragment() {
     }
 
 
-
+// not working properly
 
     private fun uploadImage() {
 

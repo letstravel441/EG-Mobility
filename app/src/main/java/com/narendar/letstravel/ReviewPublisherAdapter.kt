@@ -14,7 +14,7 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import com.google.firebase.firestore.FirebaseFirestore
-
+//This adapter is used for holding the reviews of the publisher
 class ReviewPublisherAdapter(val context: Context, private  val CoPassengersRidesList: ArrayList<CoPassengerRides>) :
     RecyclerView.Adapter<ReviewPublisherAdapter.ReviewPublisherViewHolder>(){
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ReviewPublisherAdapter.ReviewPublisherViewHolder {
@@ -43,6 +43,7 @@ class ReviewPublisherAdapter(val context: Context, private  val CoPassengersRide
             }
 
         })
+        // functionality for review submit button
         holder.submitReviewPublisher.setOnClickListener {
 
             val databaseReference = FirebaseDatabase.getInstance().getReference("profile").child(bookedRides.bookerId!!)
@@ -55,7 +56,7 @@ class ReviewPublisherAdapter(val context: Context, private  val CoPassengersRide
             hashMap.put("publishedRideId",bookedRides.publishedRideId!!)
 
 
-
+// fetching and updating reviews of publisher in realtime data base
             databaseReference?.addListenerForSingleValueEvent(object : ValueEventListener {
                 override fun onDataChange(snapshot: DataSnapshot) {
 
@@ -70,10 +71,6 @@ class ReviewPublisherAdapter(val context: Context, private  val CoPassengersRide
                         snapshot.child("noof4starratingsasuser").value.toString().toInt()
                     var current5 =
                         snapshot.child("noof5starratingsasuser").value.toString().toInt()
-
-
-
-
 
 
                     val currenrtreviews = mapOf<String, String>( "totalreviewsasuser" to (totalreviews + 1).toString())
@@ -169,11 +166,7 @@ class ReviewPublisherAdapter(val context: Context, private  val CoPassengersRide
                 if (it.isSuccessful){
                     //open home activity
 
-
                     Toast.makeText(context, "Feedback submitted ", Toast.LENGTH_SHORT ).show()
-
-
-
 
                 }
                 else{

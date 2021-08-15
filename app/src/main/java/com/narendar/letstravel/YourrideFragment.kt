@@ -17,7 +17,8 @@ import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import com.google.firebase.firestore.*
 
-
+//this file is for displaying all user rides like booked and shared rides
+//opened when clicked on yourrides
 private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
 
@@ -26,16 +27,19 @@ class YourrideFragment : Fragment() {
     private var param1: String? = null
     private var param2: String? = null
 
-
+// declaring recyclerview of shared rides
     private lateinit var recyclerView: RecyclerView
     private lateinit var sharedRidesList: ArrayList<SharedRides>
     private lateinit var adapterShare: AdapterShare
 
     private lateinit var db: FirebaseFirestore
 
+    // declaring recyclerview of booked rides
     private lateinit var recyclerView_booked: RecyclerView
     private lateinit var bookedRidesList: ArrayList<BookedRides>
     private lateinit var adapterBooked: AdapterBooked
+
+    // declaring recyclerview of completed booked rides
 
     private lateinit var recyclerView_completed_booked: RecyclerView
     private lateinit var completedBookedRidesList: ArrayList<BookedRides>
@@ -76,7 +80,7 @@ class YourrideFragment : Fragment() {
         adapterCompletedBooked = context?.let { AdapterCompletedBookedRides(it,completedBookedRidesList) }!!
         recyclerView_completed_booked.adapter = adapterCompletedBooked
 
-
+// fetching user data from realtime database i.e email
         val auth = FirebaseAuth.getInstance()
         val database = FirebaseDatabase.getInstance()
         val databaseReference = database?.reference!!.child("profile")
@@ -107,18 +111,11 @@ class YourrideFragment : Fragment() {
         }
 
         val s = emailofuser.text.toString()
-
-
         return view
     }
 
-    private fun getUserData() {
-        TODO("Not yet implemented")
-    }
-
+   // fetching the data of rides shared by the user from firestoredatabase
     private fun EventChangeListner(s : String) {
-
-
                 db = FirebaseFirestore.getInstance()
                 db.collection("users").whereEqualTo("UserID", s).whereNotEqualTo("ridestarted","Completed")
                     .addSnapshotListener(object : EventListener<QuerySnapshot> {
@@ -142,6 +139,9 @@ class YourrideFragment : Fragment() {
                     })
 
     }
+
+    // fetching the data of rides booked by the user from firestoredatabase
+
     private fun EventChangeListner_booked(s : String) {
 
 
@@ -168,6 +168,8 @@ class YourrideFragment : Fragment() {
             })
 
     }
+
+    // fetching the data of rides which are completed shared  by the user from firestoredatabase
 
     private fun EventChangeListner_completed_booked(s: String) {
 

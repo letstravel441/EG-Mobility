@@ -21,9 +21,10 @@ import com.google.firebase.database.ValueEventListener
 import com.google.firebase.firestore.*
 import java.util.HashMap
 import kotlin.math.*
+//when we clicks find button in find fragment this activity will be opened , displaying all the available rides
 
 class SearchActivity : AppCompatActivity() {
-
+// declaring the recycler view of available rides
     private lateinit var recyclerView: RecyclerView
     private lateinit var sharedRidesList: ArrayList<SharedRides>
     private lateinit var adapterSearch: AdapterSearch
@@ -35,10 +36,6 @@ class SearchActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_search)
-
-
-
-
 
         recyclerView = findViewById(R.id.searchrecyclerview)
         recyclerView.layoutManager= LinearLayoutManager(this )
@@ -61,7 +58,7 @@ class SearchActivity : AppCompatActivity() {
 
     }
 
-
+    // function for fetching the data of available rides
     private fun EventChangeListner() {
 
         db = FirebaseFirestore.getInstance()

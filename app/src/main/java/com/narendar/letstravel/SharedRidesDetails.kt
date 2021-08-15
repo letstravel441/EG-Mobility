@@ -15,8 +15,10 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import com.google.firebase.firestore.*
-
+// opened when clicked on any item in rides shared in yourride fragment
+// for showing the shared ride details and copassenger details to publisher
 class SharedRidesDetails : AppCompatActivity() {
+    // declaring recyclerview of co-passengers
     private lateinit var recyclerView: RecyclerView
     private lateinit var coPassengersRidesList: ArrayList<CoPassengerRides>
     private lateinit var adapterCoPassengers: AdapterCoPassengers
@@ -25,6 +27,7 @@ class SharedRidesDetails : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_shared_rides_details)
+        // initialising the assigning variables through intent from co-passenger adapter
         val dateSharedRideDetails = findViewById<TextView>(R.id.date_shared_ride_details)
         val pickupSharedRideDetails = findViewById<TextView>(R.id.pickuplocation_shared_ride_details)
         val dropSharedRideDetails = findViewById<TextView>(R.id.droplocation_shared_ride_details)
@@ -60,10 +63,9 @@ class SharedRidesDetails : AppCompatActivity() {
         EventChangeListnerCoPassengers(publishedRideId!!)
 
         var ridecompleted = findViewById<Button>(R.id.ridecompleted)
-
+// functionality for start ride button
+// After clicking this button, copassengers will know whether the ride is started or not
         ridestart.setOnClickListener {
-
-
 
                 db = FirebaseFirestore.getInstance()
                 db.collection("users").document(publishedRideId).update("ridestarted","Yes")
@@ -86,7 +88,7 @@ class SharedRidesDetails : AppCompatActivity() {
                 ridecompleted.visibility= View.VISIBLE
 
         }
-
+//
         var isRideStarted = intent.getStringExtra("ridestarted")
         if(isRideStarted=="Yes"||isRideStarted=="Completed")
         {
@@ -99,7 +101,7 @@ class SharedRidesDetails : AppCompatActivity() {
             ridestart.visibility = View.GONE
         }
         ridecompleted.setOnClickListener {
-
+//code for updating the status of the ride in firestore database i.e. started or completed
             db = FirebaseFirestore.getInstance()
             db.collection("users").document(publishedRideId).update("ridestarted","Completed")
 
@@ -119,6 +121,7 @@ class SharedRidesDetails : AppCompatActivity() {
                     }
 
                 })
+
                 db.collection("booked").whereEqualTo("publishedRideId", publishedRideId).whereEqualTo("message","")
                     .addSnapshotListener(object : EventListener<QuerySnapshot> {
                         override fun onEvent(
@@ -145,6 +148,7 @@ class SharedRidesDetails : AppCompatActivity() {
 
 
     }
+    // function for fetching the co-passenger details
     private fun EventChangeListnerCoPassengers(s : String) {
 
 

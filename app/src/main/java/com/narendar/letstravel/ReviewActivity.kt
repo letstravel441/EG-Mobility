@@ -7,7 +7,8 @@ import android.widget.*
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 import kotlin.system.exitProcess
-
+//this is the feedback page
+//opens when clicked on finish button co passengers
 class ReviewActivity : AppCompatActivity() {
     lateinit var auth: FirebaseAuth
     var databaseReference :  DatabaseReference? = null
@@ -32,7 +33,7 @@ class ReviewActivity : AppCompatActivity() {
         var rb_ratingBar = findViewById<RatingBar>(R.id.rb_ratingBar)
 
 
-
+// code for rating bar
         rb_ratingBar.rating=0f
         rb_ratingBar.stepSize=1f
         rb_ratingBar.setOnRatingBarChangeListener { ratingBar, rating, fromUser ->
@@ -49,10 +50,8 @@ class ReviewActivity : AppCompatActivity() {
 
 
         var submit = findViewById<Button>(R.id.submitreview)
-
+// submit button functionality
         submit.setOnClickListener {
-
-
 
             databaseReference = FirebaseDatabase.getInstance().getReference("profile").child(publisherId!!)
 
@@ -63,7 +62,7 @@ class ReviewActivity : AppCompatActivity() {
             hashMap.put("review",review.text.toString())
             hashMap.put("publishedRideId",publishedRideId!!)
 
-
+// updating ratings and reviews in data base
 
             databaseReference?.addListenerForSingleValueEvent(object : ValueEventListener {
                 override fun onDataChange(snapshot: DataSnapshot) {
@@ -79,11 +78,6 @@ class ReviewActivity : AppCompatActivity() {
                         snapshot.child("noof4starratings").value.toString().toInt()
                     var current5 =
                         snapshot.child("noof5starratings").value.toString().toInt()
-
-
-
-
-
 
 
                     val currenrtreviews = mapOf<String, String>( "totalreviews" to (totalreviews + 1).toString())
@@ -167,12 +161,6 @@ class ReviewActivity : AppCompatActivity() {
                     TODO("Not yet implemented")
                 }
             })
-
-
-
-
-
-
 
 
             databaseReference!!.child("reviews").child(rideId!!).setValue(hashMap).addOnCompleteListener(this){

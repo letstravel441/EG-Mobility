@@ -26,21 +26,25 @@ import com.narendar.letstravel.R
 import java.text.SimpleDateFormat
 import java.util.*
 
-
+// this is used for the sharing the rides
+// opens when clicked on offer button in tab layout
 class ShareFragment : Fragment() {
-
+// declaring the variable
    lateinit var editText : EditText
-    lateinit var textView1: TextView
-    lateinit var textView2:TextView
-    lateinit var sharepickuplocation : EditText
+
+   lateinit var textView1: TextView         // for complete address
+    lateinit var textView2:TextView         // for locality name
+    lateinit var sharepickuplocation : EditText // for displaying address in the app
+
     lateinit var textView3: TextView
     lateinit var textView4:TextView
-
     lateinit var sharedroplocation : EditText
 
    lateinit var publisherimage : String
     lateinit var rating: String
     lateinit var noofridespublished:String
+
+  // declaring variables for selecting date and time
     var shareday = 0
     var sharemonth = 0
     var shareyear = 0
@@ -67,7 +71,7 @@ class ShareFragment : Fragment() {
         textView2 = view.findViewById<TextView>(R.id.text_view2)
         textView3 = view.findViewById<TextView>(R.id.text_view3)
         textView4 = view.findViewById<TextView>(R.id.text_view4)
-
+//code for selecting date and time
         val cal: Calendar = Calendar.getInstance()
         val date = formate.format(cal.time)
         btnsharedate.text=date
@@ -106,7 +110,7 @@ class ShareFragment : Fragment() {
 
 
 
-
+// fetching data of user for storing the user data in user(shared rides) collection
         val auth = FirebaseAuth.getInstance()
         val database = FirebaseDatabase.getInstance()
         val databaseReference = database?.reference!!.child("profile")
@@ -143,7 +147,7 @@ class ShareFragment : Fragment() {
 //            }
 
 
-
+//code for auto complete places for pickup location
         Places.initialize(requireActivity().getApplicationContext(), "AIzaSyAG5Oh9bHDBoqM3BU1S2V0f-8uuo3ZHliw")
         sharepickuplocation.isFocusable = false
 
@@ -159,7 +163,7 @@ class ShareFragment : Fragment() {
             }
             startActivityForResult(intent, 100)
         }
-
+//code for auto complete places for drop location
         Places.initialize(requireActivity().getApplicationContext(), "AIzaSyAG5Oh9bHDBoqM3BU1S2V0f-8uuo3ZHliw")
         sharedroplocation.isFocusable = false
 
@@ -177,7 +181,7 @@ class ShareFragment : Fragment() {
         }
 
 
-
+// Publish ride Button functionality
         btnshare.setOnClickListener {
 
             if(TextUtils.isEmpty(sharepickuplocation.text.toString())) {
@@ -201,7 +205,7 @@ class ShareFragment : Fragment() {
            val passengersbooked : String = "0"
 
             saveFireStore(emailofuser.text.toString(),name.text.toString(),textView1.text.toString(), textView3.text.toString(),btnshareDate,sharePassengers,shareFare, user?.uid!!.toString(), publisherimage , textView2.text.toString(),textView4.text.toString(),passengersbooked,rating,noofridespublished)
-
+//clearing the text fields after sharing the ride
             sharedroplocation!!.text.clear()
             sharepickuplocation!!.text.clear()
             sharefare!!.text.clear()
@@ -209,13 +213,9 @@ class ShareFragment : Fragment() {
 
         }
 
-
-
-
-
         return view
     }
-
+//function for auto complete places
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if (requestCode == 100 && resultCode == Activity.RESULT_OK) {
@@ -242,7 +242,7 @@ class ShareFragment : Fragment() {
     }
 
 
-
+// function for storing the shared ride data in user(shared rides) collection in firestore database
     fun saveFireStore(emailofuser : String ,name:String, sharepickuplocation: String, sharedroplocation: String,btnsharedate:String ,sharePassengers : String , sharefare:String,publisherId : String, publisherimage : String,share_pickup_latlng : String,share_drop_latlng : String,passengersbooked: String,rating: String,noofridespublished:String) {
         val db = FirebaseFirestore.getInstance()
         val ride = db.collection("users").document()

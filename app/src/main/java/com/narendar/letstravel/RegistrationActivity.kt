@@ -11,7 +11,8 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
-
+// this is the registration page
+// opens when clicked on register button
 
 class RegistrationActivity : AppCompatActivity() {
     lateinit var auth: FirebaseAuth
@@ -21,14 +22,14 @@ class RegistrationActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_registration)
-
+// declaring data base variables
         auth = FirebaseAuth.getInstance()
         database = FirebaseDatabase.getInstance()
         databaseReference = database?.reference!!.child("profile")
 
         register()
     }
-
+// function for registering the details
     private fun register() {
 
         var registerButton= findViewById<Button>(R.id.registerButton)
@@ -40,7 +41,7 @@ class RegistrationActivity : AppCompatActivity() {
         var confirmPassword = findViewById<EditText>(R.id.confirmPasswordInput)
         var gender = findViewById<EditText>(R.id.gender)
         var age = findViewById<EditText>(R.id.editTextAge)
-
+// functionality for register button
         registerButton.setOnClickListener {
 
            if(TextUtils.isEmpty(firstnameInput.text.toString())) {
@@ -67,7 +68,7 @@ class RegistrationActivity : AppCompatActivity() {
                 return@setOnClickListener
             }
 
-
+// pre defining the branches which are required in the other files
             auth.createUserWithEmailAndPassword(usernameInput.text.toString(), passwordInput.text.toString())
                 .addOnCompleteListener {
                     if(it.isSuccessful) {
@@ -113,7 +114,7 @@ class RegistrationActivity : AppCompatActivity() {
                         databaseReference!!.setValue(hashMap).addOnCompleteListener(this){
                             if (it.isSuccessful){
                                 //open home activity
-
+                            // clearing the textfiels after clicking register button
                                 firstnameInput.setText("")
                                 usernameInput.setText("")
                                 lastnameInput.setText("")
